@@ -2,8 +2,15 @@
  My Senior Research Project for the year 2023 Fall- Spring 2024. It is going to use AR in the unity engine. 
 
 # Step 0 Plans
-	- Activate Passthrough mdoe / Ar - Finished
+	- Activate Passthrough mdoe / AR - Finished
 	- Test Unity Webservices - Testing Process
 	- Get Hand Tracking to operate - Finished
 	- Get Developer Acess - RSA Finger Print Finished
 	
+# Step 1 Plans
+	- Build APK Files for Wireless AR
+	- WIFI Engines added for detecting nearby signals 
+	- Custom Marking Code that marks WIFI Strengths:
+		- No Signal = Red
+		- Weak Signal = Yellow
+		- Strong Signal = Green
