@@ -5,19 +5,37 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.Android;
+using UnityEngine.XR;
 
 public class Checking_Internet : MonoBehaviour
 {
     // Netsh WLAN show interfaces - command to get wifi name and signal
 
     public Text Wifi_is_Available;
+    // public Text ssidText;
+    public Text wifiNameText;
 
     private string wifiSSID = "Not Connected";
     // private string wifiSSID = "N/A";
     // private string networkName = "";
     void Start()
     {
-        GetWiFiSSID();
+
+        InvokeRepeating("test", 0, 30);
+
+
+
+
+
+
+        // if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+        // {
+        //     Permission.RequestUserPermission(Permission.FineLocation);
+        // }
+        // InvokeRepeating("GetWiFiSSID", 0, 30);
+        // StartCoroutine(AR_GetWiFiSSID());
+
         // StartCoroutine(GetWiFiSSIDCoroutine());
         // networkName = wifiSSID;
         // CheckSignalStrength();
@@ -26,6 +44,7 @@ public class Checking_Internet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // Wifi_is_Available.text = "Testing";
 
         if (Application.internetReachability == NetworkReachability.NotReachable)
@@ -110,6 +129,27 @@ public class Checking_Internet : MonoBehaviour
 
     // }
 
+    private void test()
+    {
+        if (XRSettings.enabled && XRSettings.loadedDeviceName == "Oculus")
+        {
+            // Check if XR is currently active (indicating the Oculus Quest 2 is connected).
+            if (XRSettings.isDeviceActive)
+            {
+                wifiNameText.text = "Oculus Quest 2 is plugged in!";
+            }
+            else
+            {
+                wifiNameText.text = "Oculus Quest 2 is not plugged in!!!!";
+            }
+        }
+        else
+        {
+            wifiNameText.text = "Not an Oculus Quest device or XR is not enabled.";
+        }
+
+    }
+
     private void GetWiFiSSID()
     {
         Process process = new Process();
@@ -127,7 +167,7 @@ public class Checking_Internet : MonoBehaviour
         string[] lines = output.Split('\n');
         foreach (string line in lines)
         {
-            if (line.Contains("SSID"))
+            if (line.Contains("BSSID"))
             {
                 int startIndex = line.IndexOf(": ") + 2;
                 wifiSSID = line.Substring(startIndex).Trim();
@@ -140,6 +180,29 @@ public class Checking_Internet : MonoBehaviour
 
         // You can now use the 'wifiSSID' variable to access the SSID in your application.
     }
+
+
+    // private IEnumerator AR_GetWiFiSSID()
+    // {
+    //     yield return new WaitForSeconds(1.0f); // Wait for a moment (optional)
+
+    //     AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer")
+    //         .GetStatic<AndroidJavaObject>("currentActivity");
+    //     AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
+    //     AndroidJavaObject wifiInfo = wifiManager.Call<AndroidJavaObject>("getConnectionInfo");
+    //     wifiSSID = wifiInfo.Call<string>("getSSID").Replace("\"", ""); // Remove surrounding quotes
+
+    //     // Print or use the retrieved SSID
+    //     UnityEngine.Debug.Log("Quest 2 Wi-Fi SSID!!!!!!!!: " + wifiSSID);
+
+    //     // Display the SSID in a UI Text element (optional)
+    //     if (ssidText != null)
+    //     {
+    //         ssidText.text = "SSID: " + wifiSSID;
+    //     }
+
+    //     // You can now use the 'wifiSSID' variable to access the SSID in your VR application on Oculus Quest 2.
+    // }
 
 }
 

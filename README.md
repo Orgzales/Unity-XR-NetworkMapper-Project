@@ -8,7 +8,7 @@
 	- Get Developer Acess - RSA Finger Print Finished
 	
 # Step 1 Plans
-	- Build APK Files for Wireless AR
+	- Build APK Files for Wireless AR - FINISHED
 	- WIFI Engines added for detecting nearby signals 
 	- Custom Marking Code that marks WIFI Strengths:
 		- No Signal = Red
