@@ -10,7 +10,7 @@
 # Step 1 Plans
 	- Build APK Files for Wireless AR - FINISHED
 	- WIFI Engines added for detecting nearby signals  - Quest 2 Shows SSID
-	- Custom Marking Code that marks WIFI Strengths:
-		- No Signal = Red
-		- Weak Signal = Yellow
-		- Strong Signal = Green
+	- Custom Marking Code that marks WIFI Strengths: - COMPLETED
+		- No Signal = Red | -67dbm is Good signal (Max bars)
+		- Weak Signal = Yellow | -68dbm to -79dbm is Okay signal (Half Bars)
+		- Strong Signal = Green | -80dbm or lower is Very poor signal (Single or SOS bars)

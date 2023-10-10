@@ -12,12 +12,14 @@ public class Checking_Internet : MonoBehaviour
 {
     // Netsh WLAN show interfaces - command to get wifi name and signal
 
-    // public Text wifiQuest;
-    public Text ssidText;
     public Text Wifi_is_Available;
+    public Text SSID_text;
+    public Text BSSID_text;
+    public Text Singal_STR_text;
 
-    // private string wifiSSID = "Not Connected";
     private string wifiSSID;
+    private string wifiBSSID;
+    private int wifiSignalStrength;
     // private string networkName = "";
     void Start()
     {
@@ -30,8 +32,8 @@ public class Checking_Internet : MonoBehaviour
             Permission.RequestUserPermission(Permission.FineLocation);
         }
         // InvokeRepeating("GetWiFiSSID", 0, 30);
-        StartCoroutine(AR_GetWiFiSSID());
-
+        // StartCoroutine(AR_GetWiFiSSID());
+        InvokeRepeating("AR_repeat_wifi", 0, 6);
         // StartCoroutine(GetWiFiSSIDCoroutine());
         // networkName = wifiSSID;
         // CheckSignalStrength();
@@ -62,8 +64,6 @@ public class Checking_Internet : MonoBehaviour
             // Debug.Log("Network/Wifi Found through Mobile Accounts, Please log in"); //FOR RESNET
         }
     }
-
-
 
     // private void GetWiFiSSID()
     // {
@@ -96,26 +96,53 @@ public class Checking_Internet : MonoBehaviour
     //     // You can now use the 'wifiSSID' variable to access the SSID in your application.
     // }
 
-
+    private void AR_repeat_wifi()
+    {
+        StartCoroutine(AR_GetWiFiSSID());
+    }
     private IEnumerator AR_GetWiFiSSID()
     {
-        yield return new WaitForSeconds(1.0f); // Wait for a moment (optional)
-
+        yield return new WaitForSeconds(1.0f); // Wait for a moment 
+        // UnityEngine.Debug.Log("!!!!");
         AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
         AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
         AndroidJavaObject wifiInfo = wifiManager.Call<AndroidJavaObject>("getConnectionInfo");
         wifiSSID = wifiInfo.Call<string>("getSSID").Replace("\"", ""); // Remove surrounding quotes
+        wifiBSSID = wifiInfo.Call<string>("getBSSID");
+        wifiSignalStrength = wifiInfo.Call<int>("getRssi");
 
-        // Print or use the retrieved SSID
-        UnityEngine.Debug.Log("Quest 2 Wi-Fi SSID!!!!!!!!: " + wifiSSID);
-
-        // Display the SSID in a UI Text element (optional)
-        if (ssidText != null)
+        // Display the SSID in a UI Text element 
+        if (string.IsNullOrEmpty(wifiSSID) || wifiSSID.Equals("Not Connected"))
         {
-            ssidText.text = "SSID: " + wifiSSID;
+            SSID_text.text = "No Networks in Area";
+            BSSID_text.text = "No Networks in Area";
+            Singal_STR_text.text = "No Networks in Area";
+            SSID_text.color = Color.red;
+            BSSID_text.color = Color.red;
+            Singal_STR_text.color = Color.red;
+        }
+        else
+        {
+            SSID_text.text = "SSID: " + wifiSSID;
+            BSSID_text.text = "BSSID: " + wifiBSSID;
+            Singal_STR_text.text = "STRENGTH: " + wifiSignalStrength.ToString() + "dBm";
+            SSID_text.color = Color.green;
+            BSSID_text.color = Color.green;
+            if (wifiSignalStrength >= -67) //-67 = Amazing in dbm
+            {
+                Singal_STR_text.color = Color.green;
+            }
+            else if (wifiSignalStrength >= -79 && wifiSignalStrength < -70) // -70 = okay
+            {
+                Singal_STR_text.color = Color.yellow;
+            }
+            else if (wifiSignalStrength < -80) // -80 or lower is bad
+            {
+                Singal_STR_text.color = Color.red;
+            }
         }
 
-        // You can now use the 'wifiSSID' variable to access the SSID in your VR application on Oculus Quest 2.
+
     }
 
 }
