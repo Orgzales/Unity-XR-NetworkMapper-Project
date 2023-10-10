@@ -9,7 +9,7 @@
 	
 # Step 1 Plans
 	- Build APK Files for Wireless AR - FINISHED
-	- WIFI Engines added for detecting nearby signals 
+	- WIFI Engines added for detecting nearby signals  - Quest 2 Shows SSID
 	- Custom Marking Code that marks WIFI Strengths:
 		- No Signal = Red
 		- Weak Signal = Yellow
