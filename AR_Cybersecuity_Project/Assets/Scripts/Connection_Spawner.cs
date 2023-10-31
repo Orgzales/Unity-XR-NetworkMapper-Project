@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Connection_Spawner : MonoBehaviour
 {
     public GameObject parentObject; //Parent
     public GameObject[] prefabToInstantiate; //Child
-    public float spawnHeight = 0.3f;
-    public float checkRadius = 0.3f;
+    public float spawnHeight = 0.3f; //Distance from Camera
+    public float checkRadius = 0.3f; //Distance between Points of access
+    public string Prefab_Text_Name = ""; //name of objects display
 
 
     // Start is called before the first frame update
@@ -19,10 +22,7 @@ public class Connection_Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     InstantiateChildObject();
-        // }
+
     }
 
     private void InstantiateChildObject()
@@ -30,6 +30,7 @@ public class Connection_Spawner : MonoBehaviour
         if (CanInstantiateHere()) //Checking if Object of prefab is near.
         {
             int randomValue = Random.Range(1, 4); //Change later based on dBm Value
+            string text_Display = ""; //Change later with wifi info
 
             // Check if the parent object and prefab are set
             if (parentObject != null && prefabToInstantiate != null)
@@ -41,17 +42,54 @@ public class Connection_Spawner : MonoBehaviour
 
                 // Instantiate the prefab and set the parent to the parentObject
                 GameObject newObject = Instantiate(prefabToInstantiate[randomValue - 1], spawnPosition, Quaternion.identity);
-
-                // Set the parent of the new object to the parentObject
                 newObject.transform.SetParent(parentObject.transform);
+
+                switch (randomValue)
+                {
+                    case 1:
+                        text_Display = "This is the Green Color";
+                        break;
+                    case 2:
+                        text_Display = "This is the Yellow Color";
+                        break;
+                    case 3:
+                        text_Display = "This is the Red Color";
+                        break;
+                };
+
+                SetTextRecursively(newObject.transform, text_Display);
 
             }
             else
             {
                 Debug.LogError("Parent object or prefab not set!");
             }
+
         }
     }
+
+    void SetTextRecursively(Transform parent, string text)
+    {
+        // Get Parent -> Parent -> Textobject
+        Transform textObjectTransform = parent.Find(Prefab_Text_Name);
+
+        if (textObjectTransform != null)
+        {
+            // Access the TextMeshPro Text and changes it 
+            TextMeshPro textComponent = textObjectTransform.GetComponent<TextMeshPro>();
+            textComponent.text = text;
+        }
+        else
+        {
+            // Keep looking for the text for later code for BSSID
+            foreach (Transform child in parent)
+            {
+                SetTextRecursively(child, text);
+            }
+        }
+
+    }
+
 
     private bool CanInstantiateHere()
     {
@@ -72,18 +110,5 @@ public class Connection_Spawner : MonoBehaviour
             return false;
         }
     }
-
-    // private void test()
-    // {
-    //     // Get the position of the main camera
-    //     Vector3 cameraPosition = Camera.main.transform.position;
-
-    //     // Calculate the position to spawn the object
-    //     Vector3 spawnPosition = new Vector3(cameraPosition.x, cameraPosition.y - spawnHeight, cameraPosition.z);
-
-    //     // Instantiate the object at the calculated position
-    //     Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
-    //     // Instantiate(cubePrefab, spawnPosition, ParentPrefab.identity);
-    // }
-
 }
+

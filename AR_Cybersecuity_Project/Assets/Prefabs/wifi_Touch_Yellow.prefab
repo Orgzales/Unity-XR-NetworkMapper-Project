@@ -497,7 +497,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8220461582372825931}
   - component: {fileID: 8220461582372825927}
-  - component: {fileID: 8220461582372825926}
   - component: {fileID: 8220461582372825929}
   - component: {fileID: 8220461582372825928}
   m_Layer: 0
@@ -567,14 +566,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &8220461582372825926
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8220461582372825930}
-  m_Mesh: {fileID: 0}
 --- !u!222 &8220461582372825929
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -625,7 +616,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -639,7 +630,7 @@ MonoBehaviour:
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
-  m_textAlignment: 257
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 1
