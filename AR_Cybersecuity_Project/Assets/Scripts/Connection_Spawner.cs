@@ -5,7 +5,7 @@ using UnityEngine;
 public class Connection_Spawner : MonoBehaviour
 {
     public GameObject parentObject; // Reference to the parent object
-    public GameObject prefabToInstantiate; // The prefab you want to instantiate
+    public GameObject[] prefabToInstantiate; // The prefab you want to instantiate
     public float spawnHeight = 0.3f;
 
 
@@ -26,6 +26,9 @@ public class Connection_Spawner : MonoBehaviour
 
     void InstantiateChildObject()
     {
+
+        int randomValue = Random.Range(1, 4);
+
         // Check if the parent object and prefab are set
         if (parentObject != null && prefabToInstantiate != null)
         {
@@ -35,7 +38,7 @@ public class Connection_Spawner : MonoBehaviour
             Vector3 spawnPosition = new Vector3(cameraPosition.x, cameraPosition.y - spawnHeight, cameraPosition.z);
 
             // Instantiate the prefab and set the parent to the parentObject
-            GameObject newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
+            GameObject newObject = Instantiate(prefabToInstantiate[randomValue - 1], spawnPosition, Quaternion.identity);
 
             // Set the parent of the new object to the parentObject
             newObject.transform.SetParent(parentObject.transform);
