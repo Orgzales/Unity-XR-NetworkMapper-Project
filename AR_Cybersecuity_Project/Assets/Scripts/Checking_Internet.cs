@@ -17,16 +17,13 @@ public class Checking_Internet : MonoBehaviour
     public Text SSID_text;
     public Text BSSID_text;
     public Text Singal_STR_text;
+    public string wifiSSID;
+    public string wifiBSSID;
+    public int wifiSignalStrength;
+    // public string testing = "This is wifi script";
 
-    private string wifiSSID;
-    private string wifiBSSID;
-    private int wifiSignalStrength;
-    // private string networkName = "";
     void Start()
     {
-
-        // InvokeRepeating("test", 0, 30);
-
 
         if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
         {
@@ -41,7 +38,7 @@ public class Checking_Internet : MonoBehaviour
     void Update()
     {
 
-        Wifi_is_Available.text = "Testing";
+
 
         if (Application.internetReachability == NetworkReachability.NotReachable)
         {

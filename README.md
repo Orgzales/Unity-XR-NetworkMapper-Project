@@ -22,16 +22,17 @@
 	- Get Recording with passthrough enabled - OBS/Wireless Computer (Not possible on quest 2) Wired Recording
 	- Have Flags or Tracking Color Floor based on signal
 		- Find a way to create a cube in the exact spot that the wifi connection is updated - CUBES SPAWN
-		- Create the cube's color based on the wifi connection 
+		- Create the cube's color based on the wifi connection - Wifi Points are Created based on dBs
 		- If a new access point is created, make a pillar to mark it.
-		- Have a radius possibly for the cubes to prevent to many being created
-		- add enough transparency
+		- Have a radius possibly for the cubes to prevent to many being created - Prevents Cubes spawning within 2ft
 
 # Step 3 Plans
 	- Have the Marked down cubes display information
-		- When cubed is touched, have it display previous data
+		- When cubed is touched, have it display previous data - Displays SSID BSSID and dBm when cube was created
 		- Has data display in a AR-hud so position does not matter
+				- add enough transparency 
 	- Possibly show the range of the cube that was created. 
 	- Add a button or UI to let user create their own cubes for info
 		- The custom cube can hold info such as room number and etc. 
+	
 		
