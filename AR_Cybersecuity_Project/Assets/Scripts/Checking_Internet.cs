@@ -12,6 +12,7 @@ public class Checking_Internet : MonoBehaviour
 {
     // Netsh WLAN show interfaces - command to get wifi name and signal
 
+
     public Text Wifi_is_Available;
     public Text SSID_text;
     public Text BSSID_text;
@@ -31,12 +32,9 @@ public class Checking_Internet : MonoBehaviour
         {
             Permission.RequestUserPermission(Permission.FineLocation);
         }
-        // InvokeRepeating("GetWiFiSSID", 0, 30);
-        // StartCoroutine(AR_GetWiFiSSID());
+
         InvokeRepeating("AR_repeat_wifi", 0, 6);
-        // StartCoroutine(GetWiFiSSIDCoroutine());
-        // networkName = wifiSSID;
-        // CheckSignalStrength();
+
 
     }
     // Update is called once per frame
@@ -96,6 +94,7 @@ public class Checking_Internet : MonoBehaviour
     //     // You can now use the 'wifiSSID' variable to access the SSID in your application.
     // }
 
+
     private void AR_repeat_wifi()
     {
         StartCoroutine(AR_GetWiFiSSID());
@@ -104,6 +103,7 @@ public class Checking_Internet : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f); // Wait for a moment 
         // UnityEngine.Debug.Log("!!!!");
+
         AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
         AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
         AndroidJavaObject wifiInfo = wifiManager.Call<AndroidJavaObject>("getConnectionInfo");

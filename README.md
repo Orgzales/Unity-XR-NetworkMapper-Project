@@ -19,9 +19,9 @@
 		- Strong Signal = Green | -80dbm or lower is Very poor signal (Single or SOS bars)
 		
 # Step 2 Plans
-	- Get Recording with passthrough enabled - OBS/Wireless Computer (Not possible on quest 2) 
+	- Get Recording with passthrough enabled - OBS/Wireless Computer (Not possible on quest 2) Wired Recording
 	- Have Flags or Tracking Color Floor based on signal
-		- Find a way to create a cube in the exact spot that the wifi connection is updated
+		- Find a way to create a cube in the exact spot that the wifi connection is updated - CUBES SPAWN
 		- Create the cube's color based on the wifi connection 
 		- If a new access point is created, make a pillar to mark it.
 		- Have a radius possibly for the cubes to prevent to many being created
