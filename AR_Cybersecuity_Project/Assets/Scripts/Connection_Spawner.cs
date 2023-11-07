@@ -65,7 +65,8 @@ public class Connection_Spawner : MonoBehaviour
                 GameObject newObject = Instantiate(prefabToInstantiate[prefab_array], spawnPosition, Quaternion.identity);
                 newObject.transform.SetParent(parentObject.transform);
 
-                text_Display = "SSID: " + Wifi_script.wifiSSID + "\nBSSID: " + Wifi_script.wifiBSSID + "\ndBm: " + dBm_value.ToString();
+                text_Display = "SSID: " + Wifi_script.wifiSSID + "\nBSSID: " + Wifi_script.wifiBSSID +
+                "\ndBm: " + dBm_value.ToString() + "\nAUTH: " + Wifi_script.wifiAuthentication.ToString();
 
                 SetTextRecursively(newObject.transform, text_Display);
 
