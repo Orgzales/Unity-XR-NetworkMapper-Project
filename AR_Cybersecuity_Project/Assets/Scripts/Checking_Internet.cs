@@ -115,31 +115,32 @@ public class Checking_Internet : MonoBehaviour
         wifiSignalStrength = wifiInfo.Call<int>("getRssi");
 
 
-        string capabilities = wifiInfo.Call<string>("getCapabilities");
-        if (capabilities.Contains("WEP"))
-        {
-            wifiAuthentication = "WEP";
-        }
-        else if (capabilities.Contains("PSK"))
-        {
-            wifiAuthentication = "WPA2";
-        }
-        else if (capabilities.Contains("SAE"))
-        {
-            wifiAuthentication = "WPA3";
-        }
-        else if (capabilities.Contains("WPA"))
-        {
-            wifiAuthentication = "WPA";
-        }
-        else if (capabilities.Contains("EAP"))
-        {
-            wifiAuthentication = "EAP";
-        }
-        else
-        {
-            wifiAuthentication = "OPEN";
-        }
+        // string capabilities = wifiInfo.Call<string>("getCapabilities");
+        // wifiAuthentication = wifiInfo.Call<string>("getCapabilities");
+        // if (capabilities.Contains("WEP"))
+        // {
+        //     wifiAuthentication = "WEP";
+        // }
+        // else if (capabilities.Contains("PSK"))
+        // {
+        //     wifiAuthentication = "WPA2";
+        // }
+        // else if (capabilities.Contains("SAE"))
+        // {
+        //     wifiAuthentication = "WPA3";
+        // }
+        // else if (capabilities.Contains("WPA"))
+        // {
+        //     wifiAuthentication = "WPA";
+        // }
+        // else if (capabilities.Contains("EAP"))
+        // {
+        //     wifiAuthentication = "EAP";
+        // }
+        // else
+        // {
+        //     wifiAuthentication = "OPEN";
+        // }
 
 
 
@@ -150,22 +151,21 @@ public class Checking_Internet : MonoBehaviour
 
         //     switch (supplicantStateValue)
         //     {
-        //         case 3: // SupplicantState.COMPLETED
-        //             wifiAuthentication = "WPA2"; // Assuming WPA2 for completed connections
+        //         case 3: 
+        //             wifiAuthentication = "WPA2"; 
         //             break;
-        //         case 6: // SupplicantState.FOUR_WAY_HANDSHAKE
-        //             wifiAuthentication = "WPA2"; // You can consider it WPA2 during handshakes
+        //         case 6:
+        //             wifiAuthentication = "WPA2"; 
         //             break;
-        //         case 7: // SupplicantState.GROUP_HANDSHAKE
-        //             wifiAuthentication = "WPA2"; // You can consider it WPA2 during handshakes
+        //         case 7:
+        //             wifiAuthentication = "WPA2"; 
         //             break;
-        //         case 8: // SupplicantState.COMPLETED
-        //             wifiAuthentication = "WPA3"; // Assuming WPA3 for completed connections
+        //         case 8: 
+        //             wifiAuthentication = "WPA3"; 
         //             break;
         //         default:
-        //             wifiAuthentication = "OPEN"; // Default to OPEN
-        //             // You can add more cases for other SupplicantState values if needed
-        //             break;
+        //             wifiAuthentication = "OPEN"; 
+        //            
         //     }
         // }
 
