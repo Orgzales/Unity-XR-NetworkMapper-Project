@@ -104,6 +104,9 @@ public class Checking_Internet : MonoBehaviour
     {
         StartCoroutine(AR_GetWiFiSSID());
     }
+
+
+
     private IEnumerator AR_GetWiFiSSID()
     {
         yield return new WaitForSeconds(1.0f);
@@ -125,34 +128,27 @@ public class Checking_Internet : MonoBehaviour
         bool hasWep = networkCapabilities.Call<bool>("hasCapability", 15);
         bool hasWpa2 = networkCapabilities.Call<bool>("hasCapability", 13);
         bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
-        bool hasOpen = !hasWpa2 && !hasWpa3;
+        bool hasCcmp = hasWpa2 && networkCapabilities.Call<bool>("hasCapability", 6);
 
-        if (hasOpen == true)
+        if (!hasWpa2 && !hasWep)
         {
-            wifiAuthentication = "Open";
-        }
-        else if (hasInternet == true)
-        {
-            if (hasWep == true)
-            {
-                wifiAuthentication = "WEP";
-            }
-            if (hasWpa2 == true || hasWpa3 == true)
-            {
-                wifiAuthentication = "WPA";
-            }
-            if (hasWpa2 == true)
-            {
-                wifiAuthentication = "WPA2";
-            }
-            if (hasWpa3 == true)
-            {
-                wifiAuthentication = "WPA3";
-            }
+            wifiAuthentication = "Open Authentication";
         }
         else
         {
-            wifiAuthentication = "No Internet";
+            wifiAuthentication = $"Internet: {hasInternet}, WPA3: {hasWpa3}, WPA2: {hasWpa2}, WEP: {hasWep}, hasCcmp: {hasCcmp}"; //Debugging
+            // if (hasWep == true)
+            // {
+            //     wifiAuthentication = "WEP";
+            // }
+            // if (hasWpa2 == true)
+            // {
+            //     wifiAuthentication = "WPA2";
+            // }
+            // if (hasWpa3 == true)
+            // {
+            //     wifiAuthentication = "WPA3";
+            // }
         }
 
 
