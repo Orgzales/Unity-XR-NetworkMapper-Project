@@ -32,15 +32,8 @@
 	- If authencation type is bad, give a alert to the cube being made.
 		- Open or None = !!!!!DANGER!!!!!
 		- Wired Equivalent Privacy (WEP) = !!! HIGH ALERT !!!
-		- Wi-Fi Protected Access (WPA) = ! Caution !
 		- Wi-Fi Protected Access 2 (WPA2) = @ Secure @
 		- Wi-Fi Protected Access 3 (WPA3) = #Protected#
-	- Create New prefab base on key from authencation of andriod
-		- keyManagement of 0 indicates an OPEN network.
-		- keyManagement of 1 indicates a WEP network.
-		- keyManagement values of 2 or 3 indicate a WPA network.
-		- keyManagement values of 4 or 6 indicate a WPA2 network.
-		- keyManagement values of 8 or 9 indicate a WPA3 network.
 
 # Step 4 Plans
 	- Have the Marked down cubes display information

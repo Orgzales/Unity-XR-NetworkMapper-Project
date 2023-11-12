@@ -37,6 +37,7 @@ public class Checking_Internet : MonoBehaviour
         }
 
         InvokeRepeating("AR_repeat_wifi", 0, 6);
+        // InvokeRepeating("GetWiFiSSID", 0, 6);
 
 
     }
@@ -83,13 +84,14 @@ public class Checking_Internet : MonoBehaviour
     //     string[] lines = output.Split('\n');
     //     foreach (string line in lines)
     //     {
-    //         if (line.Contains("SSID"))
+    //         if (line.Contains("Authentication"))
     //         {
     //             int startIndex = line.IndexOf(": ") + 2;
     //             wifiSSID = line.Substring(startIndex).Trim();
     //             break;
     //         }
     //     }
+    //     UnityEngine.Debug.Log(wifiSSID);
 
     //     // Print or use the retrieved SSID
     //     // wifiNameText.text = ("Windows Wi-Fi SSID: " + wifiSSID);
@@ -115,134 +117,43 @@ public class Checking_Internet : MonoBehaviour
         wifiSignalStrength = wifiInfo.Call<int>("getRssi");
 
 
-        // string capabilities = wifiInfo.Call<string>("getCapabilities");
-        // wifiAuthentication = wifiInfo.Call<string>("getCapabilities");
-        // if (capabilities.Contains("WEP"))
-        // {
-        //     wifiAuthentication = "WEP";
-        // }
-        // else if (capabilities.Contains("PSK"))
-        // {
-        //     wifiAuthentication = "WPA2";
-        // }
-        // else if (capabilities.Contains("SAE"))
-        // {
-        //     wifiAuthentication = "WPA3";
-        // }
-        // else if (capabilities.Contains("WPA"))
-        // {
-        //     wifiAuthentication = "WPA";
-        // }
-        // else if (capabilities.Contains("EAP"))
-        // {
-        //     wifiAuthentication = "EAP";
-        // }
-        // else
-        // {
-        //     wifiAuthentication = "OPEN";
-        // }
+        AndroidJavaObject connectivityManager = activity.Call<AndroidJavaObject>("getSystemService", "connectivity");
+        AndroidJavaObject activeNetwork = connectivityManager.Call<AndroidJavaObject>("getActiveNetwork");
+        AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObject>("getNetworkCapabilities", activeNetwork);
 
+        bool hasInternet = networkCapabilities.Call<bool>("hasCapability", 12);
+        bool hasWep = networkCapabilities.Call<bool>("hasCapability", 15);
+        bool hasWpa2 = networkCapabilities.Call<bool>("hasCapability", 13);
+        bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
+        bool hasOpen = !hasWpa2 && !hasWpa3;
 
-
-
-        // if (supplicantState != null)
-        // {
-        //     int supplicantStateValue = supplicantState.Call<int>("ordinal");
-
-        //     switch (supplicantStateValue)
-        //     {
-        //         case 3: 
-        //             wifiAuthentication = "WPA2"; 
-        //             break;
-        //         case 6:
-        //             wifiAuthentication = "WPA2"; 
-        //             break;
-        //         case 7:
-        //             wifiAuthentication = "WPA2"; 
-        //             break;
-        //         case 8: 
-        //             wifiAuthentication = "WPA3"; 
-        //             break;
-        //         default:
-        //             wifiAuthentication = "OPEN"; 
-        //            
-        //     }
-        // }
-
-
-        // string capabilities = wifiInfo.Call<string>("getCapabilities");
-
-        // // Check capabilities to determine authentication type
-        // if (capabilities.Contains("WEP"))
-        // {
-        //     wifiAuthentication = "WEP";
-        // }
-        // else if (capabilities.Contains("WPA2") || capabilities.Contains("PSK"))
-        // {
-        //     wifiAuthentication = "WPA2";
-        // }
-        // else if (capabilities.Contains("WPA3") || capabilities.Contains("SAE"))
-        // {
-        //     wifiAuthentication = "WPA3";
-        // }
-        // else if (capabilities.Contains("WPA"))
-        // {
-        //     wifiAuthentication = "WPA";
-        // }
-        // else if (capabilities.Contains("EAP"))
-        // {
-        //     wifiAuthentication = "EAP";
-        // }
-        // else
-        // {
-        //     wifiAuthentication = "OPEN";
-        // }
-
-        // // Retrieve Wi-Fi configuration for Quest 2
-        // AndroidJavaObject wifiConfigList = wifiManager.Call<AndroidJavaObject>("getConfiguredNetworks");
-        // int networkId = wifiInfo.Call<int>("getNetworkId");
-
-        // // Find the network Authtication Type base on keymanagement
-        // for (int i = 0; i < wifiConfigList.Call<int>("size"); i++)
-        // {
-        //     AndroidJavaObject config = wifiConfigList.Call<AndroidJavaObject>("get", i);
-        //     int configNetworkId = config.Call<int>("networkId");
-        //     if (configNetworkId == networkId)
-        //     {
-        //         int keyManagement = config.Call<int>("allowedKeyManagement");
-        //         switch (keyManagement)
-        //         {
-        //             case 0:
-        //                 wifiAuthentication = "OPEN";
-        //                 wifiAuthentication_text.color = Color.red;
-        //                 break;
-        //             case 1:
-        //                 wifiAuthentication = "WEP";
-        //                 wifiAuthentication_text.color = Color.magenta;
-        //                 break;
-        //             case 2:
-        //             case 3:
-        //                 wifiAuthentication = "WPA";
-        //                 wifiAuthentication_text.color = Color.yellow;
-        //                 break;
-        //             case 4:
-        //             case 6:
-        //                 wifiAuthentication = "WPA2";
-        //                 wifiAuthentication_text.color = Color.green;
-        //                 break;
-        //             case 8:
-        //             case 9:
-        //                 wifiAuthentication = "WPA3";
-        //                 wifiAuthentication_text.color = Color.blue;
-        //                 break;
-        //             default:
-        //                 wifiAuthentication = "UNKNOWN";
-        //                 wifiAuthentication_text.color = Color.gray;
-        //                 break;
-        //         }
-        //         break;
-        //     }
-        // }
+        if (hasOpen == true)
+        {
+            wifiAuthentication = "Open";
+        }
+        else if (hasInternet == true)
+        {
+            if (hasWep == true)
+            {
+                wifiAuthentication = "WEP";
+            }
+            if (hasWpa2 == true || hasWpa3 == true)
+            {
+                wifiAuthentication = "WPA";
+            }
+            if (hasWpa2 == true)
+            {
+                wifiAuthentication = "WPA2";
+            }
+            if (hasWpa3 == true)
+            {
+                wifiAuthentication = "WPA3";
+            }
+        }
+        else
+        {
+            wifiAuthentication = "No Internet";
+        }
 
 
         // Display the SSID in a UI Text element 

@@ -66,7 +66,7 @@ public class Connection_Spawner : MonoBehaviour
                 newObject.transform.SetParent(parentObject.transform);
 
                 text_Display = "SSID: " + Wifi_script.wifiSSID + "\nBSSID: " + Wifi_script.wifiBSSID +
-                "\ndBm: " + dBm_value.ToString() + "\nAUTH: " + Wifi_script.wifiAuthentication.ToString();
+                "\ndBm: " + dBm_value.ToString() + "\nAUTH: " + Wifi_script.wifiAuthentication;
 
                 SetTextRecursively(newObject.transform, text_Display);
 
