@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.Android;
 using UnityEngine.XR;
+using System;
 
 public class Checking_Internet : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class Checking_Internet : MonoBehaviour
             // Debug.Log("Network/Wifi Found through Mobile Accounts, Please log in"); //FOR RESNET
         }
     }
-
+    //Debugginh on windows instead of andriod
     // private void GetWiFiSSID()
     // {
     //     Process process = new Process();
@@ -106,7 +107,6 @@ public class Checking_Internet : MonoBehaviour
     }
 
 
-
     private IEnumerator AR_GetWiFiSSID()
     {
         yield return new WaitForSeconds(1.0f);
@@ -115,50 +115,93 @@ public class Checking_Internet : MonoBehaviour
         AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
         AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
         AndroidJavaObject wifiInfo = wifiManager.Call<AndroidJavaObject>("getConnectionInfo");
+
+        AndroidJavaObject connectivityManager = activity.Call<AndroidJavaObject>("getSystemService", "connectivity");
+        AndroidJavaObject networkInfo = connectivityManager.Call<AndroidJavaObject>("getNetworkInfo", 1);
+        AndroidJavaObject detailedState = networkInfo.Call<AndroidJavaObject>("getDetailedState");
+
         wifiSSID = wifiInfo.Call<string>("getSSID").Replace("\"", "");
         wifiBSSID = wifiInfo.Call<string>("getBSSID");
         wifiSignalStrength = wifiInfo.Call<int>("getRssi");
 
 
-        AndroidJavaObject connectivityManager = activity.Call<AndroidJavaObject>("getSystemService", "connectivity");
-        AndroidJavaObject activeNetwork = connectivityManager.Call<AndroidJavaObject>("getActiveNetwork");
-        AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObject>("getNetworkCapabilities", activeNetwork);
+        //Yes all these lines to just to check Authencation
+        string stateString = detailedState.Call<string>("toString");
+        string capabilities = wifiInfo.Call<string>("toString");
+        int securityTypeIndex = capabilities.IndexOf("Security type: ");
+        int endOfSecurityTypeIndex = capabilities.IndexOf(",", securityTypeIndex);
+        string securityTypeValue = capabilities.Substring(securityTypeIndex + 15, endOfSecurityTypeIndex - securityTypeIndex - 15);
 
-        bool hasInternet = networkCapabilities.Call<bool>("hasCapability", 12);
-        bool hasWep = networkCapabilities.Call<bool>("hasCapability", 15);
-        bool hasWpa2 = networkCapabilities.Call<bool>("hasCapability", 13);
-        bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
-        bool hasCcmp = hasWpa2 && networkCapabilities.Call<bool>("hasCapability", 6);
-
-        if (!hasWpa2 && !hasWep)
+        switch (securityTypeValue)
         {
-            wifiAuthentication = "Open Authentication";
+            case "-1":
+                wifiAuthentication = "No Security/Signal";
+                wifiAuthentication_text.color = Color.red;
+                break;
+            case "0":
+                wifiAuthentication = "OPEN"; //No password 
+                wifiAuthentication_text.color = Color.red;
+                break;
+            case "1":
+                wifiAuthentication = "WEP"; //old be cautious 
+                wifiAuthentication_text.color = Color.yellow;
+                break;
+            case "2":
+                wifiAuthentication = "WPA/WPA2"; //mondern security
+                wifiAuthentication_text.color = Color.green;
+                break;
+            case "3":
+                wifiAuthentication = "WPA3"; //high secuirty
+                wifiAuthentication_text.color = Color.blue;
+                break;
+            default:
+                wifiAuthentication = "Unknown Type: " + securityTypeValue; //Incase Im missing any that shows up.
+                wifiAuthentication_text.color = Color.magenta;
+                break;
         }
-        else
-        {
-            wifiAuthentication = $"Internet: {hasInternet}, WPA3: {hasWpa3}, WPA2: {hasWpa2}, WEP: {hasWep}, hasCcmp: {hasCcmp}"; //Debugging
-            // if (hasWep == true)
-            // {
-            //     wifiAuthentication = "WEP";
-            // }
-            // if (hasWpa2 == true)
-            // {
-            //     wifiAuthentication = "WPA2";
-            // }
-            // if (hasWpa3 == true)
-            // {
-            //     wifiAuthentication = "WPA3";
-            // }
-        }
+        //Later code for checking what the server is capable of>>> for meeting with Proffessor
+        // AndroidJavaObject connectivityManager = activity.Call<AndroidJavaObject>("getSystemService", "connectivity");
+        // AndroidJavaObject activeNetwork = connectivityManager.Call<AndroidJavaObject>("getActiveNetwork");
+        // AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObject>("getNetworkCapabilities", activeNetwork);
+
+        // bool hasInternet = networkCapabilities.Call<bool>("hasCapability", 12);
+        // bool hasWep = networkCapabilities.Call<bool>("hasCapability", 15);
+        // bool hasWpa2 = networkCapabilities.Call<bool>("hasCapability", 13);
+        // bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
+        // // bool hasCcmp = hasWpa2 && networkCapabilities.Call<bool>("hasCapability", 6);
+        // int networkId = wifiInfo.Call<int>("getNetworkId");
+        // AndroidJavaObject wifiConfig = wifiManager.Call<AndroidJavaObject>("getConfiguredNetwork", networkId);
+
+        // string hasCcmp = wifiConfig.Call<string>("groupCipher");
+
+        // if (!hasWpa2 && !hasWep)
+        // {
+        //     wifiAuthentication = "Open Authentication";
+        // }
+        // else
+        // {
+        //     wifiAuthentication = $"Internet: {hasInternet}, WPA3: {hasWpa3}, WPA2: {hasWpa2}, WEP: {hasWep}, hasCcmp: {hasCcmp}"; //Debug
+        //     // if (hasWep == true)
+        //     // {
+        //     //     wifiAuthentication = "WEP";
+        //     // }
+        //     // if (hasWpa2 == true)
+        //     // {
+        //     //     wifiAuthentication = "WPA2";
+        //     // }
+        //     // if (hasWpa3 == true)
+        //     // {
+        //     //     wifiAuthentication = "WPA3";
+        //     // }
+        // }
 
 
-        // Display the SSID in a UI Text element 
-        if (string.IsNullOrEmpty(wifiSSID) || wifiSSID.Equals("Not Connected"))
+        if (string.IsNullOrEmpty(wifiSSID) || wifiSSID.Equals("<unknown ssid>"))
         {
-            SSID_text.text = "No Networks in Area";
-            BSSID_text.text = "No Networks in Area";
-            Singal_STR_text.text = "No Networks in Area";
-            wifiAuthentication_text.text = "No Networks in Area";
+            SSID_text.text = "SSID: No Connection";
+            BSSID_text.text = "BSSID: No Connection";
+            Singal_STR_text.text = "STRENGTH: No Connection";
+            wifiAuthentication_text.text = "Authentication: No Connection";
             SSID_text.color = Color.red;
             BSSID_text.color = Color.red;
             Singal_STR_text.color = Color.red;
@@ -184,6 +227,8 @@ public class Checking_Internet : MonoBehaviour
             {
                 Singal_STR_text.color = Color.red;
             }
+
+
         }
 
 
