@@ -48,3 +48,13 @@
 	 - 🗸 Accident: Have program test if wifi/router has access to Better secuirty | (NEEDS MORE TESTING)
 		- EX: Router is set to no security, but it still is able to check if it can have wpa2
 		
+		
+		
+#APK Versions
+	- APK 1: Testing Mixed Reality 
+	- APK 2: Getting SSID
+	- APK 3: Getting SSID + BSSID
+	- APK 4: Getting SSID + BSSID + RSSI/Signal
+	- APK 5: Takes all 3 and makes prefabs base on location
+	- APK 6: Added Auth/Secuirty Detection
+	
