@@ -1,4 +1,4 @@
-# Unity-Ar-Project
+# AUGMENTED REALITY WIRELESS NETWORK SECURITY MAPPER
  My Senior Research Project for the year 2023 Fall- Spring 2024. It is going to use AR in the unity engine. 
  Some Commands:
 	- netsh wlan show profiles

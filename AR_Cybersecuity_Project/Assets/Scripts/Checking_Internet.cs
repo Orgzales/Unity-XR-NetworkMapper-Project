@@ -168,11 +168,11 @@ public class Checking_Internet : MonoBehaviour
         // bool hasWep = networkCapabilities.Call<bool>("hasCapability", 15);
         // bool hasWpa2 = networkCapabilities.Call<bool>("hasCapability", 13);
         // bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
-        // // bool hasCcmp = hasWpa2 && networkCapabilities.Call<bool>("hasCapability", 6);
+        // bool hasCcmp = hasWpa2 && networkCapabilities.Call<bool>("hasCapability", 6);
         // int networkId = wifiInfo.Call<int>("getNetworkId");
-        // AndroidJavaObject wifiConfig = wifiManager.Call<AndroidJavaObject>("getConfiguredNetwork", networkId);
+        // // AndroidJavaObject wifiConfig = wifiManager.Call<AndroidJavaObject>("getConfiguredNetwork", networkId);
 
-        // string hasCcmp = wifiConfig.Call<string>("groupCipher");
+        // // string hasCcmp = wifiConfig.Call<string>("groupCipher");
 
         // if (!hasWpa2 && !hasWep)
         // {
@@ -180,19 +180,19 @@ public class Checking_Internet : MonoBehaviour
         // }
         // else
         // {
-        //     wifiAuthentication = $"Internet: {hasInternet}, WPA3: {hasWpa3}, WPA2: {hasWpa2}, WEP: {hasWep}, hasCcmp: {hasCcmp}"; //Debug
-        //     // if (hasWep == true)
-        //     // {
-        //     //     wifiAuthentication = "WEP";
-        //     // }
-        //     // if (hasWpa2 == true)
-        //     // {
-        //     //     wifiAuthentication = "WPA2";
-        //     // }
-        //     // if (hasWpa3 == true)
-        //     // {
-        //     //     wifiAuthentication = "WPA3";
-        //     // }
+        //     wifiAuthentication = $"Internet: {hasInternet}, WPA3: {hasWpa3}, WPA2: {hasWpa2}, WEP: {hasWep}"; //Debug
+        //     if (hasWep == true)
+        //     {
+        //         wifiAuthentication = "WEP";
+        //     }
+        //     if (hasWpa2 == true)
+        //     {
+        //         wifiAuthentication = "WPA2";
+        //     }
+        //     if (hasWpa3 == true)
+        //     {
+        //         wifiAuthentication = "WPA3";
+        //     }
         // }
 
 

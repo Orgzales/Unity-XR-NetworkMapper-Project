@@ -1,0 +1,14 @@
+introduction: engaging secuirty process to find and manager wireless networks based on secuirty. Make it 
+
+Related work section: Any virtual or ar projects that are based on cybersecuirty
+- explain what each project is doing and then explain how my project is different. such as mixed reality
+
+Implemtation section: challenges, how I got how far I got, what worked and what didn't use chat gpt to find method. Searching on github with advance search
+
+results section: What I got to now. 
+
+next semester what I wanna do more. 
+
+overleaf.com
+
+latax include image.
