@@ -4,7 +4,7 @@
 	- netsh wlan show profiles
 	- netsh wlan show interface
 
-# Step 0 Plans
+# Step 0 Plans 
 	- 🗸 Activate Passthrough mdoe / AR - Finished
 	- 🗸 Test Unity Webservices - Testing Process
 	- 🗸 Get Hand Tracking to operate - Finished
