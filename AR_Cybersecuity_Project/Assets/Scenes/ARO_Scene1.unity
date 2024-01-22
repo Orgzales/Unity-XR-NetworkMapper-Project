@@ -16007,6 +16007,7 @@ MonoBehaviour:
   spawnHeight: 0.45
   checkRadius: 0.5
   Prefab_Text_Name: DebugText (2)
+  dBm_value: 0
 --- !u!114 &1095904981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29183,7 +29184,8 @@ PrefabInstance:
       propertyPath: wifiAuthentication_text
       value: 
       objectReference: {fileID: 1258202403}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 306276960832236414, guid: 5f63d3f2db6b5124dba3f5d1473aa176, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5f63d3f2db6b5124dba3f5d1473aa176, type: 3}
 --- !u!224 &342216881336449614
 RectTransform:

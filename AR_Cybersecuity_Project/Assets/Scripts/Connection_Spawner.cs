@@ -14,6 +14,7 @@ public class Connection_Spawner : MonoBehaviour
     public float checkRadius = 0.5f; //Distance between Points of access
     public string Prefab_Text_Name = ""; //name of objects display
 
+    public int dBm_value;//based on dBm Value
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,7 @@ public class Connection_Spawner : MonoBehaviour
     {
         if (CanInstantiateHere()) //Checking if Object of prefab is near.
         {
-            int dBm_value = Wifi_script.wifiSignalStrength; //based on dBm Value
+            dBm_value = Wifi_script.wifiSignalStrength; //based on dBm Value
             string text_Display = ""; //Change later with wifi info
             int prefab_array = 0; //0 = good | 1 = ok | 2 = Bad
 
@@ -60,6 +61,7 @@ public class Connection_Spawner : MonoBehaviour
 
                 // Calculate the position to spawn the object
                 Vector3 spawnPosition = new Vector3(cameraPosition.x, cameraPosition.y - spawnHeight, cameraPosition.z);
+
 
                 // Instantiate the prefab and set the parent to the parentObject
                 GameObject newObject = Instantiate(prefabToInstantiate[prefab_array], spawnPosition, Quaternion.identity);
