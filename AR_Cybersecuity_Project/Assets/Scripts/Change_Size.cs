@@ -25,8 +25,11 @@ public class Change_Size : MonoBehaviour
         {
             random_Height = 0.01f;
         } //later on attempt the conversion rate of -79 to a range of 0 through 0.3f
-
-        //Changes the prefab size based on the dBm value
+          //use this later https://math.stackexchange.com/questions/2833778/converting-between-different-scales
+          //Changes the prefab size based on the dBm value
+          //https://www.crowdstrike.com/cybersecurity-101/cloud-security/shadow-it/
+          //https://cai.io/resources/thought-leadership/shadow-IT-meaning-risks
+          //shadow it - find other non secure routers that are dangerious to the secure ones that IT isn't aware.
         Adjust_Scale(random_Height);
         Debug.Log("dbmValue height: " + dBmValue + "| random height: " + random_Height);
     }

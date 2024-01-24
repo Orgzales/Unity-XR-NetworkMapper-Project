@@ -38,18 +38,56 @@
 # Step 4 Plans
 	- 🗸 Have the Marked down cubes display information
 		-  🗸 When cubed is touched, have it display previous data - Displays SSID BSSID and dBm when cube was created
-		- Has data display in a AR-hud so position does not matter
+	- 🗸 Possibly show the range of the cube that was created wiht new prefab. 
+	- 🗸 Accident: Have program test if wifi/router has access to Better secuirty | (NEEDS MORE TESTING)
+		- EX: Router is set to no security, but it still is able to check if it can have wpa2
+
+# Step 5 Plans (2024)
+	- Has data display in a AR-hud so position does not matter and better layout
 				- add enough transparency 
-	- Possibly show the range of the cube that was created wiht new prefab. 
+	- Make New prefabs of Cubes to be Wifi Pillars
+		- Have a radius transparcy
+		- Change height of pillar based on dBm signal
+		- Still have a cube on top that displays data
+		- Keep other old properties
+		- Depending on secuirty, create a symbol on top
+	- Have a cube replace a older cube if in area
+		- Only replace if the user has been standing there long enough 
+	- Increase the rate of the cubes
+	
+# Step 6 Plans
+	- Create Save button for mapping
+	- Work on saving flat image of mapped area
+		-First need to make the camera that can see everything
+			- Make a camera renderer that can move with player
+			- Have a small screen that user can see what the camera sees
+			- Use render textures 
+		- Second have what the camera sees save as an image
+			- Make sure that the camera can see all objects
+			- Make sure it works on multiple floors (possibly a angle view)
+			- Save into temp file
+		- third export to the headset as an image it can open
+			- Build settings have access to downloading files
+			- export as Jpeg conversion
+			- Saves multiple names (possibly change name with text area?)
+		
+# Step 7 Plans
+	- Save objects layout when logging off or switching
+		- first, find a way to save scene
+			- Save position/direction that previous was looking
+			- When in that position, recreate all objects
+			- Reload save
+		- Second, find a way to save all objects
+			- Save all locations of (x,y,z) cords of objects
+			- Save data of those prefabs 
+		- When log off or shut down, reloading saves all locations 
+
+# Step ? Plans
 	- Add a button or UI to let user create their own cubes for info
 		- The custom cube can hold info such as room number and etc. 
-	
-# Step 5 Plans
-	 - 🗸 Accident: Have program test if wifi/router has access to Better secuirty | (NEEDS MORE TESTING)
-		- EX: Router is set to no security, but it still is able to check if it can have wpa2
-		
-		
-		
+	- Have a delete button on the wifi pillars
+	- Change splash screen 
+
 # APK Versions
 	- APK 1: Testing Mixed Reality 
 	- APK 2: Getting SSID
@@ -57,4 +95,4 @@
 	- APK 4: Getting SSID + BSSID + RSSI/Signal
 	- APK 5: Takes all 3 and makes prefabs base on location
 	- APK 6: Added Auth/Secuirty Detection
-	
+	- APK 7: debugging Auth/Secuirty Detection
