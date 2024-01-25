@@ -40,11 +40,9 @@
 		-  🗸 When cubed is touched, have it display previous data - Displays SSID BSSID and dBm when cube was created
 	- 🗸 Possibly show the range of the cube that was created wiht new prefab. 
 	- 🗸 Accident: Have program test if wifi/router has access to Better secuirty | (NEEDS MORE TESTING)
-		- EX: Router is set to no security, but it still is able to check if it can have wpa2
+		- 🗸 EX: Router is set to no security, but it still is able to check if it can have wpa2
 
 # Step 5 Plans (2024)
-	- Has data display in a AR-hud so position does not matter and better layout
-				- add enough transparency 
 	- Make New prefabs of Cubes to be Wifi Pillars
 		- Have a radius transparcy
 		- Change height of pillar based on dBm signal
@@ -55,7 +53,24 @@
 		- Only replace if the user has been standing there long enough 
 	- Increase the rate of the cubes
 	
+	
 # Step 6 Plans
+	- Has data display in a AR-hud so position does not matter and better layout
+		- add enough transparency 
+		- Remake a grid layout for better visualization
+		- Add Have the following display
+			- Both netwokr security and potential network secuirty
+			- Transmit Rate + Recieve Rate
+	- Create a data base of current properties of each scan for wifi network
+		- Make a new hud that will say the following
+			- (Network SSID + Network BSSID)
+				- Good signal = int 
+				- Ok Signal = int
+				- Bad Signal = int
+				- Secure = int
+				- VUlnerable = int
+			- New network...
+# Step 7 Plans
 	- Create Save button for mapping
 	- Work on saving flat image of mapped area
 		-First need to make the camera that can see everything
@@ -71,7 +86,7 @@
 			- export as Jpeg conversion
 			- Saves multiple names (possibly change name with text area?)
 		
-# Step 7 Plans
+# Step 8 Plans
 	- Save objects layout when logging off or switching
 		- first, find a way to save scene
 			- Save position/direction that previous was looking
@@ -96,3 +111,11 @@
 	- APK 5: Takes all 3 and makes prefabs base on location
 	- APK 6: Added Auth/Secuirty Detection
 	- APK 7: debugging Auth/Secuirty Detection
+	
+#Cybersecuirty Ideas
+	- Simulate Network Traffic - possible
+	- Packet Sniffing - Less possible
+	- Historic Log Organization - possible
+	- Simulate firewall - possible
+	- Shadow IT function - possible
+		- Simulate Shadow IT - possible
