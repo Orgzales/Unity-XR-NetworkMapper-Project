@@ -44,14 +44,15 @@
 
 # Step 5 Plans (2024)
 	- Make New prefabs of Cubes to be Wifi Pillars
-		- Have a radius transparcy
-		- Change height of pillar based on dBm signal
-		- Still have a cube on top that displays data
-		- Keep other old properties
+		- 🗸 Have a radius transparcy
+		- 🗸 Change height of pillar based on dBm signal
+		- 🗸 Still have a cube on top that displays data
+		- 🗸 Keep other old properties
 		- Depending on secuirty, create a symbol on top
+		- Make small background for Debug Text.
 	- Have a cube replace a older cube if in area
 		- Only replace if the user has been standing there long enough 
-	- Increase the rate of the cubes
+	- 🗸 Increase the rate of the cubes
 	
 	
 # Step 6 Plans
@@ -111,6 +112,7 @@
 	- APK 5: Takes all 3 and makes prefabs base on location
 	- APK 6: Added Auth/Secuirty Detection
 	- APK 7: debugging Auth/Secuirty Detection
+	- APK 8: New Prefabs + Math
 	
 #Cybersecuirty Ideas
 	- Simulate Network Traffic - possible

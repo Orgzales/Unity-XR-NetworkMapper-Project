@@ -10,8 +10,8 @@ public class Connection_Spawner : MonoBehaviour
 
     public GameObject parentObject; //Parent
     public GameObject[] prefabToInstantiate; //Child
-    public float spawnHeight = 0.45f; //Distance from Camera
-    public float checkRadius = 0.5f; //Distance between Points of access
+    public float spawnHeight = 1.75f; //Distance from Camera
+    public float checkRadius = 0.45f; //Distance between Points of access
     public string Prefab_Text_Name = ""; //name of objects display
 
     public int dBm_value;//based on dBm Value
@@ -19,7 +19,7 @@ public class Connection_Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("InstantiateChildObject", 0, 6);
+        InvokeRepeating("InstantiateChildObject", 3, 3);
 
     }
 
@@ -119,7 +119,7 @@ public class Connection_Spawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("ANother object too Close!");
+            // Debug.Log("ANother object too Close!");
             return false;
         }
     }

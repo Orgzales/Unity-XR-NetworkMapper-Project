@@ -37,7 +37,7 @@ public class Checking_Internet : MonoBehaviour
             Permission.RequestUserPermission(Permission.FineLocation);
         }
 
-        InvokeRepeating("AR_repeat_wifi", 0, 6);
+        InvokeRepeating("AR_repeat_wifi", 0, 3);
         // InvokeRepeating("GetWiFiSSID", 0, 6);
 
 

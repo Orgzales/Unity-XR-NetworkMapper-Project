@@ -16004,9 +16004,9 @@ MonoBehaviour:
   - {fileID: 5962689369081226201, guid: ae5b3855adbcc5048854b0c194ca8e40, type: 3}
   - {fileID: 8220461581988641624, guid: 2b59a85d52ea1f5449e1d6ac34508340, type: 3}
   - {fileID: 7780838719092460206, guid: e4f44e58f2f7822469fb72b008b1c341, type: 3}
-  spawnHeight: 0.45
-  checkRadius: 0.5
-  Prefab_Text_Name: DebugText (2)
+  spawnHeight: 1.75
+  checkRadius: 0.45
+  Prefab_Text_Name: Properties_text
   dBm_value: 0
 --- !u!114 &1095904981
 MonoBehaviour:
