@@ -50,9 +50,9 @@
 		- 🗸 Keep other old properties
 		- Depending on secuirty, create a symbol on top
 		- Make small background for Debug Text.
-	- Have a cube replace a older cube if in area
-		- Only replace if the user has been standing there long enough 
+		- Change color hex code based on signal. 
 	- 🗸 Increase the rate of the cubes
+	- Have a button on the cube to delete itself. 
 	
 	
 # Step 6 Plans
@@ -71,6 +71,11 @@
 				- Secure = int
 				- VUlnerable = int
 			- New network...
+	- Create a button that delete wifiobjects on click
+		- Have radius adjustment for user.
+		- Get rid of all wifi objects within radius
+		
+		
 # Step 7 Plans
 	- Create Save button for mapping
 	- Work on saving flat image of mapped area
@@ -121,3 +126,9 @@
 	- Simulate firewall - possible
 	- Shadow IT function - possible
 		- Simulate Shadow IT - possible
+	
+	- Mac Adress Filtering - possible
+	- 
+	- Rogue Access Point Detection - Very possible
+	- Detect Hidden SSID networks - Very possible
+	- 
