@@ -8,6 +8,8 @@ public class Change_Size : MonoBehaviour
     public float min_Height;
     public float max_Height;
 
+    public GameObject[] symbol;
+
 
     private Connection_Spawner mainCameraScript;
 
@@ -21,6 +23,7 @@ public class Change_Size : MonoBehaviour
         GameObject mainCamera = Camera.main.gameObject;
         mainCameraScript = mainCamera.GetComponent<Connection_Spawner>();
         int dBmValue = mainCameraScript.dBm_value;
+        string Secuirty_type_value = mainCameraScript.Secuirty_type_value;
 
         if (dBmValue >= -60) //-67 = Amazing in dbm
         {
@@ -44,8 +47,13 @@ public class Change_Size : MonoBehaviour
             random_Height = 0f;
         }
 
-        Adjust_Scale(random_Height);
         // Debug.Log("dbmValue height: " + dBmValue + "| random height: " + random_Height);
+        Adjust_Scale(random_Height);
+        Change_Symbol(Secuirty_type_value);
+
+
+
+
     }
 
     public void Adjust_Scale(float height_Value)
@@ -54,11 +62,60 @@ public class Change_Size : MonoBehaviour
         transform.localPosition = new Vector3(transform.localPosition.x, height_Value, transform.localPosition.z);
     }
 
+    public void Change_Symbol(string security_Type)
+    {
+        if (security_Type == "WPA/WPA2" || security_Type == "WPA3")
+        {
+            //change symbol to Green lock
+            symbol[0].SetActive(true);
+        }
+        else if (security_Type == "WEP")
+        {
+            //change symbol to Caution
+            symbol[1].SetActive(true);
+        }
+        else if (security_Type == "OPEN" || security_Type == "No Security/Signal")
+        {
+            //change symbol to Unlock
+            symbol[2].SetActive(true);
+        }
+        else
+        {
+            //change symbol to Unknown
+            symbol[3].SetActive(true);
+        }
+    }
+
 
 
 
     //https://www.crowdstrike.com/cybersecurity-101/cloud-security/shadow-it/
     //https://cai.io/resources/thought-leadership/shadow-IT-meaning-risks
     //shadow it - find other non secure routers that are dangerious to the secure ones that IT isn't aware.
+
+    // public void Change_Symbol(int radnom) //windows testing
+    // {
+    //     if (radnom == 0)
+    //     {
+    //         //change symbol to Green lock
+    //         symbol[0].SetActive(true);
+    //     }
+    //     else if (radnom == 1)
+    //     {
+    //         //change symbol to Caution
+    //         symbol[1].SetActive(true);
+    //     }
+    //     else if (radnom == 2)
+    //     {
+    //         //change symbol to Unlock
+    //         symbol[2].SetActive(true);
+    //     }
+    //     else
+    //     {
+    //         //change symbol to Unknown
+    //         symbol[3].SetActive(true);
+    //     }
+    // }
+
 
 }

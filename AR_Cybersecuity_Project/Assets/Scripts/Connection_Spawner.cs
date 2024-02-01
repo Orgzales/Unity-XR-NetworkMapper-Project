@@ -15,6 +15,7 @@ public class Connection_Spawner : MonoBehaviour
     public string Prefab_Text_Name = ""; //name of objects display
 
     public int dBm_value;//based on dBm Value
+    public string Secuirty_type_value; //based on security type
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class Connection_Spawner : MonoBehaviour
         if (CanInstantiateHere()) //Checking if Object of prefab is near.
         {
             dBm_value = Wifi_script.wifiSignalStrength; //based on dBm Value
+            Secuirty_type_value = Wifi_script.wifiAuthentication; //based on security type
             string text_Display = ""; //Change later with wifi info
             int prefab_array = 0; //0 = good | 1 = ok | 2 = Bad
 

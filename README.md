@@ -48,8 +48,8 @@
 		- 🗸 Change height of pillar based on dBm signal
 		- 🗸 Still have a cube on top that displays data
 		- 🗸 Keep other old properties
-		- Depending on secuirty, create a symbol on top
-		- Make small background for Debug Text.
+		- 🗸 Depending on secuirty, create a symbol on top
+		- 🗸 Make small background for Debug Text.
 		- Change color hex code based on signal. 
 	- 🗸 Increase the rate of the cubes
 	- Have a button on the cube to delete itself. 
@@ -62,6 +62,7 @@
 		- Add Have the following display
 			- Both netwokr security and potential network secuirty
 			- Transmit Rate + Recieve Rate
+			- add this to prefab
 	- Create a data base of current properties of each scan for wifi network
 		- Make a new hud that will say the following
 			- (Network SSID + Network BSSID)
@@ -120,15 +121,16 @@
 	- APK 8: New Prefabs + Math
 	
 #Cybersecuirty Ideas
-	- Simulate Network Traffic - possible
+
 	- Packet Sniffing - Less possible
-	- Historic Log Organization - possible
+	- Historic Log Organization - Less possible
+
+	- Simulate Network Traffic - possible
 	- Simulate firewall - possible
-	- Shadow IT function - possible
-		- Simulate Shadow IT - possible
-	
+	- Simulate Shadow IT - possible
 	- Mac Adress Filtering - possible
-	- 
-	- Rogue Access Point Detection - Very possible
-	- Detect Hidden SSID networks - Very possible
+	
+	- Shadow IT function - possible
+		- Rogue Access Point Detection - Very possible
+		- Detect Hidden SSID networks - Very possible
 	- 
