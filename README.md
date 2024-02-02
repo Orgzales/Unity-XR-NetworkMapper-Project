@@ -52,7 +52,8 @@
 		- 🗸 Make small background for Debug Text.
 		- 🗸 Change color hex code based on signal. 
 	- 🗸 Increase the rate of the cubes
-	- Have a button on the cube to delete itself. 
+	- 🗸 Have a button on the Prefab to delete itself. 
+		- 🗸 Small button on bottom of Prefab to set for false for now
 	
 	
 # Step 6 Plans
