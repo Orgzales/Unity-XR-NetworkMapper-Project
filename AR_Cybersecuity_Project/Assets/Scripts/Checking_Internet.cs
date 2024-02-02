@@ -8,6 +8,8 @@ using UnityEngine.UI;
 using UnityEngine.Android;
 using UnityEngine.XR;
 using System;
+using TMPro;
+
 
 public class Checking_Internet : MonoBehaviour
 {
