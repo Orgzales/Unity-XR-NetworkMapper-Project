@@ -4,7 +4,7 @@
 	- netsh wlan show profiles
 	- netsh wlan show interface
 
-# Step 0 Plans 
+# Step 0 Plans (Augest 2023)
 	- 🗸 Activate Passthrough mdoe / AR - Finished
 	- 🗸 Test Unity Webservices - Testing Process
 	- 🗸 Get Hand Tracking to operate - Finished
@@ -27,7 +27,6 @@
 	- 🗸 Get netgear router to purposly to show unsecure authencation - DONE
 
 # Step 3 Plans
-	- If a new access point is created (BSSID), make a pillar to mark it.
 	- 🗸 Have it display the wifi scuirty to connected router.
 	- 🗸 If authencation type is bad, give a alert to the cube being made.
 		- 🗸 0 = Open or None = !!!!!DANGER!!!!! | Red
@@ -42,7 +41,7 @@
 	- 🗸 Accident: Have program test if wifi/router has access to Better secuirty | (NEEDS MORE TESTING)
 		- 🗸 EX: Router is set to no security, but it still is able to check if it can have wpa2
 
-# Step 5 Plans (2024)
+# Step 5 Plans (January 2024)
 	- 🗸 Make New prefabs of Cubes to be Wifi Pillars
 		- 🗸 Have a radius transparcy
 		- 🗸 Change height of pillar based on dBm signal
@@ -66,6 +65,7 @@
 			- add this to prefab
 	- Create a data base of current properties of each scan for wifi network
 		- Make a new hud that will say the following
+			- New button on top tab to switch screens
 			- (Network SSID + Network BSSID)
 				- Good signal = int 
 				- Ok Signal = int
@@ -77,8 +77,33 @@
 		- Have radius adjustment for user.
 		- Get rid of all wifi objects within radius
 		
-		
 # Step 7 Plans
+		- Mimic Finding Shadow ITs Networks that are hidden
+			- Detect Hidden SSIDs when scanning
+				- Create new screen in AR
+			- Have SSIDs become white or black listed
+			- Detect rouge access points 
+				- Add these rouge access points to AR screen
+				- when scans, checks if access points SSID matches any known rogue AP SSIDs.
+
+# Step 8 Plans
+		- Create an Anchor point that the prefabs spawn locations are based
+			- Have a button to drop an anchor
+			- Allow the user to grab ancor and adjust it 
+				- This is incase the VR adjusts or resets user's position. 
+			- Have these anchors be storeable
+				- Have text editing for these prefabs
+		- Add the following functions to Anchor
+			- Delete Anchor button to delete all prefabs
+			- Ability to move the anchor only on the X & Y axis
+				- Make sure Rotation is locked to avoid slanted objects
+			- A button to press to edit text
+			- Store the anchor within user's data
+		- Can anchors be inside of anchors? 
+			
+		
+		
+# Step ? Plans
 	- Create Save button for mapping
 	- Work on saving flat image of mapped area
 		-First need to make the camera that can see everything
@@ -94,7 +119,7 @@
 			- export as Jpeg conversion
 			- Saves multiple names (possibly change name with text area?)
 		
-# Step 8 Plans
+# Step ? Plans
 	- Save objects layout when logging off or switching
 		- first, find a way to save scene
 			- Save position/direction that previous was looking
@@ -110,6 +135,7 @@
 		- The custom cube can hold info such as room number and etc. 
 	- Have a delete button on the wifi pillars
 	- Change splash screen 
+	- If a new access point is created (BSSID), make a pillar to mark it.
 
 # APK Versions
 	- APK 1: Testing Mixed Reality 
@@ -121,7 +147,7 @@
 	- APK 7: debugging Auth/Secuirty Detection
 	- APK 8: New Prefabs + Math
 	
-#Cybersecuirty Ideas
+# Cybersecuirty Ideas
 
 	- Packet Sniffing - Less possible
 	- Historic Log Organization - Less possible
@@ -134,4 +160,27 @@
 	- Shadow IT function - possible
 		- Rogue Access Point Detection - Very possible
 		- Detect Hidden SSID networks - Very possible
-	- 
+		
+		
+# Grid Ideas
+	- First Screen:
++-------------------+---------------------+
+| Available Networks|         56          |
++-------------------+---------------------+
+| SSID              |     network name    |
++-------------------+---------------------+
+| BSSID             |     Access point    |
++-------------------+---------------------+
+| DBM Signal        |         -60         |
++-------------------+---------------------+
+| Network Security  |         WPA         |
++-------------------+---------------------+
+| Potential Security|        WPA2         |
++-------------------+---------------------+
+| Transmit Rate     |        103m         |
++-------------------+---------------------+
+| Receive Rate      |        104m         |
++-------------------+---------------------+
+
+
+	
