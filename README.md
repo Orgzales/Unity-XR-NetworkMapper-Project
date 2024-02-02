@@ -43,14 +43,14 @@
 		- 🗸 EX: Router is set to no security, but it still is able to check if it can have wpa2
 
 # Step 5 Plans (2024)
-	- Make New prefabs of Cubes to be Wifi Pillars
+	- 🗸 Make New prefabs of Cubes to be Wifi Pillars
 		- 🗸 Have a radius transparcy
 		- 🗸 Change height of pillar based on dBm signal
 		- 🗸 Still have a cube on top that displays data
 		- 🗸 Keep other old properties
 		- 🗸 Depending on secuirty, create a symbol on top
 		- 🗸 Make small background for Debug Text.
-		- Change color hex code based on signal. 
+		- 🗸 Change color hex code based on signal. 
 	- 🗸 Increase the rate of the cubes
 	- Have a button on the cube to delete itself. 
 	

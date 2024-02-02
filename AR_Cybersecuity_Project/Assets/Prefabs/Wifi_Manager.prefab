@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &306276961048385616
+--- !u!1 &3959488481673811054
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 306276961048385618}
-  - component: {fileID: 306276961048385619}
-  - component: {fileID: 306276960832236414}
+  - component: {fileID: 3959488481673811052}
+  - component: {fileID: 3959488481673811053}
   m_Layer: 0
   m_Name: Wifi_Manager
   m_TagString: Untagged
@@ -18,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &306276961048385618
+--- !u!4 &3959488481673811052
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306276961048385616}
+  m_GameObject: {fileID: 3959488481673811054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &306276961048385619
+--- !u!114 &3959488481673811053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306276961048385616}
+  m_GameObject: {fileID: 3959488481673811054}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1dffedf6ebede244b93d71dea7039cf, type: 3}
@@ -46,25 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Wifi_is_Available: {fileID: 0}
   SSID_text: {fileID: 0}
+  wifiSSID: No Networks in Area
   BSSID_text: {fileID: 0}
+  wifiBSSID: No Networks in Area
   Singal_STR_text: {fileID: 0}
---- !u!114 &306276960832236414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306276961048385616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ec08697a70de724ba903a949a4d5ace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentObject: {fileID: 0}
-  prefabToInstantiate:
-  - {fileID: 5962689369081226201, guid: ae5b3855adbcc5048854b0c194ca8e40, type: 3}
-  - {fileID: 8220461581988641624, guid: 2b59a85d52ea1f5449e1d6ac34508340, type: 3}
-  - {fileID: 7780838719092460206, guid: e4f44e58f2f7822469fb72b008b1c341, type: 3}
-  spawnHeight: 0.3
-  checkRadius: 0.3
-  Prefab_Text_Name: DebugText (2)
+  wifiSignalStrength: 0
+  wifiAuthentication_text: {fileID: 0}
+  wifiAuthentication: No Networks in Area

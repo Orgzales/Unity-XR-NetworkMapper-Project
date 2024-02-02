@@ -9,7 +9,7 @@ public class Connection_Spawner : MonoBehaviour
     public Checking_Internet Wifi_script; //Drag script internetchecking into here to acess strings
 
     public GameObject parentObject; //Parent
-    public GameObject[] prefabToInstantiate; //Child
+    public GameObject prefabToInstantiate; //Child
     public float spawnHeight = 1.75f; //Distance from Camera
     public float checkRadius = 0.45f; //Distance between Points of access
     public string Prefab_Text_Name = ""; //name of objects display
@@ -39,22 +39,23 @@ public class Connection_Spawner : MonoBehaviour
             string text_Display = ""; //Change later with wifi info
             int prefab_array = 0; //0 = good | 1 = ok | 2 = Bad
 
-            if (dBm_value >= -67) //-67 = Amazing in dbm
-            {
-                prefab_array = 0;
-            }
-            else if (dBm_value >= -79 && dBm_value < -70) // -70 = okay
-            {
-                prefab_array = 1;
-            }
-            else if (dBm_value < -80) // -80 or lower is bad
-            {
-                prefab_array = 2;
-            }
-            if (dBm_value == 0) //windows testing delete for quest 2
-            {
-                prefab_array = 2;
-            }
+            //Don't need anymore
+            // if (dBm_value >= -67) //-67 = Amazing in dbm 
+            // {
+            //     prefab_array = 0;
+            // }
+            // else if (dBm_value >= -79 && dBm_value < -70) // -70 = okay
+            // {
+            //     prefab_array = 1;
+            // }
+            // else if (dBm_value < -80) // -80 or lower is bad
+            // {
+            //     prefab_array = 2;
+            // }
+            // if (dBm_value == 0) //windows testing delete for quest 2
+            // {
+            //     prefab_array = 2;
+            // }
 
             // Check if the parent object and prefab are set
             if (parentObject != null && prefabToInstantiate != null)
@@ -66,7 +67,7 @@ public class Connection_Spawner : MonoBehaviour
 
 
                 // Instantiate the prefab and set the parent to the parentObject
-                GameObject newObject = Instantiate(prefabToInstantiate[prefab_array], spawnPosition, Quaternion.identity);
+                GameObject newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
                 newObject.transform.SetParent(parentObject.transform);
 
                 text_Display = "SSID: " + Wifi_script.wifiSSID + "\nBSSID: " + Wifi_script.wifiBSSID +
