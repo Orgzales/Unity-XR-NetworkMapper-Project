@@ -56,23 +56,25 @@
 	
 	
 # Step 6 Plans
-	- Has data display in a AR-hud so position does not matter and better layout
-		- add enough transparency 
-		- Remake a grid layout for better visualization
-		- Add Have the following display
-			- Both netwokr security and potential network secuirty
-			- Transmit Rate + Recieve Rate
-			- add this to prefab
+	- 🗸 Has data display in a AR-hud so position does not matter and better layout
+		- 🗸 add enough transparency 
+		- 🗸 Remake a grid layout for better visualization
+		- 🗸 Add Have the following display
+			- 🗸 Both netwokr security and potential network secuirty
+			- 🗸 Transmit Rate + Recieve Rate
+			- 🗸 add this to prefab
 	- Create a data base of current properties of each scan for wifi network
-		- Make a new hud that will say the following
-			- New button on top tab to switch screens
-			- (Network SSID + Network BSSID)
-				- Good signal = int 
-				- Ok Signal = int
-				- Bad Signal = int
-				- Secure = int
-				- VUlnerable = int
-			- New network...
+		- 🗸 Make a new hud that will say the following
+			- 🗸 New button on top tab to switch screens
+			- 🗸 (Network SSID + Network BSSID)
+				- 🗸 Good signal = int 
+				- 🗸 Ok Signal = int
+				- 🗸 Bad Signal = int
+				- 🗸 Secure = int
+				- 🗸 VUlnerable = int
+			- 🗸 New network...
+		- Create Script that keeps the DataBase updating
+			- Coming Soon...
 	- Create a button that delete wifiobjects on click
 		- Have radius adjustment for user.
 		- Get rid of all wifi objects within radius
