@@ -74,19 +74,27 @@
 				- 🗸 VUlnerable = int
 			- 🗸 New network...
 		- Create Script that keeps the DataBase updating
-			- Coming Soon...
+			- 🗸 Create Dictionary that keeps each data of network
+			- Create new visual each new network joining
+			- Make sure No_Connection is included to the previous network
 	- Create a button that delete wifiobjects on click
 		- Have radius adjustment for user.
 		- Get rid of all wifi objects within radius
 		
 # Step 7 Plans
-		- Mimic Finding Shadow ITs Networks that are hidden
-			- Detect Hidden SSIDs when scanning
-				- Create new screen in AR
-			- Have SSIDs become white or black listed
-			- Detect rouge access points 
-				- Add these rouge access points to AR screen
-				- when scans, checks if access points SSID matches any known rogue AP SSIDs.
+	
+	- Create Prefabs name based on SSID
+	- IF change to new SSID, set all objects to false
+		- If changed back reverse the true and false condition
+	- This will be to mimic saving for future functions. 
+		- If no connection, defualt to previous SSID
+	- Mimic Finding Shadow ITs Networks that are hidden
+		- Detect Hidden SSIDs when scanning
+			- Create new screen in AR
+		- Have SSIDs become white or black listed
+		- Detect rouge access points 
+			- Add these rouge access points to AR screen
+			- when scans, checks if access points SSID matches any known rogue AP SSIDs.
 
 # Step 8 Plans
 		- Create an Anchor point that the prefabs spawn locations are based

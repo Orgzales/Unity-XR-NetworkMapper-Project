@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8623430963788157062}
   - component: {fileID: 4475938902124096070}
   m_Layer: 5
-  m_Name: VULNERABLE_TEXT (1)
+  m_Name: VULNERABLE_TEXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443933559772416356}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6718013430692128038}
@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 190.3, y: -24.5}
+  m_AnchoredPosition: {x: -33.8, y: -0.79999924}
   m_SizeDelta: {x: -11.62, y: -18.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8623430963788157062
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'VULNERABLE:# '
+  m_Text: VULNERABLE:###
 --- !u!1 &1692229405100256489
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 175.9, y: 35.8}
+  m_AnchoredPosition: {x: 107.8, y: -9.3}
   m_SizeDelta: {x: -11.62, y: -18.699997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4680438322596629043
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'GOOD:# '
+  m_Text: GOOD:###
 --- !u!1 &1974941119466802854
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +184,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974941119466802854}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6718013430692128038}
@@ -192,7 +192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 237.2, y: 34.3}
+  m_AnchoredPosition: {x: 189.9, y: -9.7}
   m_SizeDelta: {x: -11.62, y: -18.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1974941119466802875
@@ -236,7 +236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'OK:# '
+  m_Text: OK:###
 --- !u!1 &1974941119567390131
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 31.59991, y: 13.700001}
+  m_AnchoredPosition: {x: 31.59991, y: 25.3}
   m_SizeDelta: {x: 250, y: -32.099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1974941119567390132
@@ -304,7 +304,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 74a5091d8707f334b9a5c31ef71a64ba, type: 3}
-    m_FontSize: 36
+    m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -417,7 +417,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2300579460116273971}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6718013430692128038}
@@ -425,7 +425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 280.4, y: 33.4}
+  m_AnchoredPosition: {x: 251.8, y: -8.7}
   m_SizeDelta: {x: -11.62, y: -18.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4229771557372888463
@@ -469,7 +469,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'BAD:# '
+  m_Text: BAD:###
 --- !u!1 &2508255363450680050
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 1437636998592022350}
   - component: {fileID: 7269688905883364921}
   m_Layer: 5
-  m_Name: SECURE_TEXT (2)
+  m_Name: SECURE_TEXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -547,7 +547,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8311227457804966369}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6718013430692128038}
@@ -555,7 +555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 199.8, y: 4.8}
+  m_AnchoredPosition: {x: -32.9, y: -27.2}
   m_SizeDelta: {x: -11.62, y: -18.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1437636998592022350
@@ -599,4 +599,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'PROTECTED:# '
+  m_Text: PROTECTED:###
