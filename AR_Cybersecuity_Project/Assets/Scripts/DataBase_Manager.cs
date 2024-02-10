@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class DataBase_Manager : MonoBehaviour
 {
+
+    public Checking_Internet Wifi_script;
+
     public string debugSSID;
     public GameObject textPrefab;
     public GameObject parentObject;
@@ -25,32 +28,50 @@ public class DataBase_Manager : MonoBehaviour
     void Start()
     {
 
-
+        InvokeRepeating("UpdateData", 3, 3);
     }
 
-    void Update()
+    private void UpdateData()
     {
 
-        if (Input.GetKeyDown(KeyCode.P))
+
+        // string Test_Key = debugSSID.ToString(); // Change Later windows testing
+        string Test_Key = Wifi_script.wifiSSID; //Change Later with bssid
+
+        // Debug.Log("Test_Key: " + Test_Key.ToString());
+        if (!networkCounters.ContainsKey(Test_Key))
         {
-            string Test_Key = debugSSID.ToString(); // Change Later
 
-            if (!networkCounters.ContainsKey(Test_Key))
-            {
+            networkCounters[Test_Key] = new NetworkCounters();
 
-                networkCounters[Test_Key] = new NetworkCounters();
-
-                // GameObject newTextObject = Instantiate(textPrefab, parentObject.transform);
+            // GameObject newTextObject = Instantiate(textPrefab, parentObject.transform);
 
 
-            }
-
-            IncrementCounter(debugSSID.ToString(), CounterType.Good);
-            UpdateCounterText(Test_Key, textPrefab);
         }
+        int dBm_value = Wifi_script.wifiSignalStrength; //based on dBm Value
+        string Secuirty_type_value = Wifi_script.wifiAuthentication; //based on security type
+
+
+        // string Secuirty_type_value = ""; //windows testing
+        // int dBm_value = Random.Range(-60, -90);
+        // int random = Random.Range(0, 2);
+        // if (random == 0)
+        // {
+        //     Secuirty_type_value = "WPA2";
+        // }
+        // else
+        // {
+        //     Secuirty_type_value = "WEP";
+        // }
+
+        IncrementCounter(debugSSID.ToString(), dBm_value, Secuirty_type_value);
+        UpdateCounterText(Test_Key, textPrefab);
+
 
 
     }
+
+
 
     public enum CounterType
     {
@@ -61,10 +82,51 @@ public class DataBase_Manager : MonoBehaviour
         Secure
     }
 
-    public void IncrementCounter(string networkName, CounterType counterType)
+    public void IncrementCounter(string networkName, int networkStrength, string networkSecuirty)
     {
 
-        switch (counterType)
+        CounterType SignalCounter;
+
+        if (networkStrength >= -67)
+        {
+            SignalCounter = CounterType.Good;
+        }
+        else if (networkStrength >= -79 && networkStrength < -67)
+        {
+            SignalCounter = CounterType.Ok;
+        }
+        else if (networkStrength < -79)
+        {
+            SignalCounter = CounterType.Bad;
+        }
+        else
+        {
+            SignalCounter = CounterType.Bad;
+        }
+
+        CounterType SecurityCounter;
+        if (networkSecuirty == "WPA3")
+        {
+            SecurityCounter = CounterType.Secure;
+        }
+        else if (networkSecuirty == "WPA2")
+        {
+            SecurityCounter = CounterType.Secure;
+        }
+        else if (networkSecuirty == "WEP")
+        {
+            SecurityCounter = CounterType.Vulnerability;
+        }
+        else if (networkSecuirty == "Open Authentication")
+        {
+            SecurityCounter = CounterType.Vulnerability;
+        }
+        else
+        {
+            SecurityCounter = CounterType.Vulnerability;
+        }
+
+        switch (SignalCounter)
         {
             case CounterType.Good:
                 // Debug.Log("Good Counter incremented" + networkCounters[networkName].good_Counter.ToString());
@@ -77,6 +139,13 @@ public class DataBase_Manager : MonoBehaviour
             case CounterType.Bad:
                 networkCounters[networkName].bad_Counter++;
                 break;
+            default:
+                Debug.LogError("Unknown counter type!");
+                break;
+        }
+
+        switch (SecurityCounter)
+        {
             case CounterType.Vulnerability:
                 networkCounters[networkName].vulnerable_Counter++;
                 break;
@@ -87,6 +156,7 @@ public class DataBase_Manager : MonoBehaviour
                 Debug.LogError("Unknown counter type!");
                 break;
         }
+
     }
 
 
@@ -105,20 +175,20 @@ public class DataBase_Manager : MonoBehaviour
                         contents.text = network_Key;
                         break;
                     case "GOOD_TEXT":
-                        Debug.Log("Good Counter incremented" + counters.good_Counter.ToString());
-                        contents.text = "Good:" + counters.good_Counter.ToString();
+                        // Debug.Log("Good Counter incremented" + counters.good_Counter.ToString());
+                        contents.text = "GOOD:" + counters.good_Counter.ToString();
                         break;
                     case "OK_TEXT":
-                        contents.text = "Ok:" + counters.ok_Counter.ToString();
+                        contents.text = "OK:" + counters.ok_Counter.ToString();
                         break;
                     case "BAD_TEXT":
-                        contents.text = "Bad:" + counters.bad_Counter.ToString();
+                        contents.text = "BAD:" + counters.bad_Counter.ToString();
                         break;
                     case "VULNERABLE_TEXT":
-                        contents.text = "Vulnerability:" + counters.vulnerable_Counter.ToString();
+                        contents.text = "VULNERABLE:" + counters.vulnerable_Counter.ToString();
                         break;
                     case "SECURE_TEXT":
-                        contents.text = "Secure:" + counters.secure_Counter.ToString();
+                        contents.text = "SECURED:" + counters.secure_Counter.ToString();
                         break;
                     default:
                         break;
