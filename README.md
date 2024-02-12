@@ -91,25 +91,28 @@
 	- Mimic Finding Shadow ITs Networks that are hidden
 		- Detect Hidden SSIDs when scanning
 			- Create new screen in AR
+			- Make script for popup for new SSID
+				- Ask if it's white or black listed
 		- Have SSIDs become white or black listed
 		- Detect rouge access points 
 			- Add these rouge access points to AR screen
 			- when scans, checks if access points SSID matches any known rogue AP SSIDs.
 
 # Step 8 Plans
-		- Create an Anchor point that the prefabs spawn locations are based
-			- Have a button to drop an anchor
-			- Allow the user to grab ancor and adjust it 
-				- This is incase the VR adjusts or resets user's position. 
-			- Have these anchors be storeable
-				- Have text editing for these prefabs
-		- Add the following functions to Anchor
-			- Delete Anchor button to delete all prefabs
-			- Ability to move the anchor only on the X & Y axis
-				- Make sure Rotation is locked to avoid slanted objects
-			- A button to press to edit text
+	- Create an Anchor point that the prefabs spawn locations are based
+		- LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
+		- Have a button to drop an anchor
+		- Allow the user to grab ancor and adjust it 
+			- This is incase the VR adjusts or resets user's position. 
+		- Have these anchors be storeable
+			- Have text editing for these prefabs
+	- Add the following functions to Anchor
+		- Delete Anchor button to delete all prefabs
+		- Ability to move the anchor only on the X & Y axis
+			- Make sure Rotation is locked to avoid slanted objects
+		- A button to press to edit text
 			- Store the anchor within user's data
-		- Can anchors be inside of anchors? 
+	- Can anchors be inside of anchors? 
 			
 		
 		

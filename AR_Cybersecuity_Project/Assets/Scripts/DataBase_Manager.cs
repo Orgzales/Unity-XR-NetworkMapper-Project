@@ -64,7 +64,7 @@ public class DataBase_Manager : MonoBehaviour
         //     Secuirty_type_value = "WEP";
         // }
 
-        IncrementCounter(debugSSID.ToString(), dBm_value, Secuirty_type_value);
+        IncrementCounter(Test_Key.ToString(), dBm_value, Secuirty_type_value);
         UpdateCounterText(Test_Key, textPrefab);
 
 
@@ -109,7 +109,7 @@ public class DataBase_Manager : MonoBehaviour
         {
             SecurityCounter = CounterType.Secure;
         }
-        else if (networkSecuirty == "WPA2")
+        else if (networkSecuirty == "WPA/WPA2")
         {
             SecurityCounter = CounterType.Secure;
         }
@@ -117,7 +117,7 @@ public class DataBase_Manager : MonoBehaviour
         {
             SecurityCounter = CounterType.Vulnerability;
         }
-        else if (networkSecuirty == "Open Authentication")
+        else if (networkSecuirty == "OPEN")
         {
             SecurityCounter = CounterType.Vulnerability;
         }
