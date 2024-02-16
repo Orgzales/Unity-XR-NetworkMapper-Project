@@ -76,7 +76,7 @@
 		- Create Script that keeps the DataBase updating
 			- 🗸 Create Dictionary that keeps each data of network
 			- Create new visual each new network joining
-			- Make sure No_Connection is included to the previous network
+			- 🗸 Make sure No_Connection is included to the previous network
 	- Create a button that delete wifiobjects on click
 		- Have radius adjustment for user.
 		- Get rid of all wifi objects within radius
