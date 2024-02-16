@@ -2208,7 +2208,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'DATA RECIVE RATE: '
+  m_Text: 'DATA RECEIVE RATE: '
 --- !u!222 &67534317
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14311,9 +14311,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Wifi_script: {fileID: 468004154}
-  debugSSID: 'Myresnet: 5050'
+  debugSSID: resnet
   textPrefab: {fileID: 700568062}
-  parentObject: {fileID: 1639145717}
+  screenParentObejct: {fileID: 1639145717}
+  cloneParentObject: {fileID: 1218333067}
 --- !u!4 &899003840
 Transform:
   m_ObjectHideFlags: 0
@@ -18646,7 +18647,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'CURRENT SECUIRTY: '
+  m_Text: 'CURRENT SECURITY: '
 --- !u!222 &1258202404
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29258,7 +29259,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'POSSIBLE SECUIRTY: '
+  m_Text: 'POSSIBLE SECURITY: '
 --- !u!222 &2083619635
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -33124,6 +33125,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5237658443567417316, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
+      propertyPath: debugssid
+      value: resnet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237658443567417316, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
       propertyPath: Wifi_script
       value: 
       objectReference: {fileID: 468004154}
@@ -33469,6 +33474,10 @@ PrefabInstance:
     - target: {fileID: 7779420039263858270, guid: 937ce507dd7ee334ba569554e24adbdd, type: 3}
       propertyPath: m_Name
       value: Wifi_Status
+      objectReference: {fileID: 0}
+    - target: {fileID: 7779420039263858270, guid: 937ce507dd7ee334ba569554e24adbdd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7779420039263858271, guid: 937ce507dd7ee334ba569554e24adbdd, type: 3}
       propertyPath: m_RootOrder

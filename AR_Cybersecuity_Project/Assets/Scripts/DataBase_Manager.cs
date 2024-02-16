@@ -10,12 +10,13 @@ public class DataBase_Manager : MonoBehaviour
 
     public string debugSSID;
     public GameObject textPrefab;
-    public GameObject parentObject;
+    public GameObject screenParentObejct; // for making new text objects 
+
+    public GameObject cloneParentObject; //Where all the wifi clones are made
 
 
     private Dictionary<string, NetworkCounters> networkCounters = new Dictionary<string, NetworkCounters>();
-
-
+    private string previousNetworkName;
     private class NetworkCounters
     {
         public int good_Counter = 0;
@@ -35,19 +36,31 @@ public class DataBase_Manager : MonoBehaviour
     {
 
 
-        // string Test_Key = debugSSID.ToString(); // Change Later windows testing
-        string Test_Key = Wifi_script.wifiSSID; //Change Later with bssid
+        string Test_Key = debugSSID.ToString(); // Change Later windows testing
+        // string Test_Key = Wifi_script.wifiSSID; //Change Later with bssid
 
         // Debug.Log("Test_Key: " + Test_Key.ToString());
         if (!networkCounters.ContainsKey(Test_Key))
         {
+            if (Test_Key == "No Networks in Area")
+            {
+                Test_Key = previousNetworkName;
+            }
+            else
+            {
+                networkCounters[Test_Key] = new NetworkCounters();
+                previousNetworkName = Test_Key;
 
-            networkCounters[Test_Key] = new NetworkCounters();
+            }
 
-            // GameObject newTextObject = Instantiate(textPrefab, parentObject.transform);
-
-
+            // GameObject newTextObject = Instantiate(textPrefab, screenParentObejct.transform);
         }
+        else
+        {
+            previousNetworkName = Test_Key;
+        }
+
+
         int dBm_value = Wifi_script.wifiSignalStrength; //based on dBm Value
         string Secuirty_type_value = Wifi_script.wifiAuthentication; //based on security type
 
@@ -66,6 +79,7 @@ public class DataBase_Manager : MonoBehaviour
 
         IncrementCounter(Test_Key.ToString(), dBm_value, Secuirty_type_value);
         UpdateCounterText(Test_Key, textPrefab);
+        ChangeMapping(Test_Key);
 
 
 
@@ -79,7 +93,8 @@ public class DataBase_Manager : MonoBehaviour
         Ok,
         Bad,
         Vulnerability,
-        Secure
+        Secure,
+        Nothing //for no connection change later
     }
 
     public void IncrementCounter(string networkName, int networkStrength, string networkSecuirty)
@@ -160,7 +175,28 @@ public class DataBase_Manager : MonoBehaviour
     }
 
 
-    void UpdateCounterText(string network_Key, GameObject textObject)
+    public void ChangeMapping(string networkSSID)
+    {
+
+        foreach (Transform wifiObject in cloneParentObject.transform)
+        {
+            if (wifiObject.name == networkSSID)
+            {
+                wifiObject.gameObject.SetActive(true);
+            }
+            else if (wifiObject.name == "No Networks in Area:" + previousNetworkName.ToString())
+            {
+                wifiObject.gameObject.SetActive(true);
+            }
+            else
+            {
+                wifiObject.gameObject.SetActive(false);
+            }
+        }
+
+    }
+
+    public void UpdateCounterText(string network_Key, GameObject textObject)
     {
         if (networkCounters.ContainsKey(network_Key))
         {

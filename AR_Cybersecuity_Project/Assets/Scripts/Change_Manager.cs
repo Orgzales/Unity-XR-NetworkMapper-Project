@@ -49,11 +49,10 @@ public class Change_Manager : MonoBehaviour
         }
 
         // Debug.Log("dbmValue height: " + dBmValue + "| random height: " + Pillar_Height);
-        // Pillar_Height = Random.Range(min_Height, max_Height); //for windows testing
+        Pillar_Height = Random.Range(min_Height, max_Height); //for windows testing
         Adjust_Scale(Pillar_Height);
         Change_Wifi_Symbol(Secuirty_type_value);
         Change_Color(Pillar_Height);
-
 
 
     }

@@ -80,14 +80,15 @@
 	- Create a button that delete wifiobjects on click
 		- Have radius adjustment for user.
 		- Get rid of all wifi objects within radius
+	- 🗸 SPEEL CHECK
 		
 # Step 7 Plans
 	
-	- Create Prefabs name based on SSID
-	- IF change to new SSID, set all objects to false
-		- If changed back reverse the true and false condition
-	- This will be to mimic saving for future functions. 
-		- If no connection, defualt to previous SSID
+	- 🗸 Create Prefabs name based on SSID
+	- 🗸 IF change to new SSID, set all objects to false
+		- 🗸 If changed back reverse the true and false condition
+	- 🗸 This will be to mimic saving for future functions. 
+		- 🗸 If no connection, defualt to previous SSID
 	- Mimic Finding Shadow ITs Networks that are hidden
 		- Detect Hidden SSIDs when scanning
 			- Create new screen in AR

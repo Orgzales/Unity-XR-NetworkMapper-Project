@@ -18,6 +18,10 @@ public class Connection_Spawner : MonoBehaviour
     public string Secuirty_type_value; //based on security type
 
     // Start is called before the first frame update
+
+    public string debugssid;
+    private string previousNetworkName;
+
     void Start()
     {
         InvokeRepeating("InstantiateChildObject", 3, 3);
@@ -69,6 +73,16 @@ public class Connection_Spawner : MonoBehaviour
                 // Instantiate the prefab and set the parent to the parentObject
                 GameObject newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
                 newObject.transform.SetParent(parentObject.transform);
+                if (debugssid == "No Networks in Area")
+                {
+                    newObject.name = "No Networks in Area:" + previousNetworkName;
+                }
+                else
+                {
+                    newObject.name = debugssid.ToString();
+                    previousNetworkName = debugssid.ToString();
+                }
+
 
                 text_Display = "SSID: " + Wifi_script.wifiSSID + "\nBSSID: " + Wifi_script.wifiBSSID +
                 "\ndBm: " + dBm_value.ToString() + "\nAUTH: " + Wifi_script.wifiAuthentication;
