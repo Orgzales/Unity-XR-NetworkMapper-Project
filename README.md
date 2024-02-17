@@ -73,17 +73,25 @@
 				- 🗸 Secure = int
 				- 🗸 VUlnerable = int
 			- 🗸 New network...
-		- Create Script that keeps the DataBase updating
+		- 🗸 Create Script that keeps the DataBase updating
 			- 🗸 Create Dictionary that keeps each data of network
-			- Create new visual each new network joining
 			- 🗸 Make sure No_Connection is included to the previous network
+	- Still need to make new prefab for BSSID
+		- 🗸 Orion - STOP FORGETTING
+		- 🗸 Same SSID but DIFFERENT BSSID = New Pillars
+		- 🗸 Create the new prefab 
+		- text should always be showing
+			- text = previous bssid -> new bssid 
+		- should not be created when first connection
+		- create a custom name for these prefabs.
+		- prefabs should disappear and reappear based same as wifi clones
+			- Have script change to add new name of bssid 
 	- Create a button that delete wifiobjects on click
 		- Have radius adjustment for user.
 		- Get rid of all wifi objects within radius
-	- 🗸 SPEEL CHECK
+	- 🗸 SPELL CHECK
 		
 # Step 7 Plans
-	
 	- 🗸 Create Prefabs name based on SSID
 	- 🗸 IF change to new SSID, set all objects to false
 		- 🗸 If changed back reverse the true and false condition
@@ -91,13 +99,18 @@
 		- 🗸 If no connection, defualt to previous SSID
 	- Mimic Finding Shadow ITs Networks that are hidden
 		- Detect Hidden SSIDs when scanning
-			- Create new screen in AR
+			- Add list to new data screen in AR
 			- Make script for popup for new SSID
 				- Ask if it's white or black listed
 		- Have SSIDs become white or black listed
+	- Create a button that repeats the Shadow IT scan
 		- Detect rouge access points 
-			- Add these rouge access points to AR screen
+			- Add these rogue access points to AR screen
 			- when scans, checks if access points SSID matches any known rogue AP SSIDs.
+			- If there are new ones, pop up the window
+			- create a new prefab for those rouge access points
+				- possibly create a larger radius
+				- prefab should have no interference with scripts of wifi objects.
 
 # Step 8 Plans
 	- Create an Anchor point that the prefabs spawn locations are based
@@ -159,8 +172,8 @@
 	- APK 5: Takes all 3 and makes prefabs base on location
 	- APK 6: Added Auth/Secuirty Detection
 	- APK 7: debugging Auth/Secuirty Detection
-	- APK 8: New Prefabs + New Screen
-	- APK 9: ...
+	- APK 8: New Prefabs/screen + Quality of Life
+	- APK 9: Shadow IT Scans + Access Points 
 	
 # Cybersecuirty Ideas
 
