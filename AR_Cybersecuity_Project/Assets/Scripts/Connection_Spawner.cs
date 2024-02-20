@@ -73,14 +73,15 @@ public class Connection_Spawner : MonoBehaviour
                 // Instantiate the prefab and set the parent to the parentObject
                 GameObject newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
                 newObject.transform.SetParent(parentObject.transform);
-                if (debugssid == "No Networks in Area")
+                // if (Wifi_script.wifiSSID == "No Networks in Area") windows testing
+                if (string.IsNullOrEmpty(Wifi_script.wifiSSID) || Wifi_script.wifiSSID.Equals("<unknown ssid>"))
                 {
                     newObject.name = "No Networks in Area:" + previousNetworkName;
                 }
                 else
                 {
-                    newObject.name = debugssid.ToString();
-                    previousNetworkName = debugssid.ToString();
+                    newObject.name = Wifi_script.wifiSSID.ToString();
+                    previousNetworkName = Wifi_script.wifiSSID.ToString();
                 }
 
 

@@ -61,7 +61,7 @@
 		- 🗸 Remake a grid layout for better visualization
 		- 🗸 Add Have the following display
 			- 🗸 Both netwokr security and potential network secuirty
-			- 🗸 Transmit Rate + Recieve Rate
+			- 🗸 Transmit Rate + receive Rate
 			- 🗸 add this to prefab
 	- Create a data base of current properties of each scan for wifi network
 		- 🗸 Make a new hud that will say the following
@@ -90,8 +90,22 @@
 		- Have radius adjustment for user.
 		- Get rid of all wifi objects within radius
 	- 🗸 SPELL CHECK
+	
+	
+# Step 7 Plans	
+	- Clean Up code & Bug Check
+		- Add Data receive  & Transmit code
+		- Add Best secuirty and Current secuirty 
+		- Add these to Screen and Wifi Prefabs
+		- Remove unnessary code from here on out 
+	- Move Delete object button higher
+	- Create Wifi prefab background transparent 
+		- Possibly add text to both side 
+	- Fix When no connection during database:
+		- Add No Connection counter
+		- Remove increment of VUlnerable counter
 		
-# Step 7 Plans
+# Step 8 Plans
 	- 🗸 Create Prefabs name based on SSID
 	- 🗸 IF change to new SSID, set all objects to false
 		- 🗸 If changed back reverse the true and false condition
@@ -112,7 +126,7 @@
 				- possibly create a larger radius
 				- prefab should have no interference with scripts of wifi objects.
 
-# Step 8 Plans
+# Step 9 Plans
 	- Create an Anchor point that the prefabs spawn locations are based
 		- LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
 		- Have a button to drop an anchor
@@ -173,7 +187,7 @@
 	- APK 6: Added Auth/Secuirty Detection
 	- APK 7: debugging Auth/Secuirty Detection
 	- APK 8: New Prefabs/screen + Quality of Life
-	- APK 9: Shadow IT Scans + Access Points 
+	- APK 9: Sudo DataBase + Shadow IT Scans + Access Points 
 	
 # Cybersecuirty Ideas
 

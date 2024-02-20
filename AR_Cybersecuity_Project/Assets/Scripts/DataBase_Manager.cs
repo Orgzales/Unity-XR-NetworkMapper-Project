@@ -36,13 +36,14 @@ public class DataBase_Manager : MonoBehaviour
     {
 
 
-        string Test_Key = debugSSID.ToString(); // Change Later windows testing
-        // string Test_Key = Wifi_script.wifiSSID; //Change Later with bssid
+        // string Test_Key = debugSSID.ToString(); // Change Later windows testing
+        string Test_Key = Wifi_script.wifiSSID; //Change Later with bssid
 
         // Debug.Log("Test_Key: " + Test_Key.ToString());
         if (!networkCounters.ContainsKey(Test_Key))
         {
-            if (Test_Key == "No Networks in Area")
+            // if (Test_Key == "No Networks in Area") windows testing
+            if (string.IsNullOrEmpty(Test_Key) || Test_Key.Equals("<unknown ssid>"))
             {
                 Test_Key = previousNetworkName;
             }
