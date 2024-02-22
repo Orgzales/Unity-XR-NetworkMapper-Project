@@ -20,7 +20,8 @@ public class Connection_Spawner : MonoBehaviour
     public string Secuirty_type_value; //based on security type
 
 
-    public string debugssid;
+    public string debugssid; //windows testing
+    public string debugbssid; //windows testing
     private string previousNetworkName;
 
     private string currentBSSID;
@@ -57,6 +58,7 @@ public class Connection_Spawner : MonoBehaviour
                 Vector3 spawnPosition = new Vector3(cameraPosition.x, cameraPosition.y - spawnHeight, cameraPosition.z);
 
                 bool BSSID_Condition = (string.IsNullOrEmpty(Wifi_script.wifiSSID) || Wifi_script.wifiSSID.Equals("<unknown ssid>"));
+                // bool BSSID_Condition = true; //windows testing
                 bool create_BSSIDPillar = false;
 
 
@@ -64,16 +66,20 @@ public class Connection_Spawner : MonoBehaviour
                 if (currentBSSID == null) // if bssid has not been set to new network
                 {
                     currentBSSID = Wifi_script.wifiBSSID;
+                    // currentBSSID = debugbssid; //windows testing
                 }
                 else if (currentBSSID != Wifi_script.wifiBSSID && previousNetworkName == Wifi_script.wifiSSID && BSSID_Condition)
                 { //if bssid is different but ssid is the same but not no connection then create pillar
                     previousBSSID = currentBSSID;
                     currentBSSID = Wifi_script.wifiBSSID;
+                    // currentBSSID = debugbssid; //windows testing
                     create_BSSIDPillar = true;
                 }
                 else
                 {
                     currentBSSID = Wifi_script.wifiBSSID;
+                    // currentBSSID = debugbssid; //windows testing
+
                 }
 
 
@@ -111,7 +117,7 @@ public class Connection_Spawner : MonoBehaviour
                 if (create_BSSIDPillar)
                 {
                     string bssid_Display = Wifi_script.wifiSSID + "\nPrevious BSSID: " + previousBSSID +
-                    " --> Current BSSID: " + currentBSSID;
+                    "\nCurrent BSSID: " + currentBSSID;
                     SetBSSIDRecursively(newObject.transform, bssid_Display);
                 }
 
