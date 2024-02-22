@@ -33136,6 +33136,18 @@ PrefabInstance:
       propertyPath: parentObject
       value: 
       objectReference: {fileID: 1218333067}
+    - target: {fileID: 5237658443567417316, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
+      propertyPath: WifiPrefab_Details_Text
+      value: Properties_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237658443567417316, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
+      propertyPath: BSSIDPrefab_Details_Text
+      value: Properties_bssid
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237658443567417316, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
+      propertyPath: bssidprefabToInstantiate
+      value: 
+      objectReference: {fileID: 1387476329741421599, guid: 1a6f61465ff5309468d19ad76d1008e4, type: 3}
     - target: {fileID: 5237658443567417325, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
       propertyPath: m_Name
       value: Main Camera

@@ -80,12 +80,11 @@
 		- 🗸 Orion - STOP FORGETTING
 		- 🗸 Same SSID but DIFFERENT BSSID = New Pillars
 		- 🗸 Create the new prefab 
-		- text should always be showing
-			- text = previous bssid -> new bssid 
-		- should not be created when first connection
-		- create a custom name for these prefabs.
-		- prefabs should disappear and reappear based same as wifi clones
-			- Have script change to add new name of bssid 
+		- 🗸 text should always be showing
+			- 🗸 text = previous bssid -> new bssid 
+		- 🗸 should not be created when first connection
+		- 🗸 prefabs should disappear and reappear based same as wifi clones
+		- Test to make sure no connection doesn't interfere
 	- Create a button that delete wifiobjects on click
 		- Have radius adjustment for user.
 		- Get rid of all wifi objects within radius
@@ -93,6 +92,7 @@
 	
 	
 # Step 7 Plans	
+	- Add Demo Button 
 	- Clean Up code & Bug Check
 		- Add Data receive  & Transmit code
 		- Add Best secuirty and Current secuirty 

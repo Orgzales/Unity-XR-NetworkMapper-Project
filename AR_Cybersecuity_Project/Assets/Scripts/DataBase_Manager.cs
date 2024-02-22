@@ -36,21 +36,21 @@ public class DataBase_Manager : MonoBehaviour
     {
 
 
-        // string Test_Key = debugSSID.ToString(); // Change Later windows testing
-        string Test_Key = Wifi_script.wifiSSID; //Change Later with bssid
+        // string SSID_Key = debugSSID.ToString(); // Change Later windows testing
+        string SSID_Key = Wifi_script.wifiSSID; // add another for bssid
 
-        // Debug.Log("Test_Key: " + Test_Key.ToString());
-        if (!networkCounters.ContainsKey(Test_Key))
+        // Debug.Log("SSID_Key: " + SSID_Key.ToString());
+        if (!networkCounters.ContainsKey(SSID_Key))
         {
-            // if (Test_Key == "No Networks in Area") windows testing
-            if (string.IsNullOrEmpty(Test_Key) || Test_Key.Equals("<unknown ssid>"))
+            // if (SSID_Key == "No Networks in Area") windows testing
+            if (string.IsNullOrEmpty(SSID_Key) || SSID_Key.Equals("<unknown ssid>"))
             {
-                Test_Key = previousNetworkName;
+                SSID_Key = previousNetworkName;
             }
             else
             {
-                networkCounters[Test_Key] = new NetworkCounters();
-                previousNetworkName = Test_Key;
+                networkCounters[SSID_Key] = new NetworkCounters();
+                previousNetworkName = SSID_Key;
 
             }
 
@@ -58,7 +58,7 @@ public class DataBase_Manager : MonoBehaviour
         }
         else
         {
-            previousNetworkName = Test_Key;
+            previousNetworkName = SSID_Key;
         }
 
 
@@ -78,9 +78,9 @@ public class DataBase_Manager : MonoBehaviour
         //     Secuirty_type_value = "WEP";
         // }
 
-        IncrementCounter(Test_Key.ToString(), dBm_value, Secuirty_type_value);
-        UpdateCounterText(Test_Key, textPrefab);
-        ChangeMapping(Test_Key);
+        IncrementCounter(SSID_Key.ToString(), dBm_value, Secuirty_type_value);
+        UpdateCounterText(SSID_Key, textPrefab);
+        ChangeMapping(SSID_Key);
 
 
 

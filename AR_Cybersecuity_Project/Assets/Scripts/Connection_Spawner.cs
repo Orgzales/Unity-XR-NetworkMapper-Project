@@ -10,17 +10,21 @@ public class Connection_Spawner : MonoBehaviour
 
     public GameObject parentObject; //Parent
     public GameObject prefabToInstantiate; //Child
+    public GameObject bssidprefabToInstantiate; //Child
     public float spawnHeight = 1.75f; //Distance from Camera
     public float checkRadius = 0.45f; //Distance between Points of access
-    public string Prefab_Text_Name = ""; //name of objects display
+    public string WifiPrefab_Details_Text = ""; //name of objects display
 
+    public string BSSIDPrefab_Details_Text = ""; //name of bssid display
     public int dBm_value;//based on dBm Value
     public string Secuirty_type_value; //based on security type
 
-    // Start is called before the first frame update
 
     public string debugssid;
     private string previousNetworkName;
+
+    private string currentBSSID;
+    private string previousBSSID;
 
     void Start()
     {
@@ -43,36 +47,50 @@ public class Connection_Spawner : MonoBehaviour
             string text_Display = ""; //Change later with wifi info
             int prefab_array = 0; //0 = good | 1 = ok | 2 = Bad
 
-            //Don't need anymore
-            // if (dBm_value >= -67) //-67 = Amazing in dbm 
-            // {
-            //     prefab_array = 0;
-            // }
-            // else if (dBm_value >= -79 && dBm_value < -70) // -70 = okay
-            // {
-            //     prefab_array = 1;
-            // }
-            // else if (dBm_value < -80) // -80 or lower is bad
-            // {
-            //     prefab_array = 2;
-            // }
-            // if (dBm_value == 0) //windows testing delete for quest 2
-            // {
-            //     prefab_array = 2;
-            // }
 
             // Check if the parent object and prefab are set
             if (parentObject != null && prefabToInstantiate != null)
             {
                 Vector3 cameraPosition = Camera.main.transform.position;
 
-                // Calculate the position to spawn the object
+                //instantate here to user
                 Vector3 spawnPosition = new Vector3(cameraPosition.x, cameraPosition.y - spawnHeight, cameraPosition.z);
 
+                bool BSSID_Condition = (string.IsNullOrEmpty(Wifi_script.wifiSSID) || Wifi_script.wifiSSID.Equals("<unknown ssid>"));
+                bool create_BSSIDPillar = false;
 
-                // Instantiate the prefab and set the parent to the parentObject
-                GameObject newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
+
+                //check if new bssid
+                if (currentBSSID == null) // if bssid has not been set to new network
+                {
+                    currentBSSID = Wifi_script.wifiBSSID;
+                }
+                else if (currentBSSID != Wifi_script.wifiBSSID && previousNetworkName == Wifi_script.wifiSSID && BSSID_Condition)
+                { //if bssid is different but ssid is the same but not no connection then create pillar
+                    previousBSSID = currentBSSID;
+                    currentBSSID = Wifi_script.wifiBSSID;
+                    create_BSSIDPillar = true;
+                }
+                else
+                {
+                    currentBSSID = Wifi_script.wifiBSSID;
+                }
+
+
+                //instatnte the object under parent of MRTK
+                // GameObject newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
+                GameObject newObject;
+                //create bssid prefab instead of ssid prefab
+                if (create_BSSIDPillar)
+                {
+                    newObject = Instantiate(bssidprefabToInstantiate, spawnPosition, Quaternion.identity);
+                }
+                else
+                {
+                    newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
+                }
                 newObject.transform.SetParent(parentObject.transform);
+
                 // if (Wifi_script.wifiSSID == "No Networks in Area") windows testing
                 if (string.IsNullOrEmpty(Wifi_script.wifiSSID) || Wifi_script.wifiSSID.Equals("<unknown ssid>"))
                 {
@@ -90,6 +108,13 @@ public class Connection_Spawner : MonoBehaviour
 
                 SetTextRecursively(newObject.transform, text_Display);
 
+                if (create_BSSIDPillar)
+                {
+                    string bssid_Display = Wifi_script.wifiSSID + "\nPrevious BSSID: " + previousBSSID +
+                    " --> Current BSSID: " + currentBSSID;
+                    SetBSSIDRecursively(newObject.transform, bssid_Display);
+                }
+
             }
             else
             {
@@ -102,7 +127,7 @@ public class Connection_Spawner : MonoBehaviour
     void SetTextRecursively(Transform parent, string text)
     {
         // Get Parent -> Parent -> Textobject
-        Transform textObjectTransform = parent.Find(Prefab_Text_Name);
+        Transform textObjectTransform = parent.Find(BSSIDPrefab_Details_Text);
 
         if (textObjectTransform != null)
         {
@@ -121,6 +146,27 @@ public class Connection_Spawner : MonoBehaviour
 
     }
 
+    void SetBSSIDRecursively(Transform parent, string text)
+    {
+        // Get Parent -> Parent -> Textobject
+        Transform textObjectTransform = parent.Find(WifiPrefab_Details_Text);
+
+        if (textObjectTransform != null)
+        {
+            // Access the TextMeshPro Text and changes it 
+            TextMeshPro textComponent = textObjectTransform.GetComponent<TextMeshPro>();
+            textComponent.text = text;
+        }
+        else
+        {
+            // Keep looking for the text for later code for BSSID
+            foreach (Transform child in parent)
+            {
+                SetTextRecursively(child, text);
+            }
+        }
+
+    }
 
     private bool CanInstantiateHere()
     {
