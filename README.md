@@ -77,7 +77,6 @@
 			- 🗸 Create Dictionary that keeps each data of network
 			- 🗸 Make sure No_Connection is included to the previous network
 	- Still need to make new prefab for BSSID
-		- 🗸 Orion - STOP FORGETTING
 		- 🗸 Same SSID but DIFFERENT BSSID = New Pillars
 		- 🗸 Create the new prefab 
 		- 🗸 text should always be showing
@@ -85,9 +84,9 @@
 		- 🗸 should not be created when first connection
 		- 🗸 prefabs should disappear and reappear based same as wifi clones
 		- Test to make sure no connection doesn't interfere
-	- Create a button that delete wifiobjects on click
-		- Have radius adjustment for user.
-		- Get rid of all wifi objects within radius
+	- 🗸 Create a button that delete wifiobjects on click
+		- One button: Toggle = Overwrite Nearby Connections.
+		- One button: Press = Get rid of all wifi objects within radius.
 	- 🗸 SPELL CHECK
 	
 	
