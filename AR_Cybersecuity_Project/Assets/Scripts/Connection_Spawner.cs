@@ -18,7 +18,7 @@ public class Connection_Spawner : MonoBehaviour
 
     public string BSSIDPrefab_Details_Text = ""; //name of bssid display
     public int dBm_value;//based on dBm Value
-    public string Secuirty_type_value; //based on security type
+    public string Secuirty_type_value; //security for change_manager script
 
 
     public string debugssid; //windows testing
@@ -29,6 +29,7 @@ public class Connection_Spawner : MonoBehaviour
     private string previousBSSID;//for bssid spawning
 
     private bool Overwrite_Mode;
+    private bool Demo_Mode;
 
     void Start()
     {
@@ -56,6 +57,7 @@ public class Connection_Spawner : MonoBehaviour
 
         if (CanInstantiateHere() || Overwrite_Mode) //Checking if Object of prefab is near.
         {
+            Demo_Mode = button_script.Demo_Mode; //Demo mode varaible for change_manager
             dBm_value = Wifi_script.wifiSignalStrength; //based on dBm Value
             Secuirty_type_value = Wifi_script.wifiAuthentication; //based on security type
             string text_Display = ""; //Change later with wifi info
@@ -100,7 +102,26 @@ public class Connection_Spawner : MonoBehaviour
                 {
                     OverWriteRadius(previousNetworkName);
                 }
-
+                if (Demo_Mode)
+                {
+                    dBm_value = Random.Range(-50, -90);
+                    int random_secuirty = Random.Range(0, 4);
+                    switch (random_secuirty)
+                    {
+                        case 0:
+                            Secuirty_type_value = "WPA/WPA2";
+                            break;
+                        case 1:
+                            Secuirty_type_value = "Orion's Awesome Secuirty";
+                            break; //mimic unknown secuirty
+                        case 2:
+                            Secuirty_type_value = "WEP";
+                            break;
+                        case 3:
+                            Secuirty_type_value = "OPEN";
+                            break;
+                    }
+                }
 
                 //instatnte the object under parent of MRTK
                 // GameObject newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
@@ -129,7 +150,7 @@ public class Connection_Spawner : MonoBehaviour
 
 
                 text_Display = "SSID: " + Wifi_script.wifiSSID + "\nBSSID: " + Wifi_script.wifiBSSID +
-                "\ndBm: " + dBm_value.ToString() + "\nAUTH: " + Wifi_script.wifiAuthentication;
+                "\ndBm: " + dBm_value.ToString() + "\nAUTH: " + Secuirty_type_value;
 
                 SetTextRecursively(newObject.transform, text_Display);
 

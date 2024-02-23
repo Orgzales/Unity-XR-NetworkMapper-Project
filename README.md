@@ -85,13 +85,15 @@
 		- 🗸 prefabs should disappear and reappear based same as wifi clones
 		- Test to make sure no connection doesn't interfere
 	- 🗸 Create a button that delete wifiobjects on click
-		- One button: Toggle = Overwrite Nearby Connections.
-		- One button: Press = Get rid of all wifi objects within radius.
+		- 🗸 One button: Toggle = Overwrite Nearby Connections.
+		- 🗸 One button: Press = Get rid of all wifi objects within radius.
 	- 🗸 SPELL CHECK
 	
 	
 # Step 7 Plans	
-	- Add Demo Button 
+	- 🗸 Add Demo Button 
+		- Toggle if strength values become random for demo purposes
+		- Toggle to make random secuirty/vulnerable values
 	- Clean Up code & Bug Check
 		- Add Data receive  & Transmit code
 		- Add Best secuirty and Current secuirty 
@@ -124,6 +126,7 @@
 			- create a new prefab for those rouge access points
 				- possibly create a larger radius
 				- prefab should have no interference with scripts of wifi objects.
+	- Create an AR Slider for Delete Radius Button to increase size
 
 # Step 9 Plans
 	- Create an Anchor point that the prefabs spawn locations are based
