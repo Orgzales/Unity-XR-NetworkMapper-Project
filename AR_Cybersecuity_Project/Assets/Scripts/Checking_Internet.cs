@@ -29,7 +29,15 @@ public class Checking_Internet : MonoBehaviour
     public Text wifiAuthentication_text; //Type of authencation
     public string wifiAuthentication;
 
-    // public string testing = "This is wifi script";
+    public Text bestSecuirty_text; //best authentication the network can provide
+    public string bestSecuirty;
+
+    public Text receiverate_text; //recieve rate of wifi
+    public int receiverate;
+
+    public Text transmitrate_text; //transmit rate of wifi
+    public int transmitrate;
+
 
     void Start()
     {
@@ -112,7 +120,6 @@ public class Checking_Internet : MonoBehaviour
     private IEnumerator AR_GetWiFiSSID()
     {
         yield return new WaitForSeconds(1.0f);
-        // UnityEngine.Debug.Log("!!!!");
 
         AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
         AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
@@ -122,9 +129,15 @@ public class Checking_Internet : MonoBehaviour
         AndroidJavaObject networkInfo = connectivityManager.Call<AndroidJavaObject>("getNetworkInfo", 1);
         AndroidJavaObject detailedState = networkInfo.Call<AndroidJavaObject>("getDetailedState");
 
+        //code for finding best secuirty
+        AndroidJavaObject activeNetwork = connectivityManager.Call<AndroidJavaObject>("getActiveNetwork");
+        AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObject>("getNetworkCapabilities", activeNetwork);
+
         wifiSSID = wifiInfo.Call<string>("getSSID").Replace("\"", "");
         wifiBSSID = wifiInfo.Call<string>("getBSSID");
         wifiSignalStrength = wifiInfo.Call<int>("getRssi");
+        receiverate = wifiInfo.Call<int>("getLinkSpeed");
+        transmitrate = wifiInfo.Call<int>("getTxLinkSpeed");
 
 
         //Yes all these lines to just to check Authencation
@@ -161,41 +174,42 @@ public class Checking_Internet : MonoBehaviour
                 wifiAuthentication_text.color = Color.magenta;
                 break;
         }
-        //Later code for checking what the server is capable of>>> for meeting with Proffessor
-        // AndroidJavaObject connectivityManager = activity.Call<AndroidJavaObject>("getSystemService", "connectivity");
-        // AndroidJavaObject activeNetwork = connectivityManager.Call<AndroidJavaObject>("getActiveNetwork");
-        // AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObject>("getNetworkCapabilities", activeNetwork);
 
-        // bool hasInternet = networkCapabilities.Call<bool>("hasCapability", 12);
-        // bool hasWep = networkCapabilities.Call<bool>("hasCapability", 15);
-        // bool hasWpa2 = networkCapabilities.Call<bool>("hasCapability", 13);
-        // bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
-        // bool hasCcmp = hasWpa2 && networkCapabilities.Call<bool>("hasCapability", 6);
+
+        //Code to check for the best possible authentication of server
+        bool hasInternet = networkCapabilities.Call<bool>("hasCapability", 12);
+        bool hasWep = networkCapabilities.Call<bool>("hasCapability", 15);
+        bool hasWpa2 = networkCapabilities.Call<bool>("hasCapability", 13);
+        bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
+        bool hasCcmp = hasWpa2 && networkCapabilities.Call<bool>("hasCapability", 6);
         // int networkId = wifiInfo.Call<int>("getNetworkId");
-        // // AndroidJavaObject wifiConfig = wifiManager.Call<AndroidJavaObject>("getConfiguredNetwork", networkId);
+        // AndroidJavaObject wifiConfig = wifiManager.Call<AndroidJavaObject>("getConfiguredNetwork", networkId);
 
-        // // string hasCcmp = wifiConfig.Call<string>("groupCipher");
 
-        // if (!hasWpa2 && !hasWep)
-        // {
-        //     wifiAuthentication = "Open Authentication";
-        // }
-        // else
-        // {
-        //     wifiAuthentication = $"Internet: {hasInternet}, WPA3: {hasWpa3}, WPA2: {hasWpa2}, WEP: {hasWep}"; //Debug
-        //     if (hasWep == true)
-        //     {
-        //         wifiAuthentication = "WEP";
-        //     }
-        //     if (hasWpa2 == true)
-        //     {
-        //         wifiAuthentication = "WPA2";
-        //     }
-        //     if (hasWpa3 == true)
-        //     {
-        //         wifiAuthentication = "WPA3";
-        //     }
-        // }
+        if (!hasWpa2 && !hasWep)
+        {
+            bestSecuirty = "Open Authentication";
+            bestSecuirty_text.color = Color.red;
+        }
+        else
+        {
+            // bestSecuirty = $"Internet: {hasInternet}, WPA3: {hasWpa3}, WPA2: {hasWpa2}, WEP: {hasWep}"; //Debug
+            if (hasWep == true)
+            {
+                bestSecuirty = "WEP";
+                bestSecuirty_text.color = Color.yellow;
+            }
+            if (hasWpa2 == true)
+            {
+                bestSecuirty = "WPA2";
+                bestSecuirty_text.color = Color.green;
+            }
+            if (hasWpa3 == true)
+            {
+                bestSecuirty = "WPA3";
+                bestSecuirty_text.color = Color.blue;
+            }
+        }
 
 
         if (string.IsNullOrEmpty(wifiSSID) || wifiSSID.Equals("<unknown ssid>"))
@@ -203,18 +217,27 @@ public class Checking_Internet : MonoBehaviour
             SSID_text.text = "SSID: No Connection";
             BSSID_text.text = "BSSID: No Connection";
             Singal_STR_text.text = "STRENGTH: No Connection";
-            wifiAuthentication_text.text = "Authentication: No Connection";
+            wifiAuthentication_text.text = "CURRENT SECUIRTY: No Connection";
+            bestSecuirty_text.text = "BEST SECUIRTY: No Connection";
+            receiverate_text.text = "RECEIVE RATE: No Connection";
+            transmitrate_text.text = "TRANSMIT RATE: No Connection";
             SSID_text.color = Color.red;
             BSSID_text.color = Color.red;
             Singal_STR_text.color = Color.red;
             wifiAuthentication_text.color = Color.red;
+            bestSecuirty_text.color = Color.red;
+            receiverate_text.color = Color.red;
+            transmitrate_text.color = Color.red;
         }
         else
         {
             SSID_text.text = "SSID: " + wifiSSID;
             BSSID_text.text = "BSSID: " + wifiBSSID;
             Singal_STR_text.text = "STRENGTH: " + wifiSignalStrength.ToString() + "dBm";
-            wifiAuthentication_text.text = "Authentication: " + wifiAuthentication;
+            wifiAuthentication_text.text = "CURRENT SECUIRTY: " + wifiAuthentication;
+            bestSecuirty_text.text = "BEST SECUIRTY: " + bestSecuirty;
+            receiverate_text.text = "RECEIVE RATE: " + receiverate.ToString() + " Mbps";
+            transmitrate_text.text = "TRANSMIT RATE: " + transmitrate.ToString() + " Mbps";
             SSID_text.color = Color.green;
             BSSID_text.color = Color.green;
             if (wifiSignalStrength >= -67) //-67 = Amazing in dbm
@@ -229,6 +252,8 @@ public class Checking_Internet : MonoBehaviour
             {
                 Singal_STR_text.color = Color.red;
             }
+            //put a if statment for each recieverate and transmit rate to change the color based on how good the rate is
+
 
 
         }

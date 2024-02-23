@@ -92,11 +92,11 @@
 	
 # Step 7 Plans	
 	- 🗸 Add Demo Button 
-		- Toggle if strength values become random for demo purposes
-		- Toggle to make random secuirty/vulnerable values
+		- 🗸 Toggle if strength values become random for demo purposes
+		- 🗸 Toggle to make random secuirty/vulnerable values
 	- Clean Up code & Bug Check
-		- Add Data receive  & Transmit code
-		- Add Best secuirty and Current secuirty 
+		- 🗸 Add Data receive  & Transmit code
+		- 🗸 Add Best secuirty and Current secuirty 
 		- Add these to Screen and Wifi Prefabs
 		- Remove unnessary code from here on out 
 	- Move Delete object button higher
