@@ -48,12 +48,10 @@ public class Connection_Spawner : MonoBehaviour
         if (button_script.Overwrite_Mode == true)
         {
             Overwrite_Mode = true;
-            Debug.Log("Overwrite Mode in script: " + Overwrite_Mode);
         }
         else
         {
             Overwrite_Mode = false;
-            Debug.Log("Overwrite Mode in script: " + Overwrite_Mode);
         }
 
         if (CanInstantiateHere() || Overwrite_Mode) //Checking if Object of prefab is near.
