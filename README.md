@@ -63,7 +63,7 @@
 			- 🗸 Both netwokr security and potential network secuirty
 			- 🗸 Transmit Rate + receive Rate
 			- 🗸 add this to prefab
-	- Create a data base of current properties of each scan for wifi network
+	- 🗸 Create a data base of current properties of each scan for wifi network
 		- 🗸 Make a new hud that will say the following
 			- 🗸 New button on top tab to switch screens
 			- 🗸 (Network SSID + Network BSSID)

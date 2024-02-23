@@ -6,8 +6,8 @@ public class Button_Manager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private bool Demo_Mode = false;
-    private bool Overwrite_Mode = false;
+    public bool Demo_Mode = false;
+    public bool Overwrite_Mode = false;
 
 
     public void ToggleDemoButtonPress()

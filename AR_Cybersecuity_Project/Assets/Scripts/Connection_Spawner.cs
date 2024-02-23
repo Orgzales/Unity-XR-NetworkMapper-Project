@@ -7,6 +7,7 @@ using TMPro;
 public class Connection_Spawner : MonoBehaviour
 {
     public Checking_Internet Wifi_script; //Drag script internetchecking into here to acess strings
+    public Button_Manager button_script; // Values for overwrite mode and demo mode
 
     public GameObject parentObject; //Parent
     public GameObject prefabToInstantiate; //Child
@@ -22,10 +23,12 @@ public class Connection_Spawner : MonoBehaviour
 
     public string debugssid; //windows testing
     public string debugbssid; //windows testing
-    private string previousNetworkName;
+    private string previousNetworkName; //namint noconnection prefabs
 
-    private string currentBSSID;
-    private string previousBSSID;
+    private string currentBSSID; //for bssid spawning
+    private string previousBSSID;//for bssid spawning
+
+    private bool Overwrite_Mode;
 
     void Start()
     {
@@ -41,7 +44,19 @@ public class Connection_Spawner : MonoBehaviour
 
     private void InstantiateChildObject()
     {
-        if (CanInstantiateHere()) //Checking if Object of prefab is near.
+
+        if (button_script.Overwrite_Mode == true)
+        {
+            Overwrite_Mode = true;
+            Debug.Log("Overwrite Mode in script: " + Overwrite_Mode);
+        }
+        else
+        {
+            Overwrite_Mode = false;
+            Debug.Log("Overwrite Mode in script: " + Overwrite_Mode);
+        }
+
+        if (CanInstantiateHere() || Overwrite_Mode) //Checking if Object of prefab is near.
         {
             dBm_value = Wifi_script.wifiSignalStrength; //based on dBm Value
             Secuirty_type_value = Wifi_script.wifiAuthentication; //based on security type
@@ -80,6 +95,12 @@ public class Connection_Spawner : MonoBehaviour
                     currentBSSID = Wifi_script.wifiBSSID;
                     // currentBSSID = debugbssid; //windows testing
 
+                }
+
+                //if overwrite mode is on then delete all wifi prefabs with same name within 5m radius
+                if (Overwrite_Mode)
+                {
+                    OverWriteRadius(previousNetworkName);
                 }
 
 
@@ -151,6 +172,24 @@ public class Connection_Spawner : MonoBehaviour
         }
 
     }
+
+    public void OverWriteRadius(string prefab_name)
+    {
+        GameObject[] all_wifi_prefabs = FindObjectsOfType<GameObject>();
+
+        foreach (GameObject wifi_prefab in all_wifi_prefabs)
+        {
+            if (wifi_prefab.name == prefab_name || wifi_prefab.name == "No Networks in Area:" + prefab_name)
+            {
+                // Check if the object is within the deletion radius of the VR headset
+                if (Vector3.Distance(wifi_prefab.transform.position, transform.position) <= 2.0f)
+                {
+                    Destroy(wifi_prefab);
+                }
+            }
+        }
+    }
+
 
     void SetBSSIDRecursively(Transform parent, string text)
     {
