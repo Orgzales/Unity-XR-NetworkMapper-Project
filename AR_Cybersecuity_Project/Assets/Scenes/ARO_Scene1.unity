@@ -6016,7 +6016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &311664354
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30295,6 +30295,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 67534316}
     - target: {fileID: 3959488481673811053, guid: 5f63d3f2db6b5124dba3f5d1473aa176, type: 3}
+      propertyPath: Freq_Network_text
+      value: 
+      objectReference: {fileID: 1535490421}
+    - target: {fileID: 3959488481673811053, guid: 5f63d3f2db6b5124dba3f5d1473aa176, type: 3}
       propertyPath: Wifi_is_Available
       value: 
       objectReference: {fileID: 3469481742091547060}
@@ -30306,6 +30310,10 @@ PrefabInstance:
       propertyPath: transmitrate_text
       value: 
       objectReference: {fileID: 1535490421}
+    - target: {fileID: 3959488481673811053, guid: 5f63d3f2db6b5124dba3f5d1473aa176, type: 3}
+      propertyPath: DataSpeedRate_text
+      value: 
+      objectReference: {fileID: 67534316}
     - target: {fileID: 3959488481673811053, guid: 5f63d3f2db6b5124dba3f5d1473aa176, type: 3}
       propertyPath: wifiAuthentication_text
       value: 
@@ -30473,6 +30481,38 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4995152546598599785, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995152546598599785, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995215223407903367, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4995215223407903367, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996132116370323257, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996132116370323257, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996132116370323257, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4996132116370323257, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5295836562821693850, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -30480,6 +30520,14 @@ PrefabInstance:
     - target: {fileID: 5295836562821693851, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
       propertyPath: m_SizeDelta.y
       value: 238.69339
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295836563223583994, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_Name
+      value: SPEED_TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295836563223583996, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_Text
+      value: 'DATA RECEIVE & TRANSMIT RATE: '
       objectReference: {fileID: 0}
     - target: {fileID: 5295836563815694822, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -30500,6 +30548,14 @@ PrefabInstance:
     - target: {fileID: 5295836563815694822, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -325
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295836564188059747, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_Name
+      value: FREQ_TEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295836564188059749, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
+      propertyPath: m_Text
+      value: 'NETWORK FREQUENCY: '
       objectReference: {fileID: 0}
     - target: {fileID: 5295836564256953192, guid: dd7ec656e16c51e4a88b03013ce244d5, type: 3}
       propertyPath: m_AnchorMax.y

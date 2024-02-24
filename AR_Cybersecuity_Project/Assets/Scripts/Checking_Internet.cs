@@ -32,11 +32,11 @@ public class Checking_Internet : MonoBehaviour
     public Text bestSecuirty_text; //best authentication the network can provide
     public string bestSecuirty;
 
-    public Text receiverate_text; //recieve rate of wifi
-    public int receiverate;
+    public Text DataSpeedRate_text; //recieve rate of wifi
+    public int DataSpeedRate;
 
-    public Text transmitrate_text; //transmit rate of wifi
-    public int transmitrate;
+    public Text Freq_Network_text; //transmit rate of wifi
+    public int Freq_Network;
 
 
     void Start()
@@ -136,8 +136,12 @@ public class Checking_Internet : MonoBehaviour
         wifiSSID = wifiInfo.Call<string>("getSSID").Replace("\"", "");
         wifiBSSID = wifiInfo.Call<string>("getBSSID");
         wifiSignalStrength = wifiInfo.Call<int>("getRssi");
-        receiverate = wifiInfo.Call<int>("getLinkSpeed");
-        transmitrate = wifiInfo.Call<int>("getTxLinkSpeed");
+        int LinkSpeed = wifiInfo.Call<int>("getLinkSpeed"); //Speed in Mbps
+        int frequencyInt = wifiInfo.Call<int>("getFrequency"); // Frequency in MHz
+        DataSpeedRate = LinkSpeed;
+        Freq_Network = frequencyInt;
+
+
 
 
         //Yes all these lines to just to check Authencation
@@ -188,7 +192,7 @@ public class Checking_Internet : MonoBehaviour
 
         if (!hasWpa2 && !hasWep)
         {
-            bestSecuirty = "Open Authentication";
+            bestSecuirty = "OPEN";
             bestSecuirty_text.color = Color.red;
         }
         else
@@ -219,15 +223,15 @@ public class Checking_Internet : MonoBehaviour
             Singal_STR_text.text = "STRENGTH: No Connection";
             wifiAuthentication_text.text = "CURRENT SECUIRTY: No Connection";
             bestSecuirty_text.text = "BEST SECUIRTY: No Connection";
-            receiverate_text.text = "RECEIVE RATE: No Connection";
-            transmitrate_text.text = "TRANSMIT RATE: No Connection";
+            DataSpeedRate_text.text = "DATA RECEIVE & TRANSMIT RATE: No Connection";
+            Freq_Network_text.text = "NETWORK FREQUENCY: No Connection";
             SSID_text.color = Color.red;
             BSSID_text.color = Color.red;
             Singal_STR_text.color = Color.red;
             wifiAuthentication_text.color = Color.red;
             bestSecuirty_text.color = Color.red;
-            receiverate_text.color = Color.red;
-            transmitrate_text.color = Color.red;
+            DataSpeedRate_text.color = Color.red;
+            Freq_Network_text.color = Color.red;
         }
         else
         {//display information on AR-screen for user
@@ -236,8 +240,8 @@ public class Checking_Internet : MonoBehaviour
             Singal_STR_text.text = "STRENGTH: " + wifiSignalStrength.ToString() + "dBm";
             wifiAuthentication_text.text = "CURRENT SECUIRTY: " + wifiAuthentication;
             bestSecuirty_text.text = "BEST SECUIRTY: " + bestSecuirty;
-            receiverate_text.text = "RECEIVE RATE: " + receiverate.ToString() + " Mbps";
-            transmitrate_text.text = "TRANSMIT RATE: " + transmitrate.ToString() + " Mbps";
+            DataSpeedRate_text.text = "DATA RECEIVE & TRANSMIT RATE: " + DataSpeedRate.ToString() + " Mbps";
+            Freq_Network_text.text = "NETWORK FREQUENCY: " + Freq_Network.ToString() + " MHz";
             SSID_text.color = Color.green;
             BSSID_text.color = Color.green;
             if (wifiSignalStrength >= -67) //-67 = Amazing in dbm
@@ -252,7 +256,7 @@ public class Checking_Internet : MonoBehaviour
             {
                 Singal_STR_text.color = Color.red;
             }
-            //put a if statment for each recieverate and transmit rate to change the color based on how good the rate is
+            //put a if statment for each recieverate and freq to change the color based on how good the rate is
 
 
 

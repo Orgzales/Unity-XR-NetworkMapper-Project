@@ -31,6 +31,8 @@ public class Connection_Spawner : MonoBehaviour
     private bool Overwrite_Mode;
     private bool Demo_Mode;
 
+    private int Demo_Counter = 0; //For spawning bssid prefabs during demo mode
+
     void Start()
     {
         InvokeRepeating("InstantiateChildObject", 3, 3);
@@ -96,6 +98,7 @@ public class Connection_Spawner : MonoBehaviour
                 //if demo mode is on then randomize dBm and security type
                 if (Demo_Mode)
                 {
+                    Demo_Counter++;
                     dBm_value = Random.Range(-50, -90);
                     int random_secuirty = Random.Range(0, 4);
                     switch (random_secuirty)
@@ -117,8 +120,10 @@ public class Connection_Spawner : MonoBehaviour
 
                 //Instantiate prefab connection info
                 GameObject newObject;
-                if (create_BSSIDPillar)
+                if (create_BSSIDPillar || Demo_Counter >= 8)
                 {//create bssid prefab instead of ssid prefab
+                    Demo_Counter = 0; //reset demo counter
+                    create_BSSIDPillar = true; // for demon mode
                     newObject = Instantiate(bssidprefabToInstantiate, spawnPosition, Quaternion.identity);
                 }
                 else
@@ -145,8 +150,8 @@ public class Connection_Spawner : MonoBehaviour
                 "\ndBm: " + dBm_value.ToString() +
                 "\nCURR AUTH: " + Secuirty_type_value +
                 "\nBEST AUTH: " + Wifi_script.bestSecuirty +
-                "\nRECEIVE RATE: " + Wifi_script.receiverate.ToString() + " Mbps" +
-                "\nTRANSMIT RATE: " + Wifi_script.transmitrate.ToString() + " Mbps";
+                "\nDATA RECEIVE & TRANSMIT RATE: " + Wifi_script.DataSpeedRate.ToString() + " Mbps" +
+                "\nNETWORK FREQUENCY: " + Wifi_script.Freq_Network.ToString() + " MHz";
 
                 SetTextRecursively(newObject.transform, Wifi_ScreenDisplay);
 
@@ -169,7 +174,7 @@ public class Connection_Spawner : MonoBehaviour
     void SetTextRecursively(Transform parent, string text)
     {
         // Get Parent -> Parent -> Textobject
-        Transform textObjectTransform = parent.Find(BSSIDPrefab_Details_Text);
+        Transform textObjectTransform = parent.Find(WifiPrefab_Details_Text);
 
         if (textObjectTransform != null)
         {
@@ -209,7 +214,7 @@ public class Connection_Spawner : MonoBehaviour
     void SetBSSIDRecursively(Transform parent, string text)
     {
         // Get Parent -> Parent -> Textobject
-        Transform textObjectTransform = parent.Find(WifiPrefab_Details_Text);
+        Transform textObjectTransform = parent.Find(BSSIDPrefab_Details_Text);
 
         if (textObjectTransform != null)
         {
@@ -221,7 +226,7 @@ public class Connection_Spawner : MonoBehaviour
         {
             foreach (Transform child in parent)
             {
-                SetTextRecursively(child, text);
+                SetBSSIDRecursively(child, text);
             }
         }
 

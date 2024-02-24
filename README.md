@@ -121,11 +121,12 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 		- 🗸 Add No Connection counter
 		- 🗸 Remove increment of VUlnerable counter
 	- Do final test for APK.9
-		- Test to make sure no connection doesn't interfere
-		- Make Sure BSSID Prefabs Work under correct conditions
-		- Test DATA Speeds + Resize Screen to fit new data
-		- Change color for corespsonding speed of DATA
-		- Edit base perfab for BSSID quality
+		- 🗸 Test to make sure no connection doesn't interfere
+		- 🗸 Make Sure BSSID Prefabs Work under correct conditions
+		- 🗸 Test DATA Speeds + Resize Screen to fit new data
+		- Change color for corespsonding speed of DATA & Frequency
+		- 🗸 Edit base perfab for BSSID quality
+	- 🗸 Added network's Frequency
 		
 # Step 8 Plans
 	- 🗸 Create Prefabs name based on SSID
