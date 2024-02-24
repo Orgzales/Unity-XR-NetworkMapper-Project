@@ -9,7 +9,7 @@ public class DataBase_Manager : MonoBehaviour
     public Checking_Internet Wifi_script;
 
     public string debugSSID;
-    public GameObject textPrefab;
+    public GameObject DataBase_Screen;
     public GameObject screenParentObejct; // for making new text objects 
 
     public GameObject cloneParentObject; //Where all the wifi clones are made
@@ -24,11 +24,12 @@ public class DataBase_Manager : MonoBehaviour
         public int bad_Counter = 0;
         public int vulnerable_Counter = 0;
         public int secure_Counter = 0;
+
+        public int no_Connection_Counter = 0;
     }
 
     void Start()
     {
-
         InvokeRepeating("UpdateData", 3, 3);
     }
 
@@ -39,7 +40,6 @@ public class DataBase_Manager : MonoBehaviour
         // string SSID_Key = debugSSID.ToString(); // Change Later windows testing
         string SSID_Key = Wifi_script.wifiSSID; // add another for bssid
 
-        // Debug.Log("SSID_Key: " + SSID_Key.ToString());
         if (!networkCounters.ContainsKey(SSID_Key))
         {
             // if (SSID_Key == "No Networks in Area") windows testing
@@ -54,7 +54,6 @@ public class DataBase_Manager : MonoBehaviour
 
             }
 
-            // GameObject newTextObject = Instantiate(textPrefab, screenParentObejct.transform);
         }
         else
         {
@@ -65,21 +64,8 @@ public class DataBase_Manager : MonoBehaviour
         int dBm_value = Wifi_script.wifiSignalStrength; //based on dBm Value
         string Secuirty_type_value = Wifi_script.wifiAuthentication; //based on security type
 
-
-        // string Secuirty_type_value = ""; //windows testing
-        // int dBm_value = Random.Range(-60, -90);
-        // int random = Random.Range(0, 2);
-        // if (random == 0)
-        // {
-        //     Secuirty_type_value = "WPA2";
-        // }
-        // else
-        // {
-        //     Secuirty_type_value = "WEP";
-        // }
-
         IncrementCounter(SSID_Key.ToString(), dBm_value, Secuirty_type_value);
-        UpdateCounterText(SSID_Key, textPrefab);
+        UpdateCounterText(SSID_Key, DataBase_Screen);
         ChangeMapping(SSID_Key);
 
 
@@ -87,7 +73,7 @@ public class DataBase_Manager : MonoBehaviour
     }
 
 
-
+    //Unity's Custom Variable Types 
     public enum CounterType
     {
         Good,
@@ -95,14 +81,14 @@ public class DataBase_Manager : MonoBehaviour
         Bad,
         Vulnerability,
         Secure,
-        Nothing //for no connection change later
+        No_Connection
     }
 
     public void IncrementCounter(string networkName, int networkStrength, string networkSecuirty)
     {
 
+        //Storing the Signal Strength Value
         CounterType SignalCounter;
-
         if (networkStrength >= -67)
         {
             SignalCounter = CounterType.Good;
@@ -117,9 +103,10 @@ public class DataBase_Manager : MonoBehaviour
         }
         else
         {
-            SignalCounter = CounterType.Bad;
+            SignalCounter = CounterType.No_Connection;
         }
 
+        //Storing the Security Type Value
         CounterType SecurityCounter;
         if (networkSecuirty == "WPA3")
         {
@@ -139,9 +126,10 @@ public class DataBase_Manager : MonoBehaviour
         }
         else
         {
-            SecurityCounter = CounterType.Vulnerability;
+            SecurityCounter = CounterType.No_Connection;
         }
 
+        //Incrementing the Counter for Signal Strength
         switch (SignalCounter)
         {
             case CounterType.Good:
@@ -156,10 +144,10 @@ public class DataBase_Manager : MonoBehaviour
                 networkCounters[networkName].bad_Counter++;
                 break;
             default:
-                Debug.LogError("Unknown counter type!");
                 break;
         }
 
+        //Incrementing the Counter for Security or Vulnerability
         switch (SecurityCounter)
         {
             case CounterType.Vulnerability:
@@ -169,16 +157,25 @@ public class DataBase_Manager : MonoBehaviour
                 networkCounters[networkName].secure_Counter++;
                 break;
             default:
-                Debug.LogError("Unknown counter type!");
                 break;
         }
+
+        //Incrementing the Counter for no connection
+        if (SignalCounter == CounterType.No_Connection || SecurityCounter == CounterType.No_Connection)
+        {
+            networkCounters[networkName].no_Connection_Counter++;
+        }
+
+
+
+
 
     }
 
 
     public void ChangeMapping(string networkSSID)
     {
-
+        //Setting each object of certain SSID to inactive or active base on name
         foreach (Transform wifiObject in cloneParentObject.transform)
         {
             if (wifiObject.name == networkSSID)
@@ -199,10 +196,12 @@ public class DataBase_Manager : MonoBehaviour
 
     public void UpdateCounterText(string network_Key, GameObject textObject)
     {
+        //change this later for real database later
         if (networkCounters.ContainsKey(network_Key))
         {
             NetworkCounters counters = networkCounters[network_Key];
 
+            // Get Parent -> Textobject to change the text
             Text[] texts = textObject.GetComponentsInChildren<Text>();
             foreach (Text contents in texts)
             {
@@ -212,7 +211,6 @@ public class DataBase_Manager : MonoBehaviour
                         contents.text = network_Key;
                         break;
                     case "GOOD_TEXT":
-                        // Debug.Log("Good Counter incremented" + counters.good_Counter.ToString());
                         contents.text = "GOOD:" + counters.good_Counter.ToString();
                         break;
                     case "OK_TEXT":
@@ -226,6 +224,9 @@ public class DataBase_Manager : MonoBehaviour
                         break;
                     case "SECURE_TEXT":
                         contents.text = "SECURED:" + counters.secure_Counter.ToString();
+                        break;
+                    case "NOSIGNAL_TEXT":
+                        contents.text = "NO SIGNAL:" + counters.no_Connection_Counter.ToString();
                         break;
                     default:
                         break;

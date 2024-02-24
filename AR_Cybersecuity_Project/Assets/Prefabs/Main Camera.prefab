@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5237658443567417325}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -157,10 +157,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Wifi_script: {fileID: 0}
+  button_script: {fileID: 0}
   parentObject: {fileID: 0}
   prefabToInstantiate: {fileID: 7780838719092460206, guid: e4f44e58f2f7822469fb72b008b1c341, type: 3}
+  bssidprefabToInstantiate: {fileID: 1387476329741421599, guid: 1a6f61465ff5309468d19ad76d1008e4, type: 3}
   spawnHeight: 1.75
   checkRadius: 0.45
-  Prefab_Text_Name: Properties_text
+  WifiPrefab_Details_Text: Properties_text
+  BSSIDPrefab_Details_Text: Properties_bssid
   dBm_value: 0
   Secuirty_type_value: 

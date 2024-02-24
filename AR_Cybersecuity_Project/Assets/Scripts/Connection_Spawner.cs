@@ -21,8 +21,8 @@ public class Connection_Spawner : MonoBehaviour
     public string Secuirty_type_value; //security for change_manager script
 
 
-    public string debugssid; //windows testing
-    public string debugbssid; //windows testing
+    // public string debugssid; //windows testing
+    // public string debugbssid; //windows testing
     private string previousNetworkName; //namint noconnection prefabs
 
     private string currentBSSID; //for bssid spawning
@@ -34,12 +34,6 @@ public class Connection_Spawner : MonoBehaviour
     void Start()
     {
         InvokeRepeating("InstantiateChildObject", 3, 3);
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 
@@ -58,18 +52,16 @@ public class Connection_Spawner : MonoBehaviour
         if (CanInstantiateHere() || Overwrite_Mode) //Checking if Object of prefab is near.
         {
             Demo_Mode = button_script.Demo_Mode; //Demo mode varaible for change_manager
-            dBm_value = Wifi_script.wifiSignalStrength; //based on dBm Value
-            Secuirty_type_value = Wifi_script.wifiAuthentication; //based on security type
-            string text_Display = ""; //Change later with wifi info
+            dBm_value = Wifi_script.wifiSignalStrength; //based on dBm Value for change_manager
+            Secuirty_type_value = Wifi_script.wifiAuthentication; //based on security type for change_manager
+            string Wifi_ScreenDisplay = ""; //Change later with wifi info
             int prefab_array = 0; //0 = good | 1 = ok | 2 = Bad
-
 
             // Check if the parent object and prefab are set
             if (parentObject != null && prefabToInstantiate != null)
             {
-                Vector3 cameraPosition = Camera.main.transform.position;
-
                 //instantate here to user
+                Vector3 cameraPosition = Camera.main.transform.position;
                 Vector3 spawnPosition = new Vector3(cameraPosition.x, cameraPosition.y - spawnHeight, cameraPosition.z);
 
                 bool BSSID_Condition = (string.IsNullOrEmpty(Wifi_script.wifiSSID) || Wifi_script.wifiSSID.Equals("<unknown ssid>"));
@@ -78,8 +70,8 @@ public class Connection_Spawner : MonoBehaviour
 
 
                 //check if new bssid
-                if (currentBSSID == null) // if bssid has not been set to new network
-                {
+                if (currentBSSID == null)
+                {// if bssid has not been set to new network
                     currentBSSID = Wifi_script.wifiBSSID;
                     // currentBSSID = debugbssid; //windows testing
                 }
@@ -94,7 +86,6 @@ public class Connection_Spawner : MonoBehaviour
                 {
                     currentBSSID = Wifi_script.wifiBSSID;
                     // currentBSSID = debugbssid; //windows testing
-
                 }
 
                 //if overwrite mode is on then delete all wifi prefabs with same name within 5m radius
@@ -102,6 +93,7 @@ public class Connection_Spawner : MonoBehaviour
                 {
                     OverWriteRadius(previousNetworkName);
                 }
+                //if demo mode is on then randomize dBm and security type
                 if (Demo_Mode)
                 {
                     dBm_value = Random.Range(-50, -90);
@@ -123,20 +115,19 @@ public class Connection_Spawner : MonoBehaviour
                     }
                 }
 
-                //instatnte the object under parent of MRTK
-                // GameObject newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
+                //Instantiate prefab connection info
                 GameObject newObject;
-                //create bssid prefab instead of ssid prefab
                 if (create_BSSIDPillar)
-                {
+                {//create bssid prefab instead of ssid prefab
                     newObject = Instantiate(bssidprefabToInstantiate, spawnPosition, Quaternion.identity);
                 }
                 else
-                {
+                {//If no new bssid then create ssid prefab
                     newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
                 }
                 newObject.transform.SetParent(parentObject.transform);
 
+                // setting names of objects for database_manager
                 // if (Wifi_script.wifiSSID == "No Networks in Area") windows testing
                 if (string.IsNullOrEmpty(Wifi_script.wifiSSID) || Wifi_script.wifiSSID.Equals("<unknown ssid>"))
                 {
@@ -148,14 +139,19 @@ public class Connection_Spawner : MonoBehaviour
                     previousNetworkName = Wifi_script.wifiSSID.ToString();
                 }
 
+                //This displays on the AR Screen
+                Wifi_ScreenDisplay = "SSID: " + Wifi_script.wifiSSID +
+                "\nBSSID: " + Wifi_script.wifiBSSID +
+                "\ndBm: " + dBm_value.ToString() +
+                "\nCURR AUTH: " + Secuirty_type_value +
+                "\nBEST AUTH: " + Wifi_script.bestSecuirty +
+                "\nRECEIVE RATE: " + Wifi_script.receiverate.ToString() + " Mbps" +
+                "\nTRANSMIT RATE: " + Wifi_script.transmitrate.ToString() + " Mbps";
 
-                text_Display = "SSID: " + Wifi_script.wifiSSID + "\nBSSID: " + Wifi_script.wifiBSSID +
-                "\ndBm: " + dBm_value.ToString() + "\nAUTH: " + Secuirty_type_value;
-
-                SetTextRecursively(newObject.transform, text_Display);
+                SetTextRecursively(newObject.transform, Wifi_ScreenDisplay);
 
                 if (create_BSSIDPillar)
-                {
+                {//if new bssid then display previous and current bssid info aswell
                     string bssid_Display = Wifi_script.wifiSSID + "\nPrevious BSSID: " + previousBSSID +
                     "\nCurrent BSSID: " + currentBSSID;
                     SetBSSIDRecursively(newObject.transform, bssid_Display);
@@ -200,7 +196,7 @@ public class Connection_Spawner : MonoBehaviour
         {
             if (wifi_prefab.name == prefab_name || wifi_prefab.name == "No Networks in Area:" + prefab_name)
             {
-                // Check if the object is within the deletion radius of the VR headset
+                // Check if the object is within the deletion radius of the VR/AR headset
                 if (Vector3.Distance(wifi_prefab.transform.position, transform.position) <= 2.0f)
                 {
                     Destroy(wifi_prefab);
@@ -223,7 +219,6 @@ public class Connection_Spawner : MonoBehaviour
         }
         else
         {
-            // Keep looking for the text for later code for BSSID
             foreach (Transform child in parent)
             {
                 SetTextRecursively(child, text);
@@ -234,13 +229,14 @@ public class Connection_Spawner : MonoBehaviour
 
     private bool CanInstantiateHere()
     {
-        // Get the position of the main camera
+        // Get the position of the VR/AR Headset
         Vector3 cameraPosition = Camera.main.transform.position;
         Vector3 checkPosition = new Vector3(cameraPosition.x, cameraPosition.y - spawnHeight, cameraPosition.z);
 
         // Check for colliders in the specified radius
         Collider[] colliders = Physics.OverlapSphere(checkPosition, checkRadius);
 
+        //if the length of the colliders isn't close enough, an object can be set here
         if (colliders.Length == 0)
         {
             return true;

@@ -13,7 +13,7 @@ using TMPro;
 
 public class Checking_Internet : MonoBehaviour
 {
-    // Netsh WLAN show interfaces - command to get wifi name and signal
+    // Netsh WLAN show interfaces - command to get wifi name and signal on windows
 
 
     public Text Wifi_is_Available; //To display there is a connection avialble
@@ -48,11 +48,11 @@ public class Checking_Internet : MonoBehaviour
         }
 
         InvokeRepeating("AR_repeat_wifi", 0, 3);
-        // InvokeRepeating("GetWiFiSSID", 0, 6);
+        // InvokeRepeating("GetWiFiSSID", 0, 6); //Debugging on windows
 
 
     }
-    // Update is called once per frame
+
     void Update()
     {
 
@@ -62,19 +62,16 @@ public class Checking_Internet : MonoBehaviour
         {
             Wifi_is_Available.text = "No Networks in Area";
             Wifi_is_Available.color = Color.red;
-            // Debug.Log("No Networks in Area");
         }
         else if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
         {
             Wifi_is_Available.text = "Wifi Networks are Availiable";
             Wifi_is_Available.color = Color.green;
-            // Debug.Log("Wifi Networks are Availiable");
         }
         else if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork)
         {
             Wifi_is_Available.text = "Network/Wifi Found through Mobile Accounts, Please log in";
             Wifi_is_Available.color = Color.yellow;
-            // Debug.Log("Network/Wifi Found through Mobile Accounts, Please log in"); //FOR RESNET
         }
     }
     //Debugginh on windows instead of andriod
@@ -121,10 +118,12 @@ public class Checking_Internet : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
+        //unity grabbing andriod device info
         AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
         AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
         AndroidJavaObject wifiInfo = wifiManager.Call<AndroidJavaObject>("getConnectionInfo");
 
+        //getting connection info of quest's wifi
         AndroidJavaObject connectivityManager = activity.Call<AndroidJavaObject>("getSystemService", "connectivity");
         AndroidJavaObject networkInfo = connectivityManager.Call<AndroidJavaObject>("getNetworkInfo", 1);
         AndroidJavaObject detailedState = networkInfo.Call<AndroidJavaObject>("getDetailedState");
@@ -133,6 +132,7 @@ public class Checking_Internet : MonoBehaviour
         AndroidJavaObject activeNetwork = connectivityManager.Call<AndroidJavaObject>("getActiveNetwork");
         AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObject>("getNetworkCapabilities", activeNetwork);
 
+        //pulling info from managers
         wifiSSID = wifiInfo.Call<string>("getSSID").Replace("\"", "");
         wifiBSSID = wifiInfo.Call<string>("getBSSID");
         wifiSignalStrength = wifiInfo.Call<int>("getRssi");
@@ -181,7 +181,7 @@ public class Checking_Internet : MonoBehaviour
         bool hasWep = networkCapabilities.Call<bool>("hasCapability", 15);
         bool hasWpa2 = networkCapabilities.Call<bool>("hasCapability", 13);
         bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
-        bool hasCcmp = hasWpa2 && networkCapabilities.Call<bool>("hasCapability", 6);
+        // bool hasCcmp = hasWpa2 && networkCapabilities.Call<bool>("hasCapability", 6);
         // int networkId = wifiInfo.Call<int>("getNetworkId");
         // AndroidJavaObject wifiConfig = wifiManager.Call<AndroidJavaObject>("getConfiguredNetwork", networkId);
 
@@ -213,7 +213,7 @@ public class Checking_Internet : MonoBehaviour
 
 
         if (string.IsNullOrEmpty(wifiSSID) || wifiSSID.Equals("<unknown ssid>"))
-        {
+        {//if no connection
             SSID_text.text = "SSID: No Connection";
             BSSID_text.text = "BSSID: No Connection";
             Singal_STR_text.text = "STRENGTH: No Connection";
@@ -230,7 +230,7 @@ public class Checking_Internet : MonoBehaviour
             transmitrate_text.color = Color.red;
         }
         else
-        {
+        {//display information on AR-screen for user
             SSID_text.text = "SSID: " + wifiSSID;
             BSSID_text.text = "BSSID: " + wifiBSSID;
             Singal_STR_text.text = "STRENGTH: " + wifiSignalStrength.ToString() + "dBm";

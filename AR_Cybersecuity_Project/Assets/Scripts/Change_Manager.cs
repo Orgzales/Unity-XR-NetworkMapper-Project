@@ -16,8 +16,6 @@ public class Change_Manager : MonoBehaviour
 
     private void Start()
     {
-        //debugging 
-        // float Pillar_Height = Random.Range(min_Height, max_Height);
         float Pillar_Height = 0f;
 
         //Get the main camera script for dbm values from wifi script
@@ -32,7 +30,6 @@ public class Change_Manager : MonoBehaviour
         }
         else if (dBmValue >= -79 && dBmValue < -60) // -70 = okay
         {
-            // float input_value = (float)dBmValue;
             float input_value = (float)dBmValue;
             Pillar_Height = (input_value - (-80f)) * (max_Height - min_Height) / ((-60f) - (-80f)) + min_Height;
 
@@ -48,8 +45,8 @@ public class Change_Manager : MonoBehaviour
             Pillar_Height = 0f;
         }
 
-        // Debug.Log("dbmValue height: " + dBmValue + "| random height: " + Pillar_Height);
         // Pillar_Height = Random.Range(min_Height, max_Height); //for windows testing
+
         Adjust_Scale(Pillar_Height);
         Change_Wifi_Symbol(Secuirty_type_value);
         Change_Color(Pillar_Height);
@@ -115,29 +112,6 @@ public class Change_Manager : MonoBehaviour
     //https://cai.io/resources/thought-leadership/shadow-IT-meaning-risks
     //shadow it - find other non secure routers that are dangerious to the secure ones that IT isn't aware.
 
-    // public void Change_Wifi_Symbol(int radnom) //windows testing
-    // {
-    //     if (radnom == 0)
-    //     {
-    //         //change Wifi_Symbol to Green lock
-    //         Wifi_Symbol[0].SetActive(true);
-    //     }
-    //     else if (radnom == 1)
-    //     {
-    //         //change Wifi_Symbol to Caution
-    //         Wifi_Symbol[1].SetActive(true);
-    //     }
-    //     else if (radnom == 2)
-    //     {
-    //         //change Wifi_Symbol to Unlock
-    //         Wifi_Symbol[2].SetActive(true);
-    //     }
-    //     else
-    //     {
-    //         //change Wifi_Symbol to Unknown
-    //         Wifi_Symbol[3].SetActive(true);
-    //     }
-    // }
 
 
 }

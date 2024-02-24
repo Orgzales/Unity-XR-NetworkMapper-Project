@@ -52,3 +52,9 @@ MonoBehaviour:
   wifiSignalStrength: 0
   wifiAuthentication_text: {fileID: 0}
   wifiAuthentication: No Networks in Area
+  bestSecuirty_text: {fileID: 0}
+  bestSecuirty: No Networks in Area
+  receiverate_text: {fileID: 0}
+  receiverate: 0
+  transmitrate_text: {fileID: 0}
+  transmitrate: 0
