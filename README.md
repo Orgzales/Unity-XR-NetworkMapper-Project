@@ -3,6 +3,16 @@
  Some Commands:
 	- netsh wlan show profiles
 	- netsh wlan show interface
+ Some Plugins: 
+	- MRTK Toolkit
+	- Andriod Unity Engine
+	- ARCORE XR
+
+Added This project to Backdrop Builds V3 (Feb 26, 2024): https://backdropbuild.com/builds/v3/xr-wireless-network-mapper
+Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
+	- Toolkit Testing: https://www.linkedin.com/feed/update/urn:li:activity:7117574652138266624/?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7117574652138266624%29
+	- XR BackDropBuild Annocement: https://www.linkedin.com/feed/update/urn:li:activity:7166152294290419712/?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7166152294290419712%29
+
 
 # Step 0 Plans (Augest 2023)
 	- 🗸 Activate Passthrough mdoe / AR - Finished
