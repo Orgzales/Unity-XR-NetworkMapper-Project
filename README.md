@@ -76,14 +76,13 @@
 		- 🗸 Create Script that keeps the DataBase updating
 			- 🗸 Create Dictionary that keeps each data of network
 			- 🗸 Make sure No_Connection is included to the previous network
-	- Still need to make new prefab for BSSID
+	- 🗸 make new prefab for BSSID connection
 		- 🗸 Same SSID but DIFFERENT BSSID = New Pillars
 		- 🗸 Create the new prefab 
 		- 🗸 text should always be showing
 			- 🗸 text = previous bssid -> new bssid 
 		- 🗸 should not be created when first connection
 		- 🗸 prefabs should disappear and reappear based same as wifi clones
-		- Test to make sure no connection doesn't interfere
 	- 🗸 Create a button that delete wifiobjects on click
 		- 🗸 One button: Toggle = Overwrite Nearby Connections.
 		- 🗸 One button: Press = Get rid of all wifi objects within radius.
@@ -94,17 +93,22 @@
 	- 🗸 Add Demo Button 
 		- 🗸 Toggle if strength values become random for demo purposes
 		- 🗸 Toggle to make random secuirty/vulnerable values
-	- Clean Up code & Bug Check
+	- 🗸 Clean Up code & Bug Check
 		- 🗸 Add Data receive  & Transmit code
 		- 🗸 Add Best secuirty and Current secuirty 
-		- Add these to Screen and Wifi Prefabs
-		- Remove unnessary code from here on out 
-	- Move Delete object button higher
-	- Create Wifi prefab background transparent 
-		- Possibly add text to both side 
-	- Fix When no connection during database:
-		- Add No Connection counter
-		- Remove increment of VUlnerable counter
+		- 🗸 Add these to Screen and Wifi Prefabs
+		- 🗸 Remove unnessary code from here on out 
+	- 🗸 Remove Delete object button higher
+	- 🗸 Create Wifi prefab background transparent 
+	- 🗸 Fix When no connection during database:
+		- 🗸 Add No Connection counter
+		- 🗸 Remove increment of VUlnerable counter
+	- Do final test for APK.9
+		- Test to make sure no connection doesn't interfere
+		- Make Sure BSSID Prefabs Work under correct conditions
+		- Test DATA Speeds + Resize Screen to fit new data
+		- Change color for corespsonding speed of DATA
+		- Edit base perfab for BSSID quality
 		
 # Step 8 Plans
 	- 🗸 Create Prefabs name based on SSID
@@ -189,7 +193,8 @@
 	- APK 6: Added Auth/Secuirty Detection
 	- APK 7: debugging Auth/Secuirty Detection
 	- APK 8: New Prefabs/screen + Quality of Life
-	- APK 9: Sudo DataBase + Shadow IT Scans + Access Points 
+	- APK 9: Sudo DataBase + Access Points + Data Rates + New Prefabs 
+	- APK 10: Shadow IT Scans + Anchor Point Saves
 	
 # Cybersecuirty Ideas
 
