@@ -223,6 +223,10 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 		- Rogue Access Point Detection - Very possible
 		- Detect Hidden SSID networks - Very possible
 		
-		
+# Some Sources
+
+	-https://math.stackexchange.com/questions/2833778/converting-between-different-scales
+	-https://www.crowdstrike.com/cybersecurity-101/cloud-security/shadow-it/
+    -https://cai.io/resources/thought-leadership/shadow-IT-meaning-risks
 
 	

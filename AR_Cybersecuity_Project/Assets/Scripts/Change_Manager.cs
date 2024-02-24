@@ -33,8 +33,6 @@ public class Change_Manager : MonoBehaviour
             float input_value = (float)dBmValue;
             Pillar_Height = (input_value - (-80f)) * (max_Height - min_Height) / ((-60f) - (-80f)) + min_Height;
 
-            //https://math.stackexchange.com/questions/2833778/converting-between-different-scales
-
         }
         else if (dBmValue < -80) // -80 or lower is bad
         {
@@ -106,12 +104,6 @@ public class Change_Manager : MonoBehaviour
         }
 
     }
-
-
-    //https://www.crowdstrike.com/cybersecurity-101/cloud-security/shadow-it/
-    //https://cai.io/resources/thought-leadership/shadow-IT-meaning-risks
-    //shadow it - find other non secure routers that are dangerious to the secure ones that IT isn't aware.
-
 
 
 }
