@@ -1,12 +1,16 @@
 # AUGMENTED REALITY WIRELESS NETWORK SECURITY MAPPER
- My Senior Research Project for the year 2023 Fall- Spring 2024. It is going to use AR in the unity engine. 
+An AR/VR/XR application made within a Unity Engine that will Map out wireless network connections to visualize signal strengths, access points, vulnerabilities, and more coming soon. Development was on the Meta Quest/ Meta Quest 2, however, applications with Android-supported AR/VR headsets should be supported. Some Code is supported with Windows Machines such as Apple Vision Pro but not fully tested.
+(My Stetson University Senior Research Project for the year 2023 Fall- Spring 2024)
+
+ 
  Some Commands:
-	- netsh wlan show profiles
-	- netsh wlan show interface
+- netsh wlan show profiles
+- netsh wlan show interface
+	
  Some Plugins: 
-	- MRTK Toolkit
-	- Andriod Unity Engine
-	- ARCORE XR
+- MRTK Toolkit
+- Andriod Unity Engine
+- ARCORE XR
 
 Added This project to Backdrop Builds V3 (Feb 26, 2024): https://backdropbuild.com/builds/v3/xr-wireless-network-mapper
 
