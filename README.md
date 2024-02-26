@@ -153,7 +153,7 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 # Step 9 Plans
 	- Create an Anchor point that the prefabs spawn locations are based
 		- LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
-		- Have a button to drop an anchor
+		- Have a button to drop an anchor 
 		- Allow the user to grab ancor and adjust it 
 			- This is incase the VR adjusts or resets user's position. 
 		- Have these anchors be storeable
