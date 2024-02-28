@@ -127,6 +127,9 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 		- Change color for corespsonding speed of DATA & Frequency
 		- 🗸 Edit base perfab for BSSID quality
 	- 🗸 Added network's Frequency
+	- Add BSSIDs to data base 
+		- Create larger creation radius 
+		- Timer till creation 
 		
 # Step 8 Plans
 	- 🗸 Create Prefabs name based on SSID
