@@ -140,6 +140,7 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 			- 🗸 Add list to new data screen in AR
 			- 🗸 Make script for popup for new SSID
 				- 🗸 Ask if it's white or black listed
+			- When new hidden SSID is scanned, popup window appears
 		- Have SSIDs become white or black listed
 	- Create a button that repeats the Shadow IT scan
 		- Detect rouge access points 
@@ -153,6 +154,7 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 
 # Step 9 Plans
 	- Create an Anchor point that the prefabs spawn locations are based
+		- Change Main camera to the OVR camera rig
 		- LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
 		- Have a button to drop an anchor 
 		- Allow the user to grab ancor and adjust it 
@@ -238,5 +240,6 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	-https://math.stackexchange.com/questions/2833778/converting-between-different-scales
 	-https://www.crowdstrike.com/cybersecurity-101/cloud-security/shadow-it/
     -https://cai.io/resources/thought-leadership/shadow-IT-meaning-risks
+	-https://skarredghost.com/2022/01/05/how-to-oculus-spatial-anchors-unity-2/ 
 
 	

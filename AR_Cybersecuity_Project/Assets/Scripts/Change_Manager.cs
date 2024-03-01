@@ -19,7 +19,8 @@ public class Change_Manager : MonoBehaviour
         float Pillar_Height = 0f;
 
         //Get the main camera script for dbm values from wifi script
-        GameObject mainCamera = Camera.main.gameObject;
+        GameObject mainCamera = Camera.main.gameObject; //legacy system later on
+        // GameObject mainCamera = GameObject.Find("OVRCameraRig"); // for anchor systems later 
         mainCameraScript = mainCamera.GetComponent<Connection_Spawner>();
         int dBmValue = mainCameraScript.dBm_value;
         string Secuirty_type_value = mainCameraScript.Secuirty_type_value;

@@ -18,8 +18,8 @@ MonoBehaviour:
   handTrackingFrequency: 0
   handTrackingVersion: 0
   multimodalHandsControllersSupport: 0
-  anchorSupport: 0
-  sharedAnchorSupport: 0
+  anchorSupport: 1
+  sharedAnchorSupport: 2
   renderModelSupport: 0
   trackedKeyboardSupport: 0
   bodyTrackingSupport: 0
