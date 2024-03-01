@@ -5,14 +5,9 @@ using UnityEngine;
 public class Popup_Screen_Manager : MonoBehaviour
 {
     public GameObject popupPrefab;
-    public float CountDown = 10f;
-    private float timer = 0f;
+    public float CountDown = 10f; // windoes testingq
+    private float timer = 0f;  //windows testing
     private bool POPUP = false;
-
-    void Start()
-    {
-
-    }
 
     void Update()
     {
@@ -28,9 +23,14 @@ public class Popup_Screen_Manager : MonoBehaviour
 
     public void ShowPopup()
     {
-        Transform cameraTransform = transform;
-        Vector3 popupPosition = cameraTransform.position + cameraTransform.forward * 2f;
-        Instantiate(popupPrefab, popupPosition, cameraTransform.rotation);
+        Transform CameraPos = transform; //camera's XYZ position
+        Vector3 Straight = CameraPos.forward; // Get the forward direction of VR
+        Straight.y = 0; // To prevent camera tilt affecting roatation
+        Straight.Normalize(); // Normalize vector scale
+
+        Quaternion Rotation = Quaternion.LookRotation(Straight); // Calculate POPUP rotation
+        Vector3 POS = CameraPos.position + Straight * 0.5f; // To popup in front
+        Instantiate(popupPrefab, POS, Rotation); // Create Popup
         POPUP = true;
     }
 }

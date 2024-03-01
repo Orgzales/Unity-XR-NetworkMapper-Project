@@ -18,7 +18,7 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	
  Toolkit Testing: https://www.linkedin.com/feed/update/urn:li:activity:7117574652138266624/?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7117574652138266624%29
 	
- XR BackDropBuild Annocement: https://www.linkedin.com/feed/update/urn:li:activity:7166152294290419712/?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7166152294290419712%29
+ XR BackDropBuild: https://www.linkedin.com/feed/update/urn:li:activity:7166152294290419712/?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7166152294290419712%29
 
 
 # Step 0 Plans (Augest 2023)
@@ -120,16 +120,13 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	- 🗸 Fix When no connection during database:
 		- 🗸 Add No Connection counter
 		- 🗸 Remove increment of VUlnerable counter
-	- Do final test for APK.9
+	- 🗸 Do final test for APK.9
 		- 🗸 Test to make sure no connection doesn't interfere
 		- 🗸 Make Sure BSSID Prefabs Work under correct conditions
 		- 🗸 Test DATA Speeds + Resize Screen to fit new data
-		- Change color for corespsonding speed of DATA & Frequency
+		- 🗸 Change color for corespsonding speed of DATA & Frequency
 		- 🗸 Edit base perfab for BSSID quality
 	- 🗸 Added network's Frequency
-	- Add BSSIDs to data base 
-		- Create larger creation radius 
-		- Timer till creation 
 		
 # Step 8 Plans
 	- 🗸 Create Prefabs name based on SSID
@@ -138,10 +135,11 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	- 🗸 This will be to mimic saving for future functions. 
 		- 🗸 If no connection, defualt to previous SSID
 	- Mimic Finding Shadow ITs Networks that are hidden
+		- 🗸 install ARcore XR plugin
 		- Detect Hidden SSIDs when scanning
-			- Add list to new data screen in AR
-			- Make script for popup for new SSID
-				- Ask if it's white or black listed
+			- 🗸 Add list to new data screen in AR
+			- 🗸 Make script for popup for new SSID
+				- 🗸 Ask if it's white or black listed
 		- Have SSIDs become white or black listed
 	- Create a button that repeats the Shadow IT scan
 		- Detect rouge access points 
@@ -151,7 +149,7 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 			- create a new prefab for those rouge access points
 				- possibly create a larger radius
 				- prefab should have no interference with scripts of wifi objects.
-	- Create an AR Slider for Delete Radius Button to increase size
+
 
 # Step 9 Plans
 	- Create an Anchor point that the prefabs spawn locations are based
@@ -169,7 +167,11 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 			- Store the anchor within user's data
 	- Can anchors be inside of anchors? 
 			
-		
+# Step 10 plans
+	- Double check bugs and unneeded code	
+	- Create an AR Slider for Delete Radius Button to increase size
+	- Lookinto Object MRTK manipulator script
+
 		
 # Step ? Plans
 	- Create Save button for mapping

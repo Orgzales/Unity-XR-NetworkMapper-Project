@@ -10,6 +10,9 @@ public class DataBase_Manager : MonoBehaviour
 
     public string debugSSID;
     public GameObject DataBase_Screen;
+    public Text DataBase_BSSID_Screen;
+    public Text DataBase_WhiteList_Screen;
+    public Text DataBase_BlackList_Screen;
     public GameObject screenParentObejct; // for making new text objects 
 
     public GameObject cloneParentObject; //Where all the wifi clones are made
@@ -17,6 +20,10 @@ public class DataBase_Manager : MonoBehaviour
 
     private Dictionary<string, NetworkCounters> networkCounters = new Dictionary<string, NetworkCounters>();
     private string previousNetworkName;
+
+    private List<string> BSSID_History = new List<string>();
+
+    public string debugText;
     private class NetworkCounters
     {
         public int good_Counter = 0;
@@ -39,6 +46,8 @@ public class DataBase_Manager : MonoBehaviour
 
         // string SSID_Key = debugSSID.ToString(); // Change Later windows testing
         string SSID_Key = Wifi_script.wifiSSID; // add another for bssid
+        // string BSSID_Key = Wifi_script.wifiBSSID;
+        string BSSID_Key = debugText;
 
         if (!networkCounters.ContainsKey(SSID_Key))
         {
@@ -58,6 +67,12 @@ public class DataBase_Manager : MonoBehaviour
         else
         {
             previousNetworkName = SSID_Key;
+        }
+
+        if (!BSSID_History.Contains(BSSID_Key))
+        {
+            BSSID_History.Add(BSSID_Key);
+            UpdateBSSIDHistory();
         }
 
 
@@ -82,6 +97,16 @@ public class DataBase_Manager : MonoBehaviour
         Vulnerability,
         Secure,
         No_Connection
+    }
+
+    public void UpdateBSSIDHistory()
+    {
+        string BSSID_History_Text = "";
+        foreach (string BSSID in BSSID_History)
+        {
+            BSSID_History_Text += "► " + BSSID + "\n";
+        }
+        DataBase_BSSID_Screen.text = BSSID_History_Text;
     }
 
     public void IncrementCounter(string networkName, int networkStrength, string networkSecuirty)
