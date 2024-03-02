@@ -45,10 +45,10 @@ public class DataBase_Manager : MonoBehaviour
     {
 
 
-        string SSID_Key = debugSSID.ToString(); // Change Later windows testing
-        // string SSID_Key = Wifi_script.wifiSSID; // add another for bssid
-        // string BSSID_Key = Wifi_script.wifiBSSID;
-        string BSSID_Key = BSSIDDEBUGTEXT;
+        // string SSID_Key = debugSSID.ToString(); // Change Later windows testing
+        string SSID_Key = Wifi_script.wifiSSID;
+        string BSSID_Key = Wifi_script.wifiBSSID;
+        // string BSSID_Key = BSSIDDEBUGTEXT; // windows testing
 
         bool BSSID_ADD = true; //if no network connection do not update bssid counter
 

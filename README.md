@@ -129,6 +129,10 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	- 🗸 Added network's Frequency
 		
 # Step 8 Plans
+	- 🗸 Made Seperate Dictionary for later Database for the BSSID history
+		- 🗸 Keep track of each connection of a bssid within the same network
+		- 🗸 Display own text to data base screen
+		- 🗸 if no connection BSSID shouldn't change
 	- 🗸 Create Prefabs name based on SSID
 	- 🗸 IF change to new SSID, set all objects to false
 		- 🗸 If changed back reverse the true and false condition
@@ -136,20 +140,21 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 		- 🗸 If no connection, defualt to previous SSID
 	- Mimic Finding Shadow ITs Networks that are hidden
 		- 🗸 install ARcore XR plugin
-		- Detect Hidden SSIDs when scanning
+		- 🗸 Detect Hidden SSIDs when scanning
 			- 🗸 Add list to new data screen in AR
 			- 🗸 Make script for popup for new SSID
 				- 🗸 Ask if it's white or black listed
+				- 🗸 Remove any Duplicates with shadow scan
+				- get how many hidden networks within area 
+					- make prefab that holds this info
+					- add infoof number of white or black listed 
 			- When new hidden SSID is scanned, popup window appears
+			- Create new dictionary for sudo database of shadow itself
+				- make new emu (Whitelsited or blacklisted or hidden)
 		- Have SSIDs become white or black listed
 	- Create a button that repeats the Shadow IT scan
-		- Detect rouge access points 
-			- Add these rogue access points to AR screen
-			- when scans, checks if access points SSID matches any known rogue AP SSIDs.
-			- If there are new ones, pop up the window
-			- create a new prefab for those rouge access points
-				- possibly create a larger radius
-				- prefab should have no interference with scripts of wifi objects.
+	- Get Wifi Pineapple configured to see if mimicing networking risk can be detected
+	
 
 
 # Step 9 Plans
@@ -173,6 +178,13 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	- Double check bugs and unneeded code	
 	- Create an AR Slider for Delete Radius Button to increase size
 	- Lookinto Object MRTK manipulator script
+	- Detect rouge access points 
+		- Add these rogue access points to AR screen
+		- when scans, checks if access points SSID matches any known rogue AP SSIDs.
+		- If there are new ones, pop up the window
+		- create a new prefab for those rouge access points
+			- possibly create a larger radius
+			- prefab should have no interference with scripts of wifi objects.
 
 		
 # Step ? Plans
@@ -207,7 +219,6 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 		- The custom cube can hold info such as room number and etc. 
 	- Have a delete button on the wifi pillars
 	- Change splash screen 
-	- If a new access point is created (BSSID), make a pillar to mark it.
 
 # APK Versions
 	- APK 1: Testing Mixed Reality 
