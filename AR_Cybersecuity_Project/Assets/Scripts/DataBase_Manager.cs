@@ -19,11 +19,12 @@ public class DataBase_Manager : MonoBehaviour
 
 
     private Dictionary<string, NetworkCounters> networkCounters = new Dictionary<string, NetworkCounters>();
+    private Dictionary<string, Dictionary<string, int>> BSSID_History_Counters = new Dictionary<string, Dictionary<string, int>>();
+
     private string previousNetworkName;
 
-    private List<string> BSSID_History = new List<string>();
 
-    public string debugText;
+    public string BSSIDDEBUGTEXT;
     private class NetworkCounters
     {
         public int good_Counter = 0;
@@ -44,10 +45,12 @@ public class DataBase_Manager : MonoBehaviour
     {
 
 
-        // string SSID_Key = debugSSID.ToString(); // Change Later windows testing
-        string SSID_Key = Wifi_script.wifiSSID; // add another for bssid
+        string SSID_Key = debugSSID.ToString(); // Change Later windows testing
+        // string SSID_Key = Wifi_script.wifiSSID; // add another for bssid
         // string BSSID_Key = Wifi_script.wifiBSSID;
-        string BSSID_Key = debugText;
+        string BSSID_Key = BSSIDDEBUGTEXT;
+
+        bool BSSID_ADD = true; //if no network connection do not update bssid counter
 
         if (!networkCounters.ContainsKey(SSID_Key))
         {
@@ -55,6 +58,7 @@ public class DataBase_Manager : MonoBehaviour
             if (string.IsNullOrEmpty(SSID_Key) || SSID_Key.Equals("<unknown ssid>"))
             {
                 SSID_Key = previousNetworkName;
+                BSSID_ADD = false;
             }
             else
             {
@@ -69,20 +73,36 @@ public class DataBase_Manager : MonoBehaviour
             previousNetworkName = SSID_Key;
         }
 
-        if (!BSSID_History.Contains(BSSID_Key))
+        if (!(string.IsNullOrEmpty(BSSID_Key) || BSSID_Key.Equals("<unknown bssid>")) && BSSID_ADD)
         {
-            BSSID_History.Add(BSSID_Key);
-            UpdateBSSIDHistory();
+            if (!BSSID_History_Counters.ContainsKey(SSID_Key))
+            { //if new network connection
+                BSSID_History_Counters[SSID_Key] = new Dictionary<string, int>();
+                BSSID_History_Counters[SSID_Key][BSSID_Key] = 1;
+            }
+            else
+            { //if network dictonary already exists
+                if (!BSSID_History_Counters[SSID_Key].ContainsKey(BSSID_Key))
+                {//if same network but different bssid
+                    BSSID_History_Counters[SSID_Key][BSSID_Key] = 1;
+                }
+                else
+                {
+                    BSSID_History_Counters[SSID_Key][BSSID_Key]++;
+                }
+
+            }
         }
 
+        // Debug.Log(SSID_Key + ":" + BSSID_Key + "= " + BSSID_History_Counters[SSID_Key][BSSID_Key]); //windows testing
 
         int dBm_value = Wifi_script.wifiSignalStrength; //based on dBm Value
         string Secuirty_type_value = Wifi_script.wifiAuthentication; //based on security type
 
-        IncrementCounter(SSID_Key.ToString(), dBm_value, Secuirty_type_value);
-        UpdateCounterText(SSID_Key, DataBase_Screen);
-        ChangeMapping(SSID_Key);
-
+        IncrementCounter(SSID_Key.ToString(), dBm_value, Secuirty_type_value); //update network connection
+        UpdateBSSIDHistory(SSID_Key); //update bsid history + counters to text on screen
+        UpdateCounterText(SSID_Key, DataBase_Screen); //update the screen text
+        ChangeMapping(SSID_Key); //change the mapping of the prefabs in scene
 
 
     }
@@ -99,14 +119,19 @@ public class DataBase_Manager : MonoBehaviour
         No_Connection
     }
 
-    public void UpdateBSSIDHistory()
+    public void UpdateBSSIDHistory(string SSIDKEY)
     {
-        string BSSID_History_Text = "";
-        foreach (string BSSID in BSSID_History)
+
+        Dictionary<string, int> innerDictionary = BSSID_History_Counters[SSIDKEY];
+        string BSSID_History_text = "";
+        foreach (var innerEntry in innerDictionary)
         {
-            BSSID_History_Text += "► " + BSSID + "\n";
+            string BSSID_Key = innerEntry.Key;
+            int BSSID_Counter = innerEntry.Value;
+            BSSID_History_text += "► " + SSIDKEY + ":" + BSSID_Key + " = " + BSSID_Counter + "\n";
         }
-        DataBase_BSSID_Screen.text = BSSID_History_Text;
+        DataBase_BSSID_Screen.text = BSSID_History_text;
+
     }
 
     public void IncrementCounter(string networkName, int networkStrength, string networkSecuirty)
