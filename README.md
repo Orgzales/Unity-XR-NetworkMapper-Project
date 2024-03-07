@@ -147,8 +147,15 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 				- 🗸 Remove any Duplicates with shadow scan
 				- get how many hidden networks within area 
 					- make prefab that holds this info
-					- add infoof number of white or black listed 
-			- When new hidden SSID is scanned, popup window appears
+					- add info of number of white or black listed 
+			- 🗸 When new hidden SSID is scanned, popup window appears
+				- 🗸 When Popup window alart prefab Instantiates, be in correct position
+					- 🗸 Rotation of screen is locked
+					- 🗸 Y-axis position is locked 
+					- 🗸 Dynamic X+Z Axis within MRTK Scene
+				- 🗸 Using IEnumerators, only make a screen when user gives input
+				- 🗸 Cycle through all hidden/surrounding SSIDs
+				- 🗸 Accumulate the user input within the White List & Black List networks
 			- Create new dictionary for sudo database of shadow itself
 				- make new emu (Whitelsited or blacklisted or hidden)
 		- Have SSIDs become white or black listed

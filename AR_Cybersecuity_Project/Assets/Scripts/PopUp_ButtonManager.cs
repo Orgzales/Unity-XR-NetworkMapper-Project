@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class PopUp_ButtonManager : MonoBehaviour
 {
+
+    public HiddenSSID_Scan HiddenSSID_ScanScript;
     public GameObject PopupPrefab;
 
     public void WhiteList_ButtonPress()
     {
         Debug.Log("WhiteList Button Pressed");
         Destroy(PopupPrefab);
+        HiddenSSID_ScanScript.popupClosed = true;
+        HiddenSSID_ScanScript.count_debug++;
+        HiddenSSID_ScanScript.debug_log();
     }
 
     public void BlackList_ButtonPress()
     {
         Debug.Log("BlackList Button Pressed");
         Destroy(PopupPrefab);
+        HiddenSSID_ScanScript.popupClosed = true;
     }
 
 }
