@@ -53,7 +53,8 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 
 # Step 4 Plans
 	- 🗸 Have the Marked down cubes display information
-		-  🗸 When cubed is touched, have it display previous data - Displays SSID BSSID and dBm when cube was created
+		-  🗸 When cubed is touched, have it display previous data 
+		-  🗸 Displays SSID BSSID and dBm when cube was created
 	- 🗸 Possibly show the range of the cube that was created wiht new prefab. 
 	- 🗸 Accident: Have program test if wifi/router has access to Better secuirty | (NEEDS MORE TESTING)
 		- 🗸 EX: Router is set to no security, but it still is able to check if it can have wpa2
@@ -149,7 +150,7 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 					- make prefab that holds this info
 					- add info of number of white or black listed 
 			- 🗸 When new hidden SSID is scanned, popup window appears
-				- 🗸 When Popup window alart prefab Instantiates, be in correct position
+				- 🗸 When Popup window alert prefab Instantiates, be in correct position
 					- 🗸 Rotation of screen is locked
 					- 🗸 Y-axis position is locked 
 					- 🗸 Dynamic X+Z Axis within MRTK Scene
