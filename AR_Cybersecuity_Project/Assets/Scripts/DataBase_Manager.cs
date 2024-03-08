@@ -11,8 +11,8 @@ public class DataBase_Manager : MonoBehaviour
     public string debugSSID;
     public GameObject DataBase_Screen;
     public Text DataBase_BSSID_Screen;
-    public Text DataBase_WhiteList_Screen;
-    public Text DataBase_BlackList_Screen;
+    // public Text DataBase_WhiteList_Screen;
+    // public Text DataBase_BlackList_Screen;
     public GameObject screenParentObejct; // for making new text objects 
 
     public GameObject cloneParentObject; //Where all the wifi clones are made
@@ -24,7 +24,7 @@ public class DataBase_Manager : MonoBehaviour
     private string previousNetworkName;
 
 
-    public string BSSIDDEBUGTEXT;
+    // public string BSSIDDEBUGTEXT; //windows testing
     private class NetworkCounters
     {
         public int good_Counter = 0;
@@ -228,7 +228,7 @@ public class DataBase_Manager : MonoBehaviour
         //Setting each object of certain SSID to inactive or active base on name
         foreach (Transform wifiObject in cloneParentObject.transform)
         {
-            if (wifiObject.name == networkSSID)
+            if (wifiObject.name == networkSSID || wifiObject.name == "ShadowITPrefab") //debating if shadow should be with same mapping or not
             {
                 wifiObject.gameObject.SetActive(true);
             }

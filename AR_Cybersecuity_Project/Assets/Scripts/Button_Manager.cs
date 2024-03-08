@@ -6,6 +6,10 @@ public class Button_Manager : MonoBehaviour
 {
     public Camera mainCamera; // Reference to the VR Headset
     public Checking_Internet Wifi_script; // Reference to the SSID Varaible
+    public HiddenSSID_Scan HiddenSSID_ScanScript; // Reference to the HiddenSSID_Scan Script
+
+    public Other_Spawner_Manager Other_Spawner_ManagerScript; // Reference to the Other_Spawner_Manager Script
+
     public bool Demo_Mode = false; //for Connection_Spawner
     public bool Overwrite_Mode = false;//for Connection_Spawner
 
@@ -42,7 +46,12 @@ public class Button_Manager : MonoBehaviour
                 }
             }
         }
+    }
 
+    public void ReScanShadowITButtonPress()
+    {
+        HiddenSSID_ScanScript.BeginScanningShadow();
+        // Other_Spawner_ManagerScript.SpawnShadowITPrefab();
     }
 
 

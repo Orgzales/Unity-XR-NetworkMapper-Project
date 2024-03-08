@@ -139,16 +139,16 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 		- 🗸 If changed back reverse the true and false condition
 	- 🗸 This will be to mimic saving for future functions. 
 		- 🗸 If no connection, defualt to previous SSID
-	- Mimic Finding Shadow ITs Networks that are hidden
+	- 🗸 Mimic Finding Shadow ITs Networks that are hidden
 		- 🗸 install ARcore XR plugin
 		- 🗸 Detect Hidden SSIDs when scanning
 			- 🗸 Add list to new data screen in AR
 			- 🗸 Make script for popup for new SSID
 				- 🗸 Ask if it's white or black listed
 				- 🗸 Remove any Duplicates with shadow scan
-				- get how many hidden networks within area 
-					- make prefab that holds this info
-					- add info of number of white or black listed 
+				- 🗸 get how many hidden networks within area 
+					- 🗸 make prefab that holds this info
+					- 🗸 add info of number of white or black listed 
 			- 🗸 When new hidden SSID is scanned, popup window appears
 				- 🗸 When Popup window alert prefab Instantiates, be in correct position
 					- 🗸 Rotation of screen is locked
@@ -157,15 +157,29 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 				- 🗸 Using IEnumerators, only make a screen when user gives input
 				- 🗸 Cycle through all hidden/surrounding SSIDs
 				- 🗸 Accumulate the user input within the White List & Black List networks
-			- Create new dictionary for sudo database of shadow itself
-				- make new emu (Whitelsited or blacklisted or hidden)
-		- Have SSIDs become white or black listed
-	- Create a button that repeats the Shadow IT scan
-	- Get Wifi Pineapple configured to see if mimicing networking risk can be detected
+			- 🗸 Create new dictionary for sudo database of shadow itself
+				- 🗸 make new dictionary (Whitelsited or blacklisted)
+		- 🗸 Have SSIDs become white or black listed
+	- 🗸 Create a button that repeats the Shadow IT scan
+		- 🗸 button should clear out Allprevious SSID scan history to rescan in current location
+			- 🗸 button should keep white + black List data
+		- 🗸 New prefab should be placed where rescan
+			- 🗸 Should display both white + black lists data
+		- 🗸 if network gets changed it will remove it from previous list
+		- 🗸 prefabs should not change when network changes
+			- 🗸 Have delete button with shadow prefab
+	- DONT FORGET TO TRANSFER ALL WINDOWS CODE TO ANDRIOD!!!
+		- Make button not pressable when the scan is already happening to prevent crash
 	
 
 
 # Step 9 Plans
+	- Get Wifi Pineapple configured to see if mimicing networking risk can be detected
+		- Test with same SSID as Stetson vs Stetson Named SSID
+	- 🗸 Make a seperate manager script that handles all other non-connection strength prefab spawns.
+		- Shadow IT Prefab
+		- Custom Info Prefab
+		- Regular Anchor Prefab
 	- Create an Anchor point that the prefabs spawn locations are based
 		- Change Main camera to the OVR camera rig
 		- LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html

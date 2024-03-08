@@ -10,10 +10,14 @@ using TMPro;
 public class HiddenSSID_Scan : MonoBehaviour
 {
 
+    public Other_Spawner_Manager Other_Spawner_ManagerScript;
+
     public Transform CameraObject; //switch with OVR later
     public GameObject popupPrefab; //POp up screen prefab
     public GameObject parentObject; //MRTK scene
-    public Text PrintAllSSID; // windows testing
+    public Text WhiteListText;
+    public Text BlackListText;
+
 
 
     // private List<string> hiddenSSIDs = new List<string>();
@@ -25,23 +29,27 @@ public class HiddenSSID_Scan : MonoBehaviour
 
     public string DescriptionTextPrefabName = ""; //name of object to change text
 
-    public int count_debug = 0;
+    // public int count_debug = 0;
+
+    private string CurrentSSID;
     public bool popupClosed = false; //debugging 
 
-    void Start()
-    {
-        if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
-        {
-            Permission.RequestUserPermission(Permission.FineLocation);
-        }
-        // InvokeRepeating("BeginScanningShadow", 0, 3);
-        BeginScanningShadow();
+    // void Start()
+    // {
+    //     if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+    //     {
+    //         Permission.RequestUserPermission(Permission.FineLocation);
+    //     }
+    //     // InvokeRepeating("BeginScanningShadow", 0, 3);
+    //     BeginScanningShadow();
 
-    }
+    // }
 
-    private void BeginScanningShadow()
+    public void BeginScanningShadow()
     {
+        // StopCoroutine(ScanForHiddenSSIDs());
         // StartCoroutine(ScanForHiddenSSIDs());
+        StopCoroutine(ScanOnWindowsSSIDs()); //windows testing
         StartCoroutine(ScanOnWindowsSSIDs()); //windows testing
     }
 
@@ -55,49 +63,35 @@ public class HiddenSSID_Scan : MonoBehaviour
         AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
         AndroidJavaObject scanResults = wifiManager.Call<AndroidJavaObject>("getScanResults");
 
+        allSSIDs.Clear(); //for rescans
         int scanResultsCount = scanResults.Call<int>("size");
-        // NewShadowSSID = false;
 
         for (int i = 0; i < scanResultsCount; i++)
         {
             AndroidJavaObject scanResult = scanResults.Call<AndroidJavaObject>("get", i);
             string ssid = scanResult.Get<string>("SSID");
 
-            // // Check if SSID is hidden
-            // if (string.IsNullOrEmpty(ssid))
-            // {
-            //     // Add hidden SSID to the list
-            //     hiddenSSIDs.Add("Hidden SSID Detected"); //Add this code later if there is a need to display hidden SSIDs
-            // }
-
             if (!allSSIDs.Contains(ssid))
             {
                 allSSIDs.Add(ssid);
+                CurrentSSID = ssid;
                 ShowPopup(ssid);
                 // NewShadowSSID = true;
+                yield return new WaitUntil(() => popupClosed);
+                popupClosed = false; // Reset
             }
 
         }
+        Other_Spawner_ManagerScript.SpawnShadowITPrefab(); //makes new prefab
 
-        // RemoveDuplicates(allSSIDs);
-        string finalText = "";
-        // Display detected hidden SSIDs
-        // foreach (string hiddenSSID in hiddenSSIDs)
-        // {
-        //     finalText += hiddenSSID + "\n";
-        // }
 
-        foreach (string ssid in allSSIDs)
-        {
-            finalText += ssid + "\n";
-        }
-        PrintAllSSID.text = finalText;
     }
 
     private IEnumerator ScanOnWindowsSSIDs() //windows testing
     {
         yield return new WaitForSeconds(1.0f);
 
+        allSSIDs.Clear();
         string[] scanResultsCount = new string[] { "Resnet", "eduroam",
         "ATT", "Xfinity", "Hidden SSID Detected" };
 
@@ -116,14 +110,15 @@ public class HiddenSSID_Scan : MonoBehaviour
             if (!allSSIDs.Contains(ssid))
             {
                 allSSIDs.Add(ssid);
+                CurrentSSID = ssid;
                 ShowPopup(ssid);
                 // NewShadowSSID = true;
                 yield return new WaitUntil(() => popupClosed);
                 popupClosed = false; // Reset
-
             }
-
         }
+        Other_Spawner_ManagerScript.SpawnShadowITPrefab(); //makes new prefab
+
 
     }
 
@@ -145,7 +140,7 @@ public class HiddenSSID_Scan : MonoBehaviour
 
     }
 
-    void SetTextRecursively(Transform parent, string text)
+    void SetTextRecursively(Transform parent, string text) //setting the text in the popupwindow
     {
         // Get Parent -> Parent -> Textobject
         Transform textObjectTransform = parent.Find(DescriptionTextPrefabName);
@@ -167,24 +162,41 @@ public class HiddenSSID_Scan : MonoBehaviour
 
     }
 
-    public void debug_log()
+    public void AddWhiteList()
     {
-        Debug.Log("Debug Count: " + count_debug);
+
+        if (!WhiteSSIDs.Contains(CurrentSSID))
+        {
+            WhiteSSIDs.Add(CurrentSSID);
+        }
+        if (BlackSSIDs.Contains(CurrentSSID))
+        {
+            BlackSSIDs.Remove(CurrentSSID);
+        }
+        string finalText = "";
+        foreach (string ssid in WhiteSSIDs)
+        {
+            finalText += ssid + "\n";
+        }
+        WhiteListText.text = finalText;
     }
 
+    public void AddBlackList()
+    {
+        if (!BlackSSIDs.Contains(CurrentSSID))
+        {
+            BlackSSIDs.Add(CurrentSSID);
+        }
+        if (WhiteSSIDs.Contains(CurrentSSID))
+        {
+            WhiteSSIDs.Remove(CurrentSSID);
+        }
+        string finalText = "";
+        foreach (string ssid in BlackSSIDs)
+        {
+            finalText += ssid + "\n";
+        }
+        BlackListText.text = finalText;
+    }
 
-    // public void RemoveDuplicates(List<string> list)
-    // {
-    //     for (int i = 0; i < list.Count; i++)
-    //     {
-    //         for (int j = i + 1; j < list.Count; j++)
-    //         {
-    //             if (list[i] == list[j])
-    //             {
-    //                 list.RemoveAt(j);
-    //                 j--;
-    //             }
-    //         }
-    //     }
-    // }
 }
