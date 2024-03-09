@@ -12,8 +12,11 @@ public class Other_Spawner_Manager : MonoBehaviour
 
 
     public HiddenSSID_Scan HiddenSSID_ScanScript; // Reference to the HiddenSSID_Scan Script
+    public Button_Manager Button_ManagerScript; // Reference to the Button_Manager Script
+
     public GameObject ShadowITPrefab;
-    public string ShadowPrefab_Details_Text = "";
+    public string WhiteList_Details_Text = "";
+    public string BlackList_Details_Text = "";
 
     public void SpawnShadowITPrefab()
     {
@@ -22,21 +25,32 @@ public class Other_Spawner_Manager : MonoBehaviour
 
         GameObject newObject = Instantiate(ShadowITPrefab, spawnPosition, Quaternion.identity);
         newObject.transform.SetParent(parentObject.transform);
-        newObject.name = "ShadowITPrefab";
 
-        string ShadowData = "White List:\n";
+        string WhiteListData = "~ White List ~\n";
+        string BlackListData = "~ Black List ~\n";
+        if (Button_ManagerScript.Demo_Mode)
+        {
+            newObject.name = "ShadowITPrefabDemo";
+            WhiteListData = "~ DEMO White List ~\n";
+            BlackListData = "~ DEMO Black List ~\n";
+        }
+        else
+        {
+            newObject.name = "ShadowITPrefab";
+        }
+
         foreach (string ssid in HiddenSSID_ScanScript.WhiteSSIDs)
         {
-            ShadowData += "   " + ssid + "\n";
+            WhiteListData += "   " + ssid + "\n";
         }
-        ShadowData += "\nBlack List:\n";
         foreach (string ssid in HiddenSSID_ScanScript.BlackSSIDs)
         {
-            ShadowData += "   " + ssid + "\n";
+            BlackListData += "   " + ssid + "\n";
         }
 
         // Debug.Log("SpawnShadowITPrefab");
-        SetTextRecursively(newObject.transform, ShadowData);
+        SetTextRecursively(newObject.transform, WhiteListData, WhiteList_Details_Text);
+        SetTextRecursively(newObject.transform, BlackListData, BlackList_Details_Text);
     }
 
     public void SpawnInfoAnchorPrefab()
@@ -51,10 +65,10 @@ public class Other_Spawner_Manager : MonoBehaviour
         // GameObject anchorPrefab = Instantiate(anchorPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     }
 
-    void SetTextRecursively(Transform parent, string text)
+    void SetTextRecursively(Transform parent, string text, string Parent_text)
     {
         // Get Parent -> Parent -> Textobject
-        Transform textObjectTransform = parent.Find(ShadowPrefab_Details_Text); //change later to a variable
+        Transform textObjectTransform = parent.Find(Parent_text);
 
         if (textObjectTransform != null)
         {
@@ -67,7 +81,7 @@ public class Other_Spawner_Manager : MonoBehaviour
             // Keep looking for the text for later code for BSSID
             foreach (Transform child in parent)
             {
-                SetTextRecursively(child, text);
+                SetTextRecursively(child, text, Parent_text);
             }
         }
 

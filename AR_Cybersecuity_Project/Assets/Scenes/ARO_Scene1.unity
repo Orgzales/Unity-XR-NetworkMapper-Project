@@ -1979,8 +1979,10 @@ MonoBehaviour:
   spawnHeight: 1.75
   parentObject: {fileID: 1218333067}
   HiddenSSID_ScanScript: {fileID: 88665048}
+  Button_ManagerScript: {fileID: 1277275789}
   ShadowITPrefab: {fileID: 600639918143300120, guid: fef7b1a5aa3ae4647ab62b0db12f8af1, type: 3}
-  ShadowPrefab_Details_Text: SIT_Properties_text
+  WhiteList_Details_Text: White_Properties_text
+  BlackList_Details_Text: Black_Properties_text
 --- !u!114 &43722142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2567,6 +2569,7 @@ MonoBehaviour:
   BlackSSIDs: []
   DescriptionTextPrefabName: Description
   popupClosed: 0
+  NoActiveScanning: 1
 --- !u!1 &97705941
 GameObject:
   m_ObjectHideFlags: 0

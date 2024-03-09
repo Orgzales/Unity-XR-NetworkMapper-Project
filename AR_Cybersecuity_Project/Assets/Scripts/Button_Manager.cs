@@ -50,8 +50,23 @@ public class Button_Manager : MonoBehaviour
 
     public void ReScanShadowITButtonPress()
     {
-        HiddenSSID_ScanScript.BeginScanningShadow();
-        // Other_Spawner_ManagerScript.SpawnShadowITPrefab();
+        if (Demo_Mode)
+        {
+            if (HiddenSSID_ScanScript.NoActiveScanning) //prevent crash if scan is already happening
+            {
+                HiddenSSID_ScanScript.BeginDEMOScanningShadow();
+            }
+        }
+        else
+        {
+            if (HiddenSSID_ScanScript.NoActiveScanning) //This will not work on windows but on VR
+            {
+                // HiddenSSID_ScanScript.BeginScanningShadow();
+                Debug.Log("Demo Scanning"); //for windows testing but should work on VR
+            }
+        }
+
+
     }
 
 

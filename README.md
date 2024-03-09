@@ -168,16 +168,23 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 		- 🗸 if network gets changed it will remove it from previous list
 		- 🗸 prefabs should not change when network changes
 			- 🗸 Have delete button with shadow prefab
-	- DONT FORGET TO TRANSFER ALL WINDOWS CODE TO ANDRIOD!!!
-		- Make button not pressable when the scan is already happening to prevent crash
+		- 🗸 Make button not pressable when the scan is already happening to prevent crash
+		- 🗸 Add the color violet to these prefabs to have some material 
+		- 🗸 Within Shadow Scan Prefab create two seperate text boxes for each data set
+			- 🗸 Within Text Details, insert Delete button here instead
+			- 🗸 Stop from users accidentally deleting info 
+		- 🗸 Change function if Demo mode is activated
+			- 🗸 Should have set list of SSIDs ready for example scanning 
+			- 🗸 User can see if Prefab is a Demo or not 
 	
 
 
 # Step 9 Plans
-	- Get Wifi Pineapple configured to see if mimicing networking risk can be detected
-		- Test with same SSID as Stetson vs Stetson Named SSID
+	- 🗸 Get Wifi Pineapple configured to see if mimicing networking risk can be detected
+		- 🗸 Test with same SSID as Stetson vs Stetson Named SSID
+		- Record Results of VR application w/ Wifi_Pineapple + NETGEAR
 	- 🗸 Make a seperate manager script that handles all other non-connection strength prefab spawns.
-		- Shadow IT Prefab
+		- 🗸 Shadow IT Prefab
 		- Custom Info Prefab
 		- Regular Anchor Prefab
 	- Create an Anchor point that the prefabs spawn locations are based
@@ -263,10 +270,6 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	- Simulate firewall - possible
 	- Simulate Shadow IT - possible
 	- Mac Adress Filtering - possible
-	
-	- Shadow IT function - possible
-		- Rogue Access Point Detection - Very possible
-		- Detect Hidden SSID networks - Very possible
 		
 # Some Sources
 

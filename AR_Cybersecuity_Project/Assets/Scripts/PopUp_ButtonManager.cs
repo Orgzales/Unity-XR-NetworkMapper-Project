@@ -10,7 +10,6 @@ public class PopUp_ButtonManager : MonoBehaviour
 
     public void WhiteList_ButtonPress()
     {
-        // Debug.Log("WhiteList Button Pressed");
         Destroy(PopupPrefab);
         HiddenSSID_ScanScript.popupClosed = true;
         HiddenSSID_ScanScript.AddWhiteList();
@@ -18,7 +17,6 @@ public class PopUp_ButtonManager : MonoBehaviour
 
     public void BlackList_ButtonPress()
     {
-        // Debug.Log("BlackList Button Pressed");
         Destroy(PopupPrefab);
         HiddenSSID_ScanScript.popupClosed = true;
         HiddenSSID_ScanScript.AddBlackList();

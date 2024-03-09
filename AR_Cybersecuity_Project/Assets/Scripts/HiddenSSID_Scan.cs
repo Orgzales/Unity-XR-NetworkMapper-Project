@@ -32,7 +32,8 @@ public class HiddenSSID_Scan : MonoBehaviour
     // public int count_debug = 0;
 
     private string CurrentSSID;
-    public bool popupClosed = false; //debugging 
+    public bool popupClosed = false; //To stop more than one screen pop up instantanty  
+    public bool NoActiveScanning = true; //To prevent Scan within a scan
 
     // void Start()
     // {
@@ -47,12 +48,17 @@ public class HiddenSSID_Scan : MonoBehaviour
 
     public void BeginScanningShadow()
     {
-        // StopCoroutine(ScanForHiddenSSIDs());
-        // StartCoroutine(ScanForHiddenSSIDs());
-        StopCoroutine(ScanOnWindowsSSIDs()); //windows testing
-        StartCoroutine(ScanOnWindowsSSIDs()); //windows testing
+        NoActiveScanning = false; //SCanning begins
+        StopCoroutine(ScanForHiddenSSIDs());
+        StartCoroutine(ScanForHiddenSSIDs());
     }
 
+    public void BeginDEMOScanningShadow()
+    {
+        NoActiveScanning = false; //SCanning begins
+        StopCoroutine(ScanForDemoSSIDS()); //windows testing
+        StartCoroutine(ScanForDemoSSIDS()); //windows testing
+    }
 
 
     private IEnumerator ScanForHiddenSSIDs()
@@ -83,17 +89,17 @@ public class HiddenSSID_Scan : MonoBehaviour
 
         }
         Other_Spawner_ManagerScript.SpawnShadowITPrefab(); //makes new prefab
-
+        NoActiveScanning = true; //Scanning ends here when prefab is created
 
     }
 
-    private IEnumerator ScanOnWindowsSSIDs() //windows testing
+    private IEnumerator ScanForDemoSSIDS() //windows testing
     {
         yield return new WaitForSeconds(1.0f);
 
         allSSIDs.Clear();
-        string[] scanResultsCount = new string[] { "Resnet", "eduroam",
-        "ATT", "Xfinity", "Hidden SSID Detected" };
+        string[] scanResultsCount = new string[] { "Resnet", "eduroam", "SUPER SAFE WIFI",
+        "ATT", "Xfinity", "Hidden SSID Detected", "Very Obvious Dangerious Network"};
 
         for (int i = 0; i < scanResultsCount.Length; i++)
         {
@@ -118,7 +124,7 @@ public class HiddenSSID_Scan : MonoBehaviour
             }
         }
         Other_Spawner_ManagerScript.SpawnShadowITPrefab(); //makes new prefab
-
+        NoActiveScanning = true; //Scanning ends here when prefab is created
 
     }
 
@@ -133,6 +139,7 @@ public class HiddenSSID_Scan : MonoBehaviour
         GameObject newObjectScreen = Instantiate(popupPrefab, POS, Rotation); // Create Popup
         newObjectScreen.transform.SetParent(parentObject.transform); //Set Popup within MRTK scene
         newObjectScreen.SetActive(true);
+
 
         string DescriptionText = "SSID Detected, Do you trust this Network? : " + NetworkSSID;
 

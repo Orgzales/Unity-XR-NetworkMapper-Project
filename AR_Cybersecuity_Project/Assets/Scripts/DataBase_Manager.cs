@@ -225,10 +225,14 @@ public class DataBase_Manager : MonoBehaviour
 
     public void ChangeMapping(string networkSSID)
     {
+
+        // list of prefabs of names I dont want to change
+        List<string> namesToKeep = new List<string> { "ShadowITPrefab", "ShadowITPrefabDemo" };
+
         //Setting each object of certain SSID to inactive or active base on name
         foreach (Transform wifiObject in cloneParentObject.transform)
         {
-            if (wifiObject.name == networkSSID || wifiObject.name == "ShadowITPrefab") //debating if shadow should be with same mapping or not
+            if (wifiObject.name == networkSSID || namesToKeep.Contains(wifiObject.name)) //debating if shadow should be with same mapping or not
             {
                 wifiObject.gameObject.SetActive(true);
             }
