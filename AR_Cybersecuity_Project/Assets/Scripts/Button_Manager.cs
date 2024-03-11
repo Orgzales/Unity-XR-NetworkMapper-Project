@@ -61,8 +61,8 @@ public class Button_Manager : MonoBehaviour
         {
             if (HiddenSSID_ScanScript.NoActiveScanning) //This will not work on windows but on VR
             {
-                // HiddenSSID_ScanScript.BeginScanningShadow();
-                Debug.Log("Demo Scanning"); //for windows testing but should work on VR
+                HiddenSSID_ScanScript.BeginScanningShadow();
+                // Debug.Log("Demo Scanning"); //for windows testing but should work on VR
             }
         }
 

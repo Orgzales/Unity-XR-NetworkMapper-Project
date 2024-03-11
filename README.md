@@ -180,6 +180,7 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 
 
 # Step 9 Plans
+	- Fix Shadow Prefab Delte Bug
 	- 🗸 Get Wifi Pineapple configured to see if mimicing networking risk can be detected
 		- 🗸 Test with same SSID as Stetson vs Stetson Named SSID
 		- Record Results of VR application w/ Wifi_Pineapple + NETGEAR
@@ -259,7 +260,8 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	- APK 7: debugging Auth/Secuirty Detection
 	- APK 8: New Prefabs/screen + Quality of Life
 	- APK 9: Sudo DataBase + Access Points + Data Rates + New Prefabs 
-	- APK 10: Shadow IT Scans + Anchor Point Saves
+	- APK 10: Shadow IT Scan function 
+	- APK 11: Anchor Points 
 	
 # Cybersecuirty Ideas
 
