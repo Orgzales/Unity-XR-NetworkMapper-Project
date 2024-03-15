@@ -31,9 +31,14 @@ public class HiddenSSID_Scan : MonoBehaviour
 
     // public int count_debug = 0;
 
+
+
     private string CurrentSSID;
     public bool popupClosed = false; //To stop more than one screen pop up instantanty  
     public bool NoActiveScanning = true; //To prevent Scan within a scan
+
+
+    public Dictionary<string, int> SSIDSignal = new Dictionary<string, int>();
 
     // void Start()
     // {
@@ -49,14 +54,18 @@ public class HiddenSSID_Scan : MonoBehaviour
     public void BeginScanningShadow()
     {
         NoActiveScanning = false; //SCanning begins
-        StopCoroutine(ScanForHiddenSSIDs());
+        allSSIDs.Clear(); //for rescans
+        WhiteListText.text = "Scanning...";
+        BlackListText.text = "Scanning...";
         StartCoroutine(ScanForHiddenSSIDs());
     }
 
     public void BeginDEMOScanningShadow()
     {
         NoActiveScanning = false; //SCanning begins
-        StopCoroutine(ScanForDemoSSIDS()); //windows testing
+        allSSIDs.Clear(); //for rescans
+        WhiteListText.text = "Scanning...";
+        BlackListText.text = "Scanning...";
         StartCoroutine(ScanForDemoSSIDS()); //windows testing
     }
 
@@ -67,21 +76,26 @@ public class HiddenSSID_Scan : MonoBehaviour
 
         AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
         AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
+        wifiManager.Call<bool>("startScan"); //works for restarting scan
         AndroidJavaObject scanResults = wifiManager.Call<AndroidJavaObject>("getScanResults");
 
-        allSSIDs.Clear(); //for rescans
         int scanResultsCount = scanResults.Call<int>("size");
 
         for (int i = 0; i < scanResultsCount; i++)
         {
             AndroidJavaObject scanResult = scanResults.Call<AndroidJavaObject>("get", i);
             string ssid = scanResult.Get<string>("SSID");
+            int signalStrength = scanResult.Get<int>("level"); //works
+
+            string SSIDInfo = ssid + " (" + signalStrength.ToString() + " dBm)";
+            // Debug.Log("SSID: " + ssidWithStrength);
 
             if (!allSSIDs.Contains(ssid))
             {
                 allSSIDs.Add(ssid);
                 CurrentSSID = ssid;
-                ShowPopup(ssid);
+                SSIDSignal.Add(ssid, signalStrength);
+                ShowPopup(SSIDInfo);
                 // NewShadowSSID = true;
                 yield return new WaitUntil(() => popupClosed);
                 popupClosed = false; // Reset
@@ -97,9 +111,9 @@ public class HiddenSSID_Scan : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
 
-        allSSIDs.Clear();
         string[] scanResultsCount = new string[] { "Resnet", "eduroam", "SUPER SAFE WIFI",
         "ATT", "Xfinity", "Hidden SSID Detected", "Very Obvious Dangerious Network"};
+
 
         for (int i = 0; i < scanResultsCount.Length; i++)
         {
@@ -110,14 +124,20 @@ public class HiddenSSID_Scan : MonoBehaviour
             //     // Add hidden SSID to the list
             //     hiddenSSIDs.Add("Hidden SSID Detected"); //Add this code later if there is a need to display hidden SSIDs
             // }
+
             string ssid = scanResultsCount[i];
-            Debug.Log("SSID: " + ssid);
+            int signalStrength = Random.Range(-50, -90);
+            string SSIDInfo = ssid + " (" + signalStrength.ToString() + " dBm)";
+            // Debug.Log("SSID: " + ssid);
 
             if (!allSSIDs.Contains(ssid))
             {
                 allSSIDs.Add(ssid);
                 CurrentSSID = ssid;
-                ShowPopup(ssid);
+                SSIDSignal[ssid] = signalStrength;
+                Debug.Log("SSID: " + ssid + " Signal: " + signalStrength.ToString() + " dBm");
+                Debug.Log(SSIDSignal[ssid]);
+                ShowPopup(SSIDInfo);
                 // NewShadowSSID = true;
                 yield return new WaitUntil(() => popupClosed);
                 popupClosed = false; // Reset
@@ -125,6 +145,8 @@ public class HiddenSSID_Scan : MonoBehaviour
         }
         Other_Spawner_ManagerScript.SpawnShadowITPrefab(); //makes new prefab
         NoActiveScanning = true; //Scanning ends here when prefab is created
+        SetWhiteText();
+        SetBlackText();
 
     }
 
@@ -180,10 +202,30 @@ public class HiddenSSID_Scan : MonoBehaviour
         {
             BlackSSIDs.Remove(CurrentSSID);
         }
+
+    }
+
+    public void SetWhiteText()
+    {
         string finalText = "";
         foreach (string ssid in WhiteSSIDs)
         {
-            finalText += ssid + "\n";
+            int dBm = SSIDSignal[ssid];
+            switch (CheckdBm(dBm))
+            {
+                case 1:
+                    finalText += "<color=green>" + dBm.ToString() + "dBm|" + "</color>" + ssid + "\n";
+                    break;
+                case 2:
+                    finalText += "<color=#FFFF00>" + dBm.ToString() + "dBm|" + "</color>" + ssid + "\n";
+                    break;
+                case 3:
+                    finalText += "<color=red>" + dBm.ToString() + "dBm|" + "</color>" + ssid + "\n";
+                    break;
+                default:
+                    finalText += dBm.ToString() + "dBm|" + ssid + "\n";
+                    break;
+            }
         }
         WhiteListText.text = finalText;
     }
@@ -198,12 +240,52 @@ public class HiddenSSID_Scan : MonoBehaviour
         {
             WhiteSSIDs.Remove(CurrentSSID);
         }
+
+    }
+
+    public void SetBlackText()
+    {
         string finalText = "";
         foreach (string ssid in BlackSSIDs)
         {
-            finalText += ssid + "\n";
+            int dBm = SSIDSignal[ssid];
+            switch (CheckdBm(dBm))
+            {
+                case 1:
+                    finalText += "<color=green>" + dBm.ToString() + "dBm|" + "</color>" + ssid + "\n";
+                    break;
+                case 2:
+                    finalText += "<color=#FFFF00>" + dBm.ToString() + "dBm|" + "</color>" + ssid + "\n";
+                    break;
+                case 3:
+                    finalText += "<color=red>" + dBm.ToString() + "dBm|" + "</color>" + ssid + "\n";
+                    break;
+                default:
+                    finalText += dBm.ToString() + "dBm|" + ssid + "\n";
+                    break;
+            }
         }
         BlackListText.text = finalText;
+    }
+
+    public int CheckdBm(int wifiSignalStrength)
+    {
+        if (wifiSignalStrength >= -67) //-67 = Amazing in dbm
+        {
+            return 1;
+        }
+        else if (wifiSignalStrength >= -79 && wifiSignalStrength < -70) // -70 = okay
+        {
+            return 2;
+        }
+        else if (wifiSignalStrength < -80) // -80 or lower is bad
+        {
+            return 3;
+        }
+        else
+        {
+            return 3;
+        }
     }
 
 }

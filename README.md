@@ -180,7 +180,19 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 
 
 # Step 9 Plans
-	- Fix Shadow Prefab Delte Bug
+	- 🗸 Fix Shadow Prefab Delte Bug
+	- 🗸 Fix StartCourtine Bug
+		- 🗸 List and Dictionary should clear each scan
+		- 🗸 Update the text of the Screen after scan if finished
+		- 🗸 Set all important varaibles when button is press not during scan
+	- 🗸 Add signal strength tracking on hidden ssids scan 
+		- 🗸 Have each one colorized based on dBm
+		- 🗸 Add signal Str to shadow Prefab
+		- add a tracking button to attempt to single down a certain ssid access point 
+			- Add new button onto the button bar 
+			- When press the selected SSID within the ShadowITScan will be attempted to following
+			- Add a track button for the SSID shadow Scan
+			- Depending if there is a signal or not return it on new screen 
 	- 🗸 Get Wifi Pineapple configured to see if mimicing networking risk can be detected
 		- 🗸 Test with same SSID as Stetson vs Stetson Named SSID
 		- Record Results of VR application w/ Wifi_Pineapple + NETGEAR

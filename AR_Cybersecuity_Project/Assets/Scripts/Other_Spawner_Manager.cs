@@ -41,12 +41,13 @@ public class Other_Spawner_Manager : MonoBehaviour
 
         foreach (string ssid in HiddenSSID_ScanScript.WhiteSSIDs)
         {
-            WhiteListData += "   " + ssid + "\n";
+            WhiteListData += "   " + ssid + ":" + HiddenSSID_ScanScript.SSIDSignal[ssid] + "\n";
         }
         foreach (string ssid in HiddenSSID_ScanScript.BlackSSIDs)
         {
-            BlackListData += "   " + ssid + "\n";
+            BlackListData += "   " + ssid + ":" + HiddenSSID_ScanScript.SSIDSignal[ssid] + "\n";
         }
+
 
         // Debug.Log("SpawnShadowITPrefab");
         SetTextRecursively(newObject.transform, WhiteListData, WhiteList_Details_Text);
