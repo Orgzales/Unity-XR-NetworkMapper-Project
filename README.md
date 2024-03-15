@@ -188,11 +188,16 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	- 🗸 Add signal strength tracking on hidden ssids scan 
 		- 🗸 Have each one colorized based on dBm
 		- 🗸 Add signal Str to shadow Prefab
-		- add a tracking button to attempt to single down a certain ssid access point 
-			- Add new button onto the button bar 
-			- When press the selected SSID within the ShadowITScan will be attempted to following
-			- Add a track button for the SSID shadow Scan
-			- Depending if there is a signal or not return it on new screen 
+		- 🗸 add a tracking function within Shadow Scan function to keep updated signals 
+			- 🗸 When user travels, the function updates the scan signals  
+			- 🗸 When the user rescans the hidden SSIDs, the scan should stop to prevent crashes
+			- 🗸 Update the database screen when the function repeats 
+			- 🗸 If new SSID or HIDDEN SSID is detected notify the user 
+			- 🗸 if a SSID within the list of tracking and there is no signal update the signal to -999
+			- 🗸 Repeat this for Demo Mode 
+				- 🗸 Add in a random function to mimic a new network detected 
+			- 🗸 Change color of dBm based on new Hidden SSID and no signal to be more noticable
+	- 🗸 During Shadow SSID Scan, if a network with no ssid is detected or found, rename it to "Hidden Network Found" 
 	- 🗸 Get Wifi Pineapple configured to see if mimicing networking risk can be detected
 		- 🗸 Test with same SSID as Stetson vs Stetson Named SSID
 		- Record Results of VR application w/ Wifi_Pineapple + NETGEAR
