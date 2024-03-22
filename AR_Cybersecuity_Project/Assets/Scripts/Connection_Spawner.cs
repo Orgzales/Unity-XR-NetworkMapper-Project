@@ -77,7 +77,7 @@ public class Connection_Spawner : MonoBehaviour
                     currentBSSID = Wifi_script.wifiBSSID;
                     // currentBSSID = debugbssid; //windows testing
                 }
-                else if (currentBSSID != Wifi_script.wifiBSSID && previousNetworkName == Wifi_script.wifiSSID && BSSID_Condition)
+                else if (currentBSSID != Wifi_script.wifiBSSID && previousNetworkName == Wifi_script.wifiSSID && !BSSID_Condition)
                 { //if bssid is different but ssid is the same but not no connection then create pillar
                     previousBSSID = currentBSSID;
                     currentBSSID = Wifi_script.wifiBSSID;

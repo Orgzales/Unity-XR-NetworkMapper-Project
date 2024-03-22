@@ -205,6 +205,8 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 		- 🗸 Shadow IT Prefab
 		- Custom Info Prefab
 		- Regular Anchor Prefab
+	- FIX BSSID Bug.
+	- FIX WHITE + BLACK LIST BUG.
 	- Create an Anchor point that the prefabs spawn locations are based
 		- Change Main camera to the OVR camera rig
 		- LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html

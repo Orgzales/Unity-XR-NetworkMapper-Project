@@ -309,10 +309,10 @@ public class HiddenSSID_Scan : MonoBehaviour
         if (!WhiteSSIDs.Contains(CurrentSSID))
         {
             WhiteSSIDs.Add(CurrentSSID);
-        }
-        if (BlackSSIDs.Contains(CurrentSSID))
-        {
-            BlackSSIDs.Remove(CurrentSSID);
+            if (BlackSSIDs.Contains(CurrentSSID))
+            {
+                BlackSSIDs.Remove(CurrentSSID);
+            }
         }
 
     }
@@ -353,11 +353,12 @@ public class HiddenSSID_Scan : MonoBehaviour
         if (!BlackSSIDs.Contains(CurrentSSID))
         {
             BlackSSIDs.Add(CurrentSSID);
+            if (WhiteSSIDs.Contains(CurrentSSID))
+            {
+                WhiteSSIDs.Remove(CurrentSSID);
+            }
         }
-        if (WhiteSSIDs.Contains(CurrentSSID))
-        {
-            WhiteSSIDs.Remove(CurrentSSID);
-        }
+
 
     }
 
