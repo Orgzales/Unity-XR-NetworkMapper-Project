@@ -5,6 +5,7 @@ using UnityEngine;
 public class Button_Manager : MonoBehaviour
 {
     public Camera mainCamera; // Reference to the VR Headset
+    // public GameObject OVRCamera; // Reference to the VR Headset
     public Checking_Internet Wifi_script; // Reference to the SSID Varaible
     public HiddenSSID_Scan HiddenSSID_ScanScript; // Reference to the HiddenSSID_Scan Script
 
