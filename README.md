@@ -21,6 +21,18 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
  XR BackDropBuild: https://www.linkedin.com/feed/update/urn:li:activity:7166152294290419712/?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7166152294290419712%29
 
 
+AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
+		
+AndroidJavaObject wifiInfo = wifiManager.Call<AndroidJavaObject>("getConnectionInfo");
+AndroidJavaObject connectivityManager = activity.Call<AndroidJavaObject>("getSystemService", "connectivity");
+AndroidJavaObject networkInfo = connectivityManager.Call<AndroidJavaObject>("getNetworkInfo", 1);
+AndroidJavaObject detailedState = networkInfo.Call<AndroidJavaObject>("getDetailedState");
+		
+AndroidJavaObject activeNetwork = connectivityManager.Call<AndroidJavaObject>("getActiveNetwork");
+AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObject>("getNetworkCapabilities", activeNetwork);
+
+
 # Step 0 Plans (Augest 2023)
 	- 🗸 Activate Passthrough mode / AR - Finished
 	- 🗸 Test Unity Webservices - Testing Process
@@ -203,10 +215,7 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 		- Record Results of VR application w/ Wifi_Pineapple + NETGEAR
 	- 🗸 Make a seperate manager script that handles all other non-connection strength prefab spawns.
 		- 🗸 Shadow IT Prefab
-		- Custom Info Prefab
 		- Regular Anchor Prefab
-	- FIX BSSID Bug. 
-	- FIX WHITE + BLACK LIST BUG. 
 	- Create an Anchor point that the prefabs spawn locations are based
 		- 🗸 LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
 		- Have a button to drop an anchor 
@@ -223,33 +232,14 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 		- Technically yes but for now gonna attempt to avoid that. 
 			
 # Step 10 plans
+	- FIX BSSID Bug. 
+	- FIX WHITE + BLACK LIST BUG. 
 	- Double check bugs and unneeded code	
-	- Create an AR Slider for Delete Radius Button to increase size
-	- Lookinto Object MRTK manipulator script
-	- Detect rouge access points 
-		- Add these rogue access points to AR screen
-		- when scans, checks if access points SSID matches any known rogue AP SSIDs.
-		- If there are new ones, pop up the window
-		- create a new prefab for those rouge access points
-			- possibly create a larger radius
-			- prefab should have no interference with scripts of wifi objects.
+	- Change splash screen 
 
 		
 # Step ? Plans
-	- Create Save button for mapping
-	- Work on saving flat image of mapped area
-		-First need to make the camera that can see everything
-			- Make a camera renderer that can move with player
-			- Have a small screen that user can see what the camera sees
-			- Use render textures 
-		- Second have what the camera sees save as an image
-			- Make sure that the camera can see all objects
-			- Make sure it works on multiple floors (possibly a angle view)
-			- Save into temp file
-		- third export to the headset as an image it can open
-			- Build settings have access to downloading files
-			- export as Jpeg conversion
-			- Saves multiple names (possibly change name with text area?)
+
 		
 # Step ? Plans
 	- Save objects layout when logging off or switching
@@ -266,7 +256,7 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	- Add a button or UI to let user create their own cubes for info
 		- The custom cube can hold info such as room number and etc. 
 	- Have a delete button on the wifi pillars
-	- Change splash screen 
+	
 
 # APK Versions
 	- APK 1: Testing Mixed Reality 
@@ -282,15 +272,13 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	- APK 11: BackDrop Build Demo 
 	- APK 12: Anchor Points 
 	
-# Cybersecuirty Ideas
-
-	- Packet Sniffing - Less possible
-	- Historic Log Organization - Less possible
-
-	- Simulate Network Traffic - possible
-	- Simulate firewall - possible
-	- Simulate Shadow IT - possible
-	- Mac Adress Filtering - possible
+# Future Cybersecuirty Ideas
+	- Packet Sniffing 
+	- Historic Log Organization 
+	- Simulate Network Traffic 
+	- Simulate firewall 
+	- Simulate Shadow IT 
+	- Mac Adress Filtering
 		
 # Some Sources
 
