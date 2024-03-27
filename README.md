@@ -20,7 +20,8 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	
  XR BackDropBuild: https://www.linkedin.com/feed/update/urn:li:activity:7166152294290419712/?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7166152294290419712%29
 
-
+# Unity Andriod -> Meta Quest 2
+```ruby
 AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
 AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
 		
@@ -31,7 +32,7 @@ AndroidJavaObject detailedState = networkInfo.Call<AndroidJavaObject>("getDetail
 		
 AndroidJavaObject activeNetwork = connectivityManager.Call<AndroidJavaObject>("getActiveNetwork");
 AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObject>("getNetworkCapabilities", activeNetwork);
-
+```
 
 # Step 0 Plans (Augest 2023)
 	- 🗸 Activate Passthrough mode / AR - Finished
@@ -216,32 +217,43 @@ AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObje
 	- 🗸 Make a seperate manager script that handles all other non-connection strength prefab spawns.
 		- 🗸 Shadow IT Prefab
 		- Regular Anchor Prefab
+	
+			
+# Step 10 plans
 	- Create an Anchor point that the prefabs spawn locations are based
 		- 🗸 LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
+		- Create Anchor Prefab
+			- Each Anchor should have different name
+			- Anchor should have ability to be deleted with each isntance within 
+			- Not being affected by the override or delete commands 
 		- Have a button to drop an anchor 
 		- Allow the user to grab ancor and adjust it 
 			- This is incase the VR adjusts or resets user's position. 
 		- Have these anchors be storeable
-			- Have text editing for these prefabs
+			- Have the Wifi Scans, Bssid Scans, or Shadow Scans within hierarchy 
+			- Anchors should not switch between networks
+				- Example: User places anchor in roomA with WifiA
+				- User scans with Wifi A, then switches network to WifiB
+				- The anchor would continue to store wifi maps on both networks 
+				- When the user shrinks the anchor to see full map, switching networks would adjust to same size aswell.
 	- Add the following functions to Anchor
 		- Delete Anchor button to delete all prefabs
 		- Activate button when changing Anchors 
 		- Ability to move the anchor only on the X & Y axis
 			- Make sure Rotation is locked to avoid slanted objects
+			- Size of anchors can be modified. 
 	- Can anchors be inside of anchors? 
 		- Technically yes but for now gonna attempt to avoid that. 
-			
-# Step 10 plans
+	- Have the user be able to shrink and adjust of whole mapped out anchor
+		- This could allow the impressive display within the AR enviroment
+		- Easier to export photos and videos built into the VR functions
+
+		
+# Step 11 Plans
 	- FIX BSSID Bug. 
 	- FIX WHITE + BLACK LIST BUG. 
 	- Double check bugs and unneeded code	
 	- Change splash screen 
-
-		
-# Step ? Plans
-
-		
-# Step ? Plans
 	- Save objects layout when logging off or switching
 		- first, find a way to save scene
 			- Save position/direction that previous was looking
@@ -252,7 +264,9 @@ AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObje
 			- Save data of those prefabs 
 		- When log off or shut down, reloading saves all locations 
 
-# Step ? Plans
+# Step 12 Plans
+	- Finish Research Paper + Presentation Video Field Testing 
+	- If there is time will continue the rest in this step 
 	- Add a button or UI to let user create their own cubes for info
 		- The custom cube can hold info such as room number and etc. 
 	- Have a delete button on the wifi pillars
