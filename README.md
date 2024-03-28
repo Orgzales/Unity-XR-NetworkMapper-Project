@@ -20,7 +20,7 @@ Toolkit Testing: [Linkdin Post](https://www.linkedin.com/feed/update/urn:li:acti
  XR BackDropBuild:[Update Post](https://www.linkedin.com/feed/update/urn:li:activity:7166152294290419712/?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7166152294290419712%29)
 Watch Short Demo Video of Program: [Youtube Demo](https://www.youtube.com/watch?v=wRlASP3Mfyk&t=13s)
 
-##Unity Andriod -> Meta Quest 2
+## Unity Andriod -> Meta Quest 2
 ```ruby
 AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
 AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
@@ -72,7 +72,7 @@ AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObje
 	- 🗸 Accident: Have program test if wifi/router has access to Better secuirty | (NEEDS MORE TESTING)
 		- 🗸 EX: Router is set to no security, but it still is able to check if it can have wpa2
 
-###Calling from Managers
+### Calling from Managers
 ```ruby
 wifiSSID = wifiInfo.Call<string>("getSSID").Replace("\"", "");
 wifiBSSID = wifiInfo.Call<string>("getBSSID");
@@ -287,7 +287,7 @@ bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
 		- 🗸 Shadow IT Prefab
 		-  Regular Anchor Prefab
 	
-###ReScanning Hidden SSID AndriodJavaObjects
+### ReScanning Hidden SSID AndriodJavaObjects
 ```ruby
 AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
 AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
