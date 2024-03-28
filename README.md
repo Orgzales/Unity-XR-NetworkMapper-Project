@@ -35,42 +35,42 @@ AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObje
 ```
 
 ## Step 0 Plans (Augest 2023)
-	- [x] Activate Passthrough mode / AR - Finished
-	- [x] Test Unity Webservices - Testing Process
-	- [x] Get Hand Tracking to operate - Finished
-	- [x] Get Developer Acess - RSA Finger Print Finished
+	- 🗸 Activate Passthrough mode / AR - Finished
+	- 🗸 Test Unity Webservices - Testing Process
+	- 🗸 Get Hand Tracking to operate - Finished
+	- 🗸 Get Developer Acess - RSA Finger Print Finished
 	
 ## Step 1 Plans
-	- [x] Build APK Files for Wireless AR - FINISHED
-	- [x] WIFI Engines added for detecting nearby signals  - Quest 2 Shows SSID
-	- [x] Custom Marking Code that marks WIFI Strengths: - COMPLETED
-		- [x] No Signal = Red | -67dbm is Good signal (Max bars)
-		- [x] Weak Signal = Yellow | -68dbm to -79dbm is Okay signal (Half Bars)
-		- [x] Strong Signal = Green | -80dbm or lower is Very poor signal (Single or SOS bars)
+	- 🗸 Build APK Files for Wireless AR - FINISHED
+	- 🗸 WIFI Engines added for detecting nearby signals  - Quest 2 Shows SSID
+	- 🗸 Custom Marking Code that marks WIFI Strengths: - COMPLETED
+		- 🗸 No Signal = Red | -67dbm is Good signal (Max bars)
+		- 🗸 Weak Signal = Yellow | -68dbm to -79dbm is Okay signal (Half Bars)
+		- 🗸 Strong Signal = Green | -80dbm or lower is Very poor signal (Single or SOS bars)
 		
 ## Step 2 Plans
-	- [x] Get Recording with passthrough enabled - OBS/Wireless Computer (Not possible on quest 2) Wired Recording
-	- [x] Have Flags or Tracking Color Floor based on signal
-		- [x] Find a way to create a cube in the exact spot that the wifi connection is updated - CUBES SPAWN
-		- [x] Create the cube's color based on the wifi connection - Wifi Points are Created based on dBs
-		- [x] Have a radius possibly for the cubes to prevent to many being created - Prevents Cubes spawning within 2ft
-	- [x] Get netgear router to purposly to show unsecure authencation - DONE
+	- 🗸 Get Recording with passthrough enabled - OBS/Wireless Computer (Not possible on quest 2) Wired Recording
+	- 🗸 Have Flags or Tracking Color Floor based on signal
+		- 🗸 Find a way to create a cube in the exact spot that the wifi connection is updated - CUBES SPAWN
+		- 🗸 Create the cube's color based on the wifi connection - Wifi Points are Created based on dBs
+		- 🗸 Have a radius possibly for the cubes to prevent to many being created - Prevents Cubes spawning within 2ft
+	- 🗸 Get netgear router to purposly to show unsecure authencation - DONE
 
 ## Step 3 Plans
-	- [x] Have it display the wifi scuirty to connected router.
-	- [x] If authencation type is bad, give a alert to the cube being made.
-		- [x] 0 = Open or None = !!!!!DANGER!!!!! | Red
-		- [x] 1 = Wired Equivalent Privacy (WEP) = !!! HIGH ALERT !!! | Yellow
-		- [x] 2 = Wi-Fi Protected Access 2 (WPA2) = @ Secure @  | Green
-		- [x] 3 = Wi-Fi Protected Access 3 (WPA3) = #Protected# | Blue
+	- 🗸 Have it display the wifi scuirty to connected router.
+	- 🗸 If authencation type is bad, give a alert to the cube being made.
+		- 🗸 0 = Open or None = !!!!!DANGER!!!!! | Red
+		- 🗸 1 = Wired Equivalent Privacy (WEP) = !!! HIGH ALERT !!! | Yellow
+		- 🗸 2 = Wi-Fi Protected Access 2 (WPA2) = @ Secure @  | Green
+		- 🗸 3 = Wi-Fi Protected Access 3 (WPA3) = #Protected# | Blue
 
 ## Step 4 Plans
-	- [x] Have the Marked down cubes display information
-		-  [x] When cubed is touched, have it display previous data 
-		-  [x] Displays SSID BSSID and dBm when cube was created
-	- [x] Possibly show the range of the cube that was created wiht new prefab. 
-	- [x] Accident: Have program test if wifi/router has access to Better secuirty | (NEEDS MORE TESTING)
-		- [x] EX: Router is set to no security, but it still is able to check if it can have wpa2
+	- 🗸 Have the Marked down cubes display information
+		-  🗸 When cubed is touched, have it display previous data 
+		-  🗸 Displays SSID BSSID and dBm when cube was created
+	- 🗸 Possibly show the range of the cube that was created wiht new prefab. 
+	- 🗸 Accident: Have program test if wifi/router has access to Better secuirty | (NEEDS MORE TESTING)
+		- 🗸 EX: Router is set to no security, but it still is able to check if it can have wpa2
 
 ###Calling from Managers
 ```ruby
@@ -95,123 +95,123 @@ bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
 ```
 
 ## Step 5 Plans (January 2024)
-	- [x] Make New prefabs of Cubes to be Wifi Pillars
-		- [x] Have a radius transparcy
-		- [x] Change height of pillar based on dBm signal
-		- [x] Still have a cube on top that displays data
-		- [x] Keep other old properties
-		- [x] Depending on secuirty, create a symbol on top
-		- [x] Make small background for Debug Text.
-		- [x] Change color hex code based on signal. 
-	- [x] Increase the rate of the cubes
-	- [x] Have a button on the Prefab to delete itself. 
-		- [x] Small button on bottom of Prefab to set for false for now
+	- 🗸 Make New prefabs of Cubes to be Wifi Pillars
+		- 🗸 Have a radius transparcy
+		- 🗸 Change height of pillar based on dBm signal
+		- 🗸 Still have a cube on top that displays data
+		- 🗸 Keep other old properties
+		- 🗸 Depending on secuirty, create a symbol on top
+		- 🗸 Make small background for Debug Text.
+		- 🗸 Change color hex code based on signal. 
+	- 🗸 Increase the rate of the cubes
+	- 🗸 Have a button on the Prefab to delete itself. 
+		- 🗸 Small button on bottom of Prefab to set for false for now
 	
 	
 ## Step 6 Plans
-	- [x] Has data display in a AR-hud so position does not matter and better layout
-		- [x] add enough transparency 
-		- [x] Remake a grid layout for better visualization
-		- [x] Add Have the following display
-			- [x] Both netwokr security and potential network secuirty
-			- [x] Transmit Rate + receive Rate
-			- [x] add this to prefab
-	- [x] Create a data base of current properties of each scan for wifi network
-		- [x] Make a new hud that will say the following
-			- [x] New button on top tab to switch screens
-			- [x] (Network SSID + Network BSSID)
-				- [x] Good signal = int 
-				- [x] Ok Signal = int
-				- [x] Bad Signal = int
-				- [x] Secure = int
-				- [x] VUlnerable = int
-			- [x] New network...
-		- [x] Create Script that keeps the DataBase updating
-			- [x] Create Dictionary that keeps each data of network
-			- [x] Make sure No_Connection is included to the previous network
-	- [x] make new prefab for BSSID connection
-		- [x] Same SSID but DIFFERENT BSSID = New Pillars
-		- [x] Create the new prefab 
-		- [x] text should always be showing
-			- [x] text = previous bssid -> new bssid 
-		- [x] should not be created when first connection
-		- [x] prefabs should disappear and reappear based same as wifi clones
-	- [x] Create a button that delete wifiobjects on click
-		- [x] One button: Toggle = Overwrite Nearby Connections.
-		- [x] One button: Press = Get rid of all wifi objects within radius.
-	- [x] SPELL CHECK
+	- 🗸 Has data display in a AR-hud so position does not matter and better layout
+		- 🗸 add enough transparency 
+		- 🗸 Remake a grid layout for better visualization
+		- 🗸 Add Have the following display
+			- 🗸 Both netwokr security and potential network secuirty
+			- 🗸 Transmit Rate + receive Rate
+			- 🗸 add this to prefab
+	- 🗸 Create a data base of current properties of each scan for wifi network
+		- 🗸 Make a new hud that will say the following
+			- 🗸 New button on top tab to switch screens
+			- 🗸 (Network SSID + Network BSSID)
+				- 🗸 Good signal = int 
+				- 🗸 Ok Signal = int
+				- 🗸 Bad Signal = int
+				- 🗸 Secure = int
+				- 🗸 VUlnerable = int
+			- 🗸 New network...
+		- 🗸 Create Script that keeps the DataBase updating
+			- 🗸 Create Dictionary that keeps each data of network
+			- 🗸 Make sure No_Connection is included to the previous network
+	- 🗸 make new prefab for BSSID connection
+		- 🗸 Same SSID but DIFFERENT BSSID = New Pillars
+		- 🗸 Create the new prefab 
+		- 🗸 text should always be showing
+			- 🗸 text = previous bssid -> new bssid 
+		- 🗸 should not be created when first connection
+		- 🗸 prefabs should disappear and reappear based same as wifi clones
+	- 🗸 Create a button that delete wifiobjects on click
+		- 🗸 One button: Toggle = Overwrite Nearby Connections.
+		- 🗸 One button: Press = Get rid of all wifi objects within radius.
+	- 🗸 SPELL CHECK
 
 	
 ## Step 7 Plans	
-	- [x] Add Demo Button 
-		- [x] Toggle if strength values become random for demo purposes
-		- [x] Toggle to make random secuirty/vulnerable values
-	- [x] Clean Up code & Bug Check
-		- [x] Add Data receive  & Transmit code
-		- [x] Add Best secuirty and Current secuirty 
-		- [x] Add these to Screen and Wifi Prefabs
-		- [x] Remove unnessary code from here on out 
-	- [x] Remove Delete object button higher
-	- [x] Create Wifi prefab background transparent 
-	- [x] Fix When no connection during database:
-		- [x] Add No Connection counter
-		- [x] Remove increment of VUlnerable counter
-	- [x] Do final test for APK.9
-		- [x] Test to make sure no connection doesn't interfere
-		- [x] Make Sure BSSID Prefabs Work under correct conditions
-		- [x] Test DATA Speeds + Resize Screen to fit new data
-		- [x] Change color for corespsonding speed of DATA & Frequency
-		- [x] Edit base perfab for BSSID quality
-	- [x] Added network's Frequency
+	- 🗸 Add Demo Button 
+		- 🗸 Toggle if strength values become random for demo purposes
+		- 🗸 Toggle to make random secuirty/vulnerable values
+	- 🗸 Clean Up code & Bug Check
+		- 🗸 Add Data receive  & Transmit code
+		- 🗸 Add Best secuirty and Current secuirty 
+		- 🗸 Add these to Screen and Wifi Prefabs
+		- 🗸 Remove unnessary code from here on out 
+	- 🗸 Remove Delete object button higher
+	- 🗸 Create Wifi prefab background transparent 
+	- 🗸 Fix When no connection during database:
+		- 🗸 Add No Connection counter
+		- 🗸 Remove increment of VUlnerable counter
+	- 🗸 Do final test for APK.9
+		- 🗸 Test to make sure no connection doesn't interfere
+		- 🗸 Make Sure BSSID Prefabs Work under correct conditions
+		- 🗸 Test DATA Speeds + Resize Screen to fit new data
+		- 🗸 Change color for corespsonding speed of DATA & Frequency
+		- 🗸 Edit base perfab for BSSID quality
+	- 🗸 Added network's Frequency
 
 
 ## Step 8 Plans
-	- [x] Made Seperate Dictionary for later Database for the BSSID history
-		- [x] Keep track of each connection of a bssid within the same network
-		- [x] Display own text to data base screen
-		- [x] if no connection BSSID shouldn't change
-	- [x] Create Prefabs name based on SSID
-	- [x] IF change to new SSID, set all objects to false
-		- [x] If changed back reverse the true and false condition
-	- [x] This will be to mimic saving for future functions. 
-		- [x] If no connection, defualt to previous SSID
-	- [x] Mimic Finding Shadow ITs Networks that are hidden
-		- [x] install ARcore XR plugin
-		- [x] Detect Hidden SSIDs when scanning
-			- [x] Add list to new data screen in AR
-			- [x] Make script for popup for new SSID
-				- [x] Ask if it's white or black listed
-				- [x] Remove any Duplicates with shadow scan
-				- [x] get how many hidden networks within area 
-					- [x] make prefab that holds this info
-					- [x] add info of number of white or black listed 
-			- [x] When new hidden SSID is scanned, popup window appears
-				- [x] When Popup window alert prefab Instantiates, be in correct position
-					- [x] Rotation of screen is locked
-					- [x] Y-axis position is locked 
-					- [x] Dynamic X+Z Axis within MRTK Scene
-				- [x] Using IEnumerators, only make a screen when user gives input
-				- [x] Cycle through all hidden/surrounding SSIDs
-				- [x] Accumulate the user input within the White List & Black List networks
-			- [x] Create new dictionary for sudo database of shadow itself
-				- [x] make new dictionary (Whitelsited or blacklisted)
-		- [x] Have SSIDs become white or black listed
-	- [x] Create a button that repeats the Shadow IT scan
-		- [x] button should clear out Allprevious SSID scan history to rescan in current location
-			- [x] button should keep white + black List data
-		- [x] New prefab should be placed where rescan
-			- [x] Should display both white + black lists data
-		- [x] if network gets changed it will remove it from previous list
-		- [x] prefabs should not change when network changes
-			- [x] Have delete button with shadow prefab
-		- [x] Make button not pressable when the scan is already happening to prevent crash
-		- [x] Add the color violet to these prefabs to have some material 
-		- [x] Within Shadow Scan Prefab create two seperate text boxes for each data set
-			- [x] Within Text Details, insert Delete button here instead
-			- [x] Stop from users accidentally deleting info 
-		- [x] Change function if Demo mode is activated
-			- [x] Should have set list of SSIDs ready for example scanning 
-			- [x] User can see if Prefab is a Demo or not 
+	- 🗸 Made Seperate Dictionary for later Database for the BSSID history
+		- 🗸 Keep track of each connection of a bssid within the same network
+		- 🗸 Display own text to data base screen
+		- 🗸 if no connection BSSID shouldn't change
+	- 🗸 Create Prefabs name based on SSID
+	- 🗸 IF change to new SSID, set all objects to false
+		- 🗸 If changed back reverse the true and false condition
+	- 🗸 This will be to mimic saving for future functions. 
+		- 🗸 If no connection, defualt to previous SSID
+	- 🗸 Mimic Finding Shadow ITs Networks that are hidden
+		- 🗸 install ARcore XR plugin
+		- 🗸 Detect Hidden SSIDs when scanning
+			- 🗸 Add list to new data screen in AR
+			- 🗸 Make script for popup for new SSID
+				- 🗸 Ask if it's white or black listed
+				- 🗸 Remove any Duplicates with shadow scan
+				- 🗸 get how many hidden networks within area 
+					- 🗸 make prefab that holds this info
+					- 🗸 add info of number of white or black listed 
+			- 🗸 When new hidden SSID is scanned, popup window appears
+				- 🗸 When Popup window alert prefab Instantiates, be in correct position
+					- 🗸 Rotation of screen is locked
+					- 🗸 Y-axis position is locked 
+					- 🗸 Dynamic X+Z Axis within MRTK Scene
+				- 🗸 Using IEnumerators, only make a screen when user gives input
+				- 🗸 Cycle through all hidden/surrounding SSIDs
+				- 🗸 Accumulate the user input within the White List & Black List networks
+			- 🗸 Create new dictionary for sudo database of shadow itself
+				- 🗸 make new dictionary (Whitelsited or blacklisted)
+		- 🗸 Have SSIDs become white or black listed
+	- 🗸 Create a button that repeats the Shadow IT scan
+		- 🗸 button should clear out Allprevious SSID scan history to rescan in current location
+			- 🗸 button should keep white + black List data
+		- 🗸 New prefab should be placed where rescan
+			- 🗸 Should display both white + black lists data
+		- 🗸 if network gets changed it will remove it from previous list
+		- 🗸 prefabs should not change when network changes
+			- 🗸 Have delete button with shadow prefab
+		- 🗸 Make button not pressable when the scan is already happening to prevent crash
+		- 🗸 Add the color violet to these prefabs to have some material 
+		- 🗸 Within Shadow Scan Prefab create two seperate text boxes for each data set
+			- 🗸 Within Text Details, insert Delete button here instead
+			- 🗸 Stop from users accidentally deleting info 
+		- 🗸 Change function if Demo mode is activated
+			- 🗸 Should have set list of SSIDs ready for example scanning 
+			- 🗸 User can see if Prefab is a Demo or not 
 
 ### Method For Start of ShadowITScan
 ```ruby
@@ -262,30 +262,30 @@ bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
 
 
 ## Step 9 Plans
-	- [x] Fix Shadow Prefab Delte Bug
-	- [x] Fix StartCourtine Bug
-		- [x] List and Dictionary should clear each scan
-		- [x] Update the text of the Screen after scan if finished
-		- [x] Set all important varaibles when button is press not during scan
-	- [x] Add signal strength tracking on hidden ssids scan 
-		- [x] Have each one colorized based on dBm
-		- [x] Add signal Str to shadow Prefab
-		- [x] add a tracking function within Shadow Scan function to keep updated signals 
-			- [x] When user travels, the function updates the scan signals  
-			- [x] When the user rescans the hidden SSIDs, the scan should stop to prevent crashes
-			- [x] Update the database screen when the function repeats 
-			- [x] If new SSID or HIDDEN SSID is detected notify the user 
-			- [x] if a SSID within the list of tracking and there is no signal update the signal to -999
-			- [x] Repeat this for Demo Mode 
-				- [x] Add in a random function to mimic a new network detected 
-			- [x] Change color of dBm based on new Hidden SSID and no signal to be more noticable
-	- [x] During Shadow SSID Scan, if a network with no ssid is detected or found, rename it to "Hidden Network Found" 
-	- [x] Get Wifi Pineapple configured to see if mimicing networking risk can be detected
-		- [x] Test with same SSID as Stetson vs Stetson Named SSID
+	- 🗸 Fix Shadow Prefab Delte Bug
+	- 🗸 Fix StartCourtine Bug
+		- 🗸 List and Dictionary should clear each scan
+		- 🗸 Update the text of the Screen after scan if finished
+		- 🗸 Set all important varaibles when button is press not during scan
+	- 🗸 Add signal strength tracking on hidden ssids scan 
+		- 🗸 Have each one colorized based on dBm
+		- 🗸 Add signal Str to shadow Prefab
+		- 🗸 add a tracking function within Shadow Scan function to keep updated signals 
+			- 🗸 When user travels, the function updates the scan signals  
+			- 🗸 When the user rescans the hidden SSIDs, the scan should stop to prevent crashes
+			- 🗸 Update the database screen when the function repeats 
+			- 🗸 If new SSID or HIDDEN SSID is detected notify the user 
+			- 🗸 if a SSID within the list of tracking and there is no signal update the signal to -999
+			- 🗸 Repeat this for Demo Mode 
+				- 🗸 Add in a random function to mimic a new network detected 
+			- 🗸 Change color of dBm based on new Hidden SSID and no signal to be more noticable
+	- 🗸 During Shadow SSID Scan, if a network with no ssid is detected or found, rename it to "Hidden Network Found" 
+	- 🗸 Get Wifi Pineapple configured to see if mimicing networking risk can be detected
+		- 🗸 Test with same SSID as Stetson vs Stetson Named SSID
 		- Record Results of VR application w/ Wifi_Pineapple + NETGEAR
-	- [x] Make a seperate manager script that handles all other non-connection strength prefab spawns.
-		- [x] Shadow IT Prefab
-		- [] Regular Anchor Prefab
+	- 🗸 Make a seperate manager script that handles all other non-connection strength prefab spawns.
+		- 🗸 Shadow IT Prefab
+		-  Regular Anchor Prefab
 	
 ###ReScanning Hidden SSID AndriodJavaObjects
 ```ruby
@@ -298,55 +298,55 @@ int scanResultsCount = scanResults.Call<int>("size");
 
 ## Step 10 plans
 	- Create an Anchor point that the prefabs spawn locations are based
-		- [x] LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
-		- [] Create Anchor Prefab
-			- [] Each Anchor should have different name
-			- [] Anchor should have ability to be deleted with each isntance within 
-			- [] Not being affected by the override or delete commands 
-		- [] Have a button to drop an anchor 
-		- [] Allow the user to grab ancor and adjust it 
-			- [] This is incase the VR adjusts or resets user's position. 
-		- [] Have these anchors be storeable
-			- [] Have the Wifi Scans, Bssid Scans, or Shadow Scans within hierarchy 
-			- [] Anchors should not switch between networks
-				- [] Example: User places anchor in roomA with WifiA
-				- [] User scans with Wifi A, then switches network to WifiB
-				- [] The anchor would continue to store wifi maps on both networks 
-				- [] When the user shrinks the anchor to see full map, switching networks would adjust to same size aswell.
-	- [] Add the following functions to Anchor
-		- [] Delete Anchor button to delete all prefabs
-		- [] Activate button when changing Anchors 
-		- [] Ability to move the anchor only on the X & Y axis
-			- [] Make sure Rotation is locked to avoid slanted objects
-			- [] Size of anchors can be modified. 
-	- [] Can anchors be inside of anchors? 
-		- [] Technically yes but for now gonna attempt to avoid that. 
-	- [] Have the user be able to shrink and adjust of whole mapped out anchor
-		- [] This could allow the impressive display within the AR enviroment
-		- [] Easier to export photos and videos built into the VR functions
+		- 🗸 LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
+		-  Create Anchor Prefab
+			-  Each Anchor should have different name
+			-  Anchor should have ability to be deleted with each isntance within 
+			-  Not being affected by the override or delete commands 
+		-  Have a button to drop an anchor 
+		-  Allow the user to grab ancor and adjust it 
+			-  This is incase the VR adjusts or resets user's position. 
+		-  Have these anchors be storeable
+			-  Have the Wifi Scans, Bssid Scans, or Shadow Scans within hierarchy 
+			-  Anchors should not switch between networks
+				-  Example: User places anchor in roomA with WifiA
+				-  User scans with Wifi A, then switches network to WifiB
+				-  The anchor would continue to store wifi maps on both networks 
+				-  When the user shrinks the anchor to see full map, switching networks would adjust to same size aswell.
+	-  Add the following functions to Anchor
+		-  Delete Anchor button to delete all prefabs
+		-  Activate button when changing Anchors 
+		-  Ability to move the anchor only on the X & Y axis
+			-  Make sure Rotation is locked to avoid slanted objects
+			-  Size of anchors can be modified. 
+	-  Can anchors be inside of anchors? 
+		-  Technically yes but for now gonna attempt to avoid that. 
+	-  Have the user be able to shrink and adjust of whole mapped out anchor
+		-  This could allow the impressive display within the AR enviroment
+		-  Easier to export photos and videos built into the VR functions
 
 		
 ## Step 11 Plans
-	- [] FIX BSSID Bug. 
-	- [] FIX WHITE + BLACK LIST BUG. 
-	- [] Double check bugs and unneeded code	
-	- [] Change splash screen 
-	- [] Save objects layout when logging off or switching
-		- [] first, find a way to save scene
-			- [] Save position/direction that previous was looking
-			- [] When in that position, recreate all objects
-			- [] Reload save
-		- [] Second, find a way to save all objects
-			- [] Save all locations of (x,y,z) cords of objects
-			- [] Save data of those prefabs 
-		- [] When log off or shut down, reloading saves all locations 
+	-  FIX BSSID Bug. 
+	-  FIX WHITE + BLACK LIST BUG. 
+	-  Double check bugs and unneeded code	
+	-  Change splash screen 
+	-  Save objects layout when logging off or switching
+		-  first, find a way to save scene
+			-  Save position/direction that previous was looking
+			-  When in that position, recreate all objects
+			-  Reload save
+		-  Second, find a way to save all objects
+			-  Save all locations of (x,y,z) cords of objects
+			-  Save data of those prefabs 
+		-  When log off or shut down, reloading saves all locations 
 
 ## Step 12 Plans
-	- [] Finish Research Paper + Presentation Video Field Testing 
-	- [] If there is time will continue the rest in this step 
-	- [] Add a button or UI to let user create their own cubes for info
-		- [] The custom cube can hold info such as room number and etc. 
-	- [] Have a delete button on the wifi pillars
+	-  Finish Research Paper + Presentation Video Field Testing 
+	-  If there is time will continue the rest in this step 
+	-  Add a button or UI to let user create their own cubes for info
+		-  The custom cube can hold info such as room number and etc. 
+	-  Have a delete button on the wifi pillars
 	
 
 # APK Versions
