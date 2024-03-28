@@ -8,15 +8,20 @@ public class Other_Spawner_Manager : MonoBehaviour
 {
 
     public float spawnHeight = 1.75f; //Distance from Camera
-    public GameObject parentObject; //MRTK scene
+    public GameObject parentObject; //Change to current anchor later
 
+    public GameObject AnchorParentObject; //Where the Anchors will be placed
 
     public HiddenSSID_Scan HiddenSSID_ScanScript; // Reference to the HiddenSSID_Scan Script
     public Button_Manager Button_ManagerScript; // Reference to the Button_Manager Script
+    public DataBase_Manager DataBase_ManagerScript; // Reference to the DataBase_Manager Script
 
     public GameObject ShadowITPrefab;
+    public GameObject AnchorPrefab;
     public string WhiteList_Details_Text = "";
     public string BlackList_Details_Text = "";
+
+    private int AnchorCount = 0;
 
     public void SpawnShadowITPrefab()
     {
@@ -54,16 +59,20 @@ public class Other_Spawner_Manager : MonoBehaviour
         SetTextRecursively(newObject.transform, BlackListData, BlackList_Details_Text);
     }
 
-    public void SpawnInfoAnchorPrefab()
-    {
-        // Debug.Log("SpawnInfoAnchorPrefab");
-        // GameObject infoAnchorPrefab = Instantiate(infoAnchorPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-    }
 
     public void SpawnAnchorPrefab()
     {
-        // Debug.Log("SpawnAnchorPrefab");
-        // GameObject anchorPrefab = Instantiate(anchorPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Vector3 cameraPosition = Camera.main.transform.position;
+        Vector3 spawnPosition = new Vector3(cameraPosition.x, cameraPosition.y - 0.5f, cameraPosition.z);
+
+        GameObject newObject = Instantiate(AnchorPrefab, spawnPosition, Quaternion.identity);
+        newObject.transform.SetParent(AnchorParentObject.transform);
+        newObject.name = "AnchorPrefab" + AnchorCount;
+        AnchorCount++;
+
+        DataBase_ManagerScript.cloneParentObjects.Add(newObject.transform.Find("Followers").gameObject);
+
+
     }
 
     void SetTextRecursively(Transform parent, string text, string Parent_text)

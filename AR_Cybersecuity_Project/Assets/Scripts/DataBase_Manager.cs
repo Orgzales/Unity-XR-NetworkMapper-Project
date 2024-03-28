@@ -15,7 +15,9 @@ public class DataBase_Manager : MonoBehaviour
     // public Text DataBase_BlackList_Screen;
     public GameObject screenParentObejct; // for making new text objects 
 
-    public GameObject cloneParentObject; //Where all the wifi clones are made
+    // public GameObject cloneParentObject; //Where all the wifi clones are made 
+    public List<GameObject> cloneParentObjects; //Change to list of gameobjects that are all multiple parents
+
 
 
     private Dictionary<string, NetworkCounters> networkCounters = new Dictionary<string, NetworkCounters>();
@@ -227,24 +229,29 @@ public class DataBase_Manager : MonoBehaviour
     {
 
         // list of prefabs of names I dont want to change
-        List<string> namesToKeep = new List<string> { "ShadowITPrefab", "ShadowITPrefabDemo" };
+        List<string> namesToKeep = new List<string> { "ShadowITPrefab", "ShadowITPrefabDemo", "OriginAnchor" };
+        cloneParentObjects.RemoveAll(item => item == null); //incase the user deletes the anchor later on
 
-        //Setting each object of certain SSID to inactive or active base on name
-        foreach (Transform wifiObject in cloneParentObject.transform)
+        foreach (GameObject parentObject in cloneParentObjects)
         {
-            if (wifiObject.name == networkSSID || namesToKeep.Contains(wifiObject.name)) //debating if shadow should be with same mapping or not
+            //Setting each object of certain SSID to inactive or active base on name
+            foreach (Transform wifiObject in parentObject.transform)
             {
-                wifiObject.gameObject.SetActive(true);
-            }
-            else if (wifiObject.name == "No Networks in Area:" + previousNetworkName.ToString())
-            {
-                wifiObject.gameObject.SetActive(true);
-            }
-            else
-            {
-                wifiObject.gameObject.SetActive(false);
+                if (wifiObject.name == networkSSID || namesToKeep.Contains(wifiObject.name)) //debating if shadow should be with same mapping or not
+                {
+                    wifiObject.gameObject.SetActive(true);
+                }
+                else if (wifiObject.name == "No Networks in Area:" + previousNetworkName.ToString())
+                {
+                    wifiObject.gameObject.SetActive(true);
+                }
+                else
+                {
+                    wifiObject.gameObject.SetActive(false);
+                }
             }
         }
+
 
     }
 

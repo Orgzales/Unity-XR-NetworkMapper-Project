@@ -71,5 +71,12 @@ public class Button_Manager : MonoBehaviour
     }
 
 
+    public void CreateAnchorButtonPress()
+    {
+        Other_Spawner_ManagerScript.SpawnAnchorPrefab();
+
+    }
+
+
 
 }

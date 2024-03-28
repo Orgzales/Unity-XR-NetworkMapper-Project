@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Delete_Shadow : MonoBehaviour
+public class Prefab_Button_Manager : MonoBehaviour
 {
     public void DeleteObject()
     {

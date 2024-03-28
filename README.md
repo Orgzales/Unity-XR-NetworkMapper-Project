@@ -299,23 +299,25 @@ int scanResultsCount = scanResults.Call<int>("size");
 ## Step 10 plans
 	- Create an Anchor point that the prefabs spawn locations are based
 		- 🗸 LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
-		-  Create Anchor Prefab
-			-  Each Anchor should have different name
-			-  Anchor should have ability to be deleted with each isntance within 
-			-  Not being affected by the override or delete commands 
-		-  Have a button to drop an anchor 
-		-  Allow the user to grab ancor and adjust it 
-			-  This is incase the VR adjusts or resets user's position. 
+		- 🗸 Create Anchor Prefab
+			- 🗸 Each Anchor should have different name
+			- 🗸 Anchor should have ability to be deleted with each isntance within 
+			- 🗸 Not being affected by the override or delete commands 
+		- 🗸 Have a button to drop an anchor 
+		- 🗸 Allow the user to grab ancor and adjust it 
+			- 🗸 This is incase the VR adjusts or resets user's position. 
 		-  Have these anchors be storeable
-			-  Have the Wifi Scans, Bssid Scans, or Shadow Scans within hierarchy 
+			- 🗸 Have the Wifi Scans, Bssid Scans, or Shadow Scans within hierarchy 
+			- When a new Anchor is set, it should automatically become the new Origin for scans
 			-  Anchors should not switch between networks
 				-  Example: User places anchor in roomA with WifiA
 				-  User scans with Wifi A, then switches network to WifiB
 				-  The anchor would continue to store wifi maps on both networks 
 				-  When the user shrinks the anchor to see full map, switching networks would adjust to same size aswell.
 	-  Add the following functions to Anchor
-		-  Delete Anchor button to delete all prefabs
-		-  Activate button when changing Anchors 
+		-  🗸 Delete Anchor button to delete all prefabs
+		-  Activate button to change which Anchor you would use
+			- Text should change when Anchor is active or not
 		-  Ability to move the anchor only on the X & Y axis
 			-  Make sure Rotation is locked to avoid slanted objects
 			-  Size of anchors can be modified. 
@@ -329,8 +331,9 @@ int scanResultsCount = scanResults.Call<int>("size");
 ## Step 11 Plans
 	- 🗸 Clean Up Scene 1
 		- 🗸 Keep Scene 0 as Backup 
-	-  🗸 FIX BSSID Bug. 
-	-  🗸 FIX WHITE + BLACK LIST BUG. 
+	- 🗸 FIX BSSID Bug. 
+	- 🗸 FIX WHITE + BLACK LIST BUG. 
+	- 🗸 Make custom script to turn Diagnostics off
 	-  Double check bugs and clean unneeded code	
 	-  Make and Change splash screen 
 	-  Save objects layout when logging off or switching
