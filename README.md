@@ -20,7 +20,7 @@ Post on Linkdin: https://www.linkedin.com/in/orion-gonzales-030b78196/
 	
  XR BackDropBuild: https://www.linkedin.com/feed/update/urn:li:activity:7166152294290419712/?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7166152294290419712%29
 
-# Unity Andriod -> Meta Quest 2
+##Unity Andriod -> Meta Quest 2
 ```ruby
 AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
 AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
@@ -72,6 +72,28 @@ AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObje
 	- 🗸 Accident: Have program test if wifi/router has access to Better secuirty | (NEEDS MORE TESTING)
 		- 🗸 EX: Router is set to no security, but it still is able to check if it can have wpa2
 
+###Calling from Managers
+```ruby
+wifiSSID = wifiInfo.Call<string>("getSSID").Replace("\"", "");
+wifiBSSID = wifiInfo.Call<string>("getBSSID");
+wifiSignalStrength = wifiInfo.Call<int>("getRssi");
+int LinkSpeed = wifiInfo.Call<int>("getLinkSpeed"); //Speed in Mbps
+int frequencyInt = wifiInfo.Call<int>("getFrequency"); // Frequency in MHz
+DataSpeedRate = LinkSpeed;
+Freq_Network = frequencyInt;
+
+string stateString = detailedState.Call<string>("toString");
+string capabilities = wifiInfo.Call<string>("toString");
+int securityTypeIndex = capabilities.IndexOf("Security type: ");
+int endOfSecurityTypeIndex = capabilities.IndexOf(",", securityTypeIndex);
+string securityTypeValue = capabilities.Substring(securityTypeIndex + 15, endOfSecurityTypeIndex - securityTypeIndex - 15);
+
+bool hasInternet = networkCapabilities.Call<bool>("hasCapability", 12);
+bool hasWep = networkCapabilities.Call<bool>("hasCapability", 15);
+bool hasWpa2 = networkCapabilities.Call<bool>("hasCapability", 13);
+bool hasWpa3 = networkCapabilities.Call<bool>("hasCapability", 26);
+```
+
 # Step 5 Plans (January 2024)
 	- 🗸 Make New prefabs of Cubes to be Wifi Pillars
 		- 🗸 Have a radius transparcy
@@ -118,7 +140,7 @@ AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObje
 		- 🗸 One button: Toggle = Overwrite Nearby Connections.
 		- 🗸 One button: Press = Get rid of all wifi objects within radius.
 	- 🗸 SPELL CHECK
-	
+
 	
 # Step 7 Plans	
 	- 🗸 Add Demo Button 
@@ -141,7 +163,8 @@ AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObje
 		- 🗸 Change color for corespsonding speed of DATA & Frequency
 		- 🗸 Edit base perfab for BSSID quality
 	- 🗸 Added network's Frequency
-		
+
+
 # Step 8 Plans
 	- 🗸 Made Seperate Dictionary for later Database for the BSSID history
 		- 🗸 Keep track of each connection of a bssid within the same network
@@ -189,7 +212,53 @@ AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObje
 		- 🗸 Change function if Demo mode is activated
 			- 🗸 Should have set list of SSIDs ready for example scanning 
 			- 🗸 User can see if Prefab is a Demo or not 
-	
+
+### Method For Start of ShadowITScan
+```ruby
+    private IEnumerator ScanForHiddenSSIDs()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+        AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
+        wifiManager.Call<bool>("startScan"); //works for restarting scan
+        AndroidJavaObject scanResults = wifiManager.Call<AndroidJavaObject>("getScanResults");
+
+        int scanResultsCount = scanResults.Call<int>("size");
+        int hiddenFound = 0;
+
+        for (int i = 0; i < scanResultsCount; i++)
+        {
+            AndroidJavaObject scanResult = scanResults.Call<AndroidJavaObject>("get", i);
+            string ssid = scanResult.Get<string>("SSID");
+            int signalStrength = scanResult.Get<int>("level"); //works
+
+            if (string.IsNullOrEmpty(ssid)) //For Rouge or unnamed ssid networks 
+            {
+                ssid = "Hidden/NoName SSID Found #" + hiddenFound.ToString();
+                hiddenFound++;
+            }
+
+            string SSIDInfo = ssid + " (" + signalStrength.ToString() + " dBm)";
+
+            if (!allSSIDs.Contains(ssid))
+            {
+                allSSIDs.Add(ssid);
+                CurrentSSID = ssid;
+                SSIDSignal[ssid] = signalStrength;
+                ShowPopup(SSIDInfo);
+                yield return new WaitUntil(() => popupClosed);
+                popupClosed = false; // Reset
+            }
+
+        }
+        Other_Spawner_ManagerScript.SpawnShadowITPrefab(); //makes new prefab
+        NoActiveScanning = true; //Scanning ends here when prefab is created
+        SetWhiteText();
+        SetBlackText();
+        InvokeRepeating("UpdateSignals", 2.0f, 6.0f);
+    }
+```
 
 
 # Step 9 Plans
@@ -218,7 +287,14 @@ AndroidJavaObject networkCapabilities = connectivityManager.Call<AndroidJavaObje
 		- 🗸 Shadow IT Prefab
 		- Regular Anchor Prefab
 	
-			
+###ReScanning Hidden SSID AndriodJavaObjects
+AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+AndroidJavaObject wifiManager = activity.Call<AndroidJavaObject>("getSystemService", "wifi");
+wifiManager.Call<bool>("startScan"); //works for restarting scan
+AndroidJavaObject scanResults = wifiManager.Call<AndroidJavaObject>("getScanResults");
+int scanResultsCount = scanResults.Call<int>("size");
+
+
 # Step 10 plans
 	- Create an Anchor point that the prefabs spawn locations are based
 		- 🗸 LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
