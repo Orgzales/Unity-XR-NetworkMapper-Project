@@ -327,10 +327,12 @@ int scanResultsCount = scanResults.Call<int>("size");
 
 		
 ## Step 11 Plans
-	-  FIX BSSID Bug. 
-	-  FIX WHITE + BLACK LIST BUG. 
-	-  Double check bugs and unneeded code	
-	-  Change splash screen 
+	- 🗸 Clean Up Scene 1
+		- 🗸 Keep Scene 0 as Backup 
+	-  🗸 FIX BSSID Bug. 
+	-  🗸 FIX WHITE + BLACK LIST BUG. 
+	-  Double check bugs and clean unneeded code	
+	-  Make and Change splash screen 
 	-  Save objects layout when logging off or switching
 		-  first, find a way to save scene
 			-  Save position/direction that previous was looking
