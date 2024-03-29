@@ -15,6 +15,7 @@ public class Other_Spawner_Manager : MonoBehaviour
     public HiddenSSID_Scan HiddenSSID_ScanScript; // Reference to the HiddenSSID_Scan Script
     public Button_Manager Button_ManagerScript; // Reference to the Button_Manager Script
     public DataBase_Manager DataBase_ManagerScript; // Reference to the DataBase_Manager Script
+    public Connection_Spawner Connection_SpawnerScript; // Reference to the Connection_Spawner Script
 
     public GameObject ShadowITPrefab;
     public GameObject AnchorPrefab;
@@ -62,6 +63,13 @@ public class Other_Spawner_Manager : MonoBehaviour
 
     public void SpawnAnchorPrefab()
     {
+
+        //Setting all other anchors text to false active to let user know which anchor is currently active
+        foreach (Transform child in AnchorParentObject.transform)
+        {
+            SetTextRecursively(child, "Active: False", "ActiveText");
+        }
+
         Vector3 cameraPosition = Camera.main.transform.position;
         Vector3 spawnPosition = new Vector3(cameraPosition.x, cameraPosition.y - 0.5f, cameraPosition.z);
 
@@ -71,7 +79,9 @@ public class Other_Spawner_Manager : MonoBehaviour
         AnchorCount++;
 
         DataBase_ManagerScript.cloneParentObjects.Add(newObject.transform.Find("Followers").gameObject);
-
+        parentObject = newObject.transform.Find("Followers").gameObject;
+        Connection_SpawnerScript.CurrentAnchorParentObject = parentObject;
+        SetTextRecursively(newObject.transform, "Anchor: #" + AnchorCount, "AnchorText");
 
     }
 
@@ -96,5 +106,6 @@ public class Other_Spawner_Manager : MonoBehaviour
         }
 
     }
+
 
 }

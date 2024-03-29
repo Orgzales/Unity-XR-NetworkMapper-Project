@@ -543,6 +543,10 @@ PrefabInstance:
       propertyPath: button_script
       value: 
       objectReference: {fileID: 1277275789}
+    - target: {fileID: 5237658443567417316, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
+      propertyPath: CurrentAnchorParentObject
+      value: 
+      objectReference: {fileID: 8454309261851229864}
     - target: {fileID: 5237658443567417325, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -581,10 +585,22 @@ MonoBehaviour:
   HiddenSSID_ScanScript: {fileID: 88665048}
   Button_ManagerScript: {fileID: 1277275789}
   DataBase_ManagerScript: {fileID: 2092552315}
+  Connection_SpawnerScript: {fileID: 786496120}
   ShadowITPrefab: {fileID: 600639918143300120, guid: fef7b1a5aa3ae4647ab62b0db12f8af1, type: 3}
   AnchorPrefab: {fileID: 8454309263365533599, guid: d87b47751caa12c40ae3ce6ddc4a28f5, type: 3}
   WhiteList_Details_Text: White_Properties_text
   BlackList_Details_Text: Black_Properties_text
+--- !u!114 &786496120 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5237658443567417316, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
+  m_PrefabInstance: {fileID: 786496116}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786496118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec08697a70de724ba903a949a4d5ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &786496125 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5237658443567417319, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
@@ -2640,7 +2656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Wifi_script: {fileID: 0}
   button_script: {fileID: 0}
-  parentObject: {fileID: 0}
+  CurrentAnchorParentObject: {fileID: 0}
   prefabToInstantiate: {fileID: 7780838719092460206, guid: e4f44e58f2f7822469fb72b008b1c341, type: 3}
   bssidprefabToInstantiate: {fileID: 1387476329741421599, guid: 1a6f61465ff5309468d19ad76d1008e4, type: 3}
   spawnHeight: 1.75

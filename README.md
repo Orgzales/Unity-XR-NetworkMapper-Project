@@ -308,21 +308,21 @@ int scanResultsCount = scanResults.Call<int>("size");
 			- 🗸 This is incase the VR adjusts or resets user's position. 
 		-  Have these anchors be storeable
 			- 🗸 Have the Wifi Scans, Bssid Scans, or Shadow Scans within hierarchy 
-			- When a new Anchor is set, it should automatically become the new Origin for scans
+			- 🗸 When a new Anchor is set, it should automatically become the new Origin for scans
 			-  Anchors should not switch between networks
 				-  Example: User places anchor in roomA with WifiA
 				-  User scans with Wifi A, then switches network to WifiB
 				-  The anchor would continue to store wifi maps on both networks 
 				-  When the user shrinks the anchor to see full map, switching networks would adjust to same size aswell.
 	-  Add the following functions to Anchor
-		-  🗸 Delete Anchor button to delete all prefabs
+		- 🗸 Delete Anchor button to delete all prefabs
 		-  Activate button to change which Anchor you would use
 			- Text should change when Anchor is active or not
-		-  Ability to move the anchor only on the X & Y axis
-			-  Make sure Rotation is locked to avoid slanted objects
-			-  Size of anchors can be modified. 
-	-  Can anchors be inside of anchors? 
-		-  Technically yes but for now gonna attempt to avoid that. 
+		- 🗸 Ability to move the anchor only on the X & Y axis
+			- 🗸 Make sure Rotation is locked to avoid slanted objects
+			- 🗸 Size of anchors can be modified. 
+	- 🗸 Can anchors be inside of anchors? 
+		- 🗸 Technically yes but for now gonna attempt to avoid that. 
 	-  Have the user be able to shrink and adjust of whole mapped out anchor
 		-  This could allow the impressive display within the AR enviroment
 		-  Easier to export photos and videos built into the VR functions
@@ -336,6 +336,15 @@ int scanResultsCount = scanResults.Call<int>("size");
 	- 🗸 Make custom script to turn Diagnostics off
 	-  Double check bugs and clean unneeded code	
 	-  Make and Change splash screen 
+		- Have Logo in it
+	- Make a new Tutorial/info Screen about OXr Trail
+	
+
+## Step 12 Plans
+	-  Finish Research Paper + Presentation Video Field Testing 
+	-  If there is time will continue the rest in this step 
+	-  Add a button or UI to let user create their own cubes for info
+		-  The custom cube can hold info such as room number and etc. 
 	-  Save objects layout when logging off or switching
 		-  first, find a way to save scene
 			-  Save position/direction that previous was looking
@@ -345,13 +354,6 @@ int scanResultsCount = scanResults.Call<int>("size");
 			-  Save all locations of (x,y,z) cords of objects
 			-  Save data of those prefabs 
 		-  When log off or shut down, reloading saves all locations 
-
-## Step 12 Plans
-	-  Finish Research Paper + Presentation Video Field Testing 
-	-  If there is time will continue the rest in this step 
-	-  Add a button or UI to let user create their own cubes for info
-		-  The custom cube can hold info such as room number and etc. 
-	-  Have a delete button on the wifi pillars
 	
 
 # APK Versions

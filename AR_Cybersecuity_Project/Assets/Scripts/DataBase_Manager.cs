@@ -11,13 +11,9 @@ public class DataBase_Manager : MonoBehaviour
     public string debugSSID;
     public GameObject DataBase_Screen;
     public Text DataBase_BSSID_Screen;
-    // public Text DataBase_WhiteList_Screen;
-    // public Text DataBase_BlackList_Screen;
     public GameObject screenParentObejct; // for making new text objects 
 
-    // public GameObject cloneParentObject; //Where all the wifi clones are made 
     public List<GameObject> cloneParentObjects; //Change to list of gameobjects that are all multiple parents
-
 
 
     private Dictionary<string, NetworkCounters> networkCounters = new Dictionary<string, NetworkCounters>();

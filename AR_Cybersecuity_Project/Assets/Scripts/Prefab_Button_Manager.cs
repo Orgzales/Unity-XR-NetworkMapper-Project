@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class Prefab_Button_Manager : MonoBehaviour
 {
+
     public void DeleteObject()
     {
         Destroy(gameObject);
     }
+
+
+    public void ActivateAnchor()
+    {
+
+    }
+
 }

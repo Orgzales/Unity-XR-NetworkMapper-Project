@@ -9,7 +9,9 @@ public class Connection_Spawner : MonoBehaviour
     public Checking_Internet Wifi_script; //Drag script internetchecking into here to acess strings
     public Button_Manager button_script; // Values for overwrite mode and demo mode
 
-    public GameObject parentObject; //Parent
+    // public GameObject CurrentAnchorParentObject; //Parent
+    public GameObject CurrentAnchorParentObject; //Where the WifiScans will be placed
+
     public GameObject prefabToInstantiate; //Child
     public GameObject bssidprefabToInstantiate; //Child
     public float spawnHeight = 1.75f; //Distance from Camera
@@ -60,7 +62,7 @@ public class Connection_Spawner : MonoBehaviour
             int prefab_array = 0; //0 = good | 1 = ok | 2 = Bad
 
             // Check if the parent object and prefab are set
-            if (parentObject != null && prefabToInstantiate != null)
+            if (CurrentAnchorParentObject != null && prefabToInstantiate != null)
             {
                 //instantate here to user
                 Vector3 cameraPosition = Camera.main.transform.position;
@@ -130,7 +132,7 @@ public class Connection_Spawner : MonoBehaviour
                 {//If no new bssid then create ssid prefab
                     newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
                 }
-                newObject.transform.SetParent(parentObject.transform);
+                newObject.transform.SetParent(CurrentAnchorParentObject.transform);
 
                 // setting names of objects for database_manager
                 // if (Wifi_script.wifiSSID == "No Networks in Area") windows testing
