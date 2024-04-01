@@ -9,7 +9,7 @@ public class Connection_Spawner : MonoBehaviour
     public Checking_Internet Wifi_script; //Drag script internetchecking into here to acess strings
     public Button_Manager button_script; // Values for overwrite mode and demo mode
 
-    // public GameObject CurrentAnchorParentObject; //Parent
+    public DataBase_Manager database_script; //For database manager
     public GameObject CurrentAnchorParentObject; //Where the WifiScans will be placed
 
     public GameObject prefabToInstantiate; //Child
@@ -34,6 +34,8 @@ public class Connection_Spawner : MonoBehaviour
     private bool Demo_Mode;
 
     private int Demo_Counter = 0; //For spawning bssid prefabs during demo mode
+
+    public GameObject OriginAnchorText; //Origin Anchor Text
 
     void Start()
     {
@@ -167,7 +169,9 @@ public class Connection_Spawner : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Parent object or prefab not set!");
+                CurrentAnchorParentObject = database_script.cloneParentObjects[0]; //Origin Anchor Is first Anchor
+                TextMeshPro textComponent = OriginAnchorText.GetComponent<TextMeshPro>();
+                textComponent.text = "Active: True";
             }
 
         }

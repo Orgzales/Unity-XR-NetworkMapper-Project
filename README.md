@@ -1,6 +1,8 @@
-# AUGMENTED REALITY WIRELESS NETWORK SECURITY MAPPER
+# OX-r TRAIL(AUGMENTED REALITY WIRELESS NETWORK SECURITY MAPPER)
 An AR/VR/XR application made within a Unity Engine that will Map out wireless network connections to visualize signal strengths, access points, vulnerabilities, and more coming soon. Development was on the Meta Quest/ Meta Quest 2, however, applications with Android-supported AR/VR headsets should be supported. Some Code is supported with Windows Machines such as Apple Vision Pro but not fully tested.
 (My Stetson University Senior Research Project for the year 2023 Fall- Spring 2024)
+
+![OX_Trail_Logo](Documented/OxLogoWhite.png)
 
  
  Some Commands:
@@ -326,7 +328,8 @@ int scanResultsCount = scanResults.Call<int>("size");
 	-  Have the user be able to shrink and adjust of whole mapped out anchor
 		-  This could allow the impressive display within the AR enviroment
 		-  Easier to export photos and videos built into the VR functions
-
+	- 🗸 Make Origin Anchor not able to be deleted
+		- If Current Active Anchor is Deleted, the program will default to the Origin Anchor.
 		
 ## Step 11 Plans
 	- 🗸 Clean Up Scene 1
@@ -338,6 +341,7 @@ int scanResultsCount = scanResults.Call<int>("size");
 	-  Make and Change splash screen 
 		- Have Logo in it
 	- Make a new Tutorial/info Screen about OXr Trail
+	- Find out how to make popup logs in the quest 2 manager 
 	
 
 ## Step 12 Plans
