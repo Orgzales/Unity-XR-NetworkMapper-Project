@@ -942,6 +942,10 @@ PrefabInstance:
       propertyPath: CurrentAnchorParentObject
       value: 
       objectReference: {fileID: 8454309261851229864}
+    - target: {fileID: 5237658443567417316, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
+      propertyPath: otherSpawnerManager_script
+      value: 
+      objectReference: {fileID: 786496119}
     - target: {fileID: 5237658443567417325, guid: 558b8b120b849494e956f12f1433cf01, type: 3}
       propertyPath: m_Name
       value: Main Camera

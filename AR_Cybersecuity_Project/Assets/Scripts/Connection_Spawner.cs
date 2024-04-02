@@ -46,6 +46,16 @@ public class Connection_Spawner : MonoBehaviour
 
     private void InstantiateChildObject()
     {
+        // Check if the parent object is set
+        if (CurrentAnchorParentObject == null)
+        {
+            Debug.Log("Parent Object or Prefab not set in Connection Spawner Script");
+            CurrentAnchorParentObject = database_script.cloneParentObjects[0]; //Origin Anchor Is first Anchor
+            otherSpawnerManager_script.parentObject = database_script.cloneParentObjects[0]; //Spawn Anchor  
+
+            TextMeshPro textComponent = OriginAnchorText.GetComponent<TextMeshPro>();
+            textComponent.text = "Active: True";
+        }
 
         if (button_script.Overwrite_Mode == true)
         {
@@ -64,117 +74,104 @@ public class Connection_Spawner : MonoBehaviour
             string Wifi_ScreenDisplay = ""; //Change later with wifi info
             int prefab_array = 0; //0 = good | 1 = ok | 2 = Bad
 
-            // Check if the parent object and prefab are set
-            if (CurrentAnchorParentObject != null && prefabToInstantiate != null)
-            {
-                //instantate here to user
-                Vector3 cameraPosition = Camera.main.transform.position;
-                Vector3 spawnPosition = new Vector3(cameraPosition.x, cameraPosition.y - spawnHeight, cameraPosition.z);
+            //instantate here to user
+            Vector3 cameraPosition = Camera.main.transform.position;
+            Vector3 spawnPosition = new Vector3(cameraPosition.x, cameraPosition.y - spawnHeight, cameraPosition.z);
 
-                bool BSSID_Condition = (string.IsNullOrEmpty(Wifi_script.wifiSSID) || Wifi_script.wifiSSID.Equals("<unknown ssid>"));
-                // bool BSSID_Condition = true; //windows testing
-                bool create_BSSIDPillar = false;
+            bool BSSID_Condition = (string.IsNullOrEmpty(Wifi_script.wifiSSID) || Wifi_script.wifiSSID.Equals("<unknown ssid>"));
+            // bool BSSID_Condition = true; //windows testing
+            bool create_BSSIDPillar = false;
 
 
-                //check if new bssid
-                if (currentBSSID == null)
-                {// if bssid has not been set to new network
-                    currentBSSID = Wifi_script.wifiBSSID;
-                    // currentBSSID = debugbssid; //windows testing
-                }
-                else if (currentBSSID != Wifi_script.wifiBSSID && previousNetworkName == Wifi_script.wifiSSID && !BSSID_Condition)
-                { //if bssid is different but ssid is the same but not no connection then create pillar
-                    previousBSSID = currentBSSID;
-                    currentBSSID = Wifi_script.wifiBSSID;
-                    // currentBSSID = debugbssid; //windows testing
-                    create_BSSIDPillar = true;
-                }
-                else
-                {
-                    currentBSSID = Wifi_script.wifiBSSID;
-                    // currentBSSID = debugbssid; //windows testing
-                }
-
-                //if overwrite mode is on then delete all wifi prefabs with same name within 5m radius
-                if (Overwrite_Mode)
-                {
-                    OverWriteRadius(previousNetworkName);
-                }
-                //if demo mode is on then randomize dBm and security type
-                if (Demo_Mode)
-                {
-                    Demo_Counter++;
-                    dBm_value = Random.Range(-50, -90);
-                    int random_secuirty = Random.Range(0, 4);
-                    switch (random_secuirty)
-                    {
-                        case 0:
-                            Secuirty_type_value = "WPA/WPA2";
-                            break;
-                        case 1:
-                            Secuirty_type_value = "Orion's Awesome Secuirty";
-                            break; //mimic unknown secuirty
-                        case 2:
-                            Secuirty_type_value = "WEP";
-                            break;
-                        case 3:
-                            Secuirty_type_value = "OPEN";
-                            break;
-                    }
-                }
-
-                //Instantiate prefab connection info
-                GameObject newObject;
-                if (create_BSSIDPillar || Demo_Counter >= 8)
-                {//create bssid prefab instead of ssid prefab
-                    Demo_Counter = 0; //reset demo counter
-                    create_BSSIDPillar = true; // for demon mode
-                    newObject = Instantiate(bssidprefabToInstantiate, spawnPosition, Quaternion.identity);
-                }
-                else
-                {//If no new bssid then create ssid prefab
-                    newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
-                }
-                newObject.transform.SetParent(CurrentAnchorParentObject.transform);
-
-                // setting names of objects for database_manager
-                // if (Wifi_script.wifiSSID == "No Networks in Area") windows testing
-                if (string.IsNullOrEmpty(Wifi_script.wifiSSID) || Wifi_script.wifiSSID.Equals("<unknown ssid>"))
-                {
-                    newObject.name = "No Networks in Area:" + previousNetworkName;
-                }
-                else
-                {
-                    newObject.name = Wifi_script.wifiSSID.ToString();
-                    previousNetworkName = Wifi_script.wifiSSID.ToString();
-                }
-
-                //This displays on the AR Screen
-                Wifi_ScreenDisplay = "SSID: " + Wifi_script.wifiSSID +
-                "\nBSSID: " + Wifi_script.wifiBSSID +
-                "\ndBm: " + dBm_value.ToString() +
-                "\nCURR AUTH: " + Secuirty_type_value +
-                "\nBEST AUTH: " + Wifi_script.bestSecuirty +
-                "\nDATA RECEIVE & TRANSMIT RATE: " + Wifi_script.DataSpeedRate.ToString() + " Mbps" +
-                "\nNETWORK FREQUENCY: " + Wifi_script.Freq_Network.ToString() + " MHz";
-
-                SetTextRecursively(newObject.transform, Wifi_ScreenDisplay);
-
-                if (create_BSSIDPillar)
-                {//if new bssid then display previous and current bssid info aswell
-                    string bssid_Display = Wifi_script.wifiSSID + "\nPrevious BSSID: " + previousBSSID +
-                    "\nCurrent BSSID: " + currentBSSID;
-                    SetBSSIDRecursively(newObject.transform, bssid_Display);
-                }
-
+            //check if new bssid
+            if (currentBSSID == null)
+            {// if bssid has not been set to new network
+                currentBSSID = Wifi_script.wifiBSSID;
+                // currentBSSID = debugbssid; //windows testing
+            }
+            else if (currentBSSID != Wifi_script.wifiBSSID && previousNetworkName == Wifi_script.wifiSSID && !BSSID_Condition)
+            { //if bssid is different but ssid is the same but not no connection then create pillar
+                previousBSSID = currentBSSID;
+                currentBSSID = Wifi_script.wifiBSSID;
+                // currentBSSID = debugbssid; //windows testing
+                create_BSSIDPillar = true;
             }
             else
             {
-                CurrentAnchorParentObject = database_script.cloneParentObjects[0]; //Origin Anchor Is first Anchor
-                otherSpawnerManager_script.parentObject = database_script.cloneParentObjects[0]; //Spawn Anchor  
+                currentBSSID = Wifi_script.wifiBSSID;
+                // currentBSSID = debugbssid; //windows testing
+            }
 
-                TextMeshPro textComponent = OriginAnchorText.GetComponent<TextMeshPro>();
-                textComponent.text = "Active: True";
+            //if overwrite mode is on then delete all wifi prefabs with same name within 5m radius
+            if (Overwrite_Mode)
+            {
+                OverWriteRadius(previousNetworkName);
+            }
+            //if demo mode is on then randomize dBm and security type
+            if (Demo_Mode)
+            {
+                Demo_Counter++;
+                dBm_value = Random.Range(-50, -90);
+                int random_secuirty = Random.Range(0, 4);
+                switch (random_secuirty)
+                {
+                    case 0:
+                        Secuirty_type_value = "WPA/WPA2";
+                        break;
+                    case 1:
+                        Secuirty_type_value = "Orion's Awesome Secuirty";
+                        break; //mimic unknown secuirty
+                    case 2:
+                        Secuirty_type_value = "WEP";
+                        break;
+                    case 3:
+                        Secuirty_type_value = "OPEN";
+                        break;
+                }
+            }
+
+            //Instantiate prefab connection info
+            GameObject newObject;
+            if (create_BSSIDPillar || Demo_Counter >= 8)
+            {//create bssid prefab instead of ssid prefab
+                Demo_Counter = 0; //reset demo counter
+                create_BSSIDPillar = true; // for demon mode
+                newObject = Instantiate(bssidprefabToInstantiate, spawnPosition, Quaternion.identity);
+            }
+            else
+            {//If no new bssid then create ssid prefab
+                newObject = Instantiate(prefabToInstantiate, spawnPosition, Quaternion.identity);
+            }
+            newObject.transform.SetParent(CurrentAnchorParentObject.transform);
+
+            // setting names of objects for database_manager
+            // if (Wifi_script.wifiSSID == "No Networks in Area") windows testing
+            if (string.IsNullOrEmpty(Wifi_script.wifiSSID) || Wifi_script.wifiSSID.Equals("<unknown ssid>"))
+            {
+                newObject.name = "No Networks in Area:" + previousNetworkName;
+            }
+            else
+            {
+                newObject.name = Wifi_script.wifiSSID.ToString();
+                previousNetworkName = Wifi_script.wifiSSID.ToString();
+            }
+
+            //This displays on the AR Screen
+            Wifi_ScreenDisplay = "SSID: " + Wifi_script.wifiSSID +
+            "\nBSSID: " + Wifi_script.wifiBSSID +
+            "\ndBm: " + dBm_value.ToString() +
+            "\nCURR AUTH: " + Secuirty_type_value +
+            "\nBEST AUTH: " + Wifi_script.bestSecuirty +
+            "\nDATA RECEIVE & TRANSMIT RATE: " + Wifi_script.DataSpeedRate.ToString() + " Mbps" +
+            "\nNETWORK FREQUENCY: " + Wifi_script.Freq_Network.ToString() + " MHz";
+
+            SetTextRecursively(newObject.transform, Wifi_ScreenDisplay);
+
+            if (create_BSSIDPillar)
+            {//if new bssid then display previous and current bssid info aswell
+                string bssid_Display = Wifi_script.wifiSSID + "\nPrevious BSSID: " + previousBSSID +
+                "\nCurrent BSSID: " + currentBSSID;
+                SetBSSIDRecursively(newObject.transform, bssid_Display);
             }
 
         }

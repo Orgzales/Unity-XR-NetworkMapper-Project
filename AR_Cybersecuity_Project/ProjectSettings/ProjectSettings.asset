@@ -42,7 +42,7 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 2
-  - logo: {fileID: 21300000, guid: d7a02b6cf8d60054a8d92401db464663, type: 3}
+  - logo: {fileID: 21300000, guid: d682d67efc0e5d741ae03de00bcd4d1c, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 2800000, guid: d682d67efc0e5d741ae03de00bcd4d1c, type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
