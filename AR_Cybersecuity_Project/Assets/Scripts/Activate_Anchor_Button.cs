@@ -27,6 +27,7 @@ public class Activate_Anchor_Button : MonoBehaviour
     {
         otherSpawnerManagerScript.SetAllAnchorsTextFalse(); //setting any other anchor text that are active to false 
         ConnectionSpawnerScript.CurrentAnchorParentObject = FollowersPrefab; //Setting this anchor to be the active parent
+        otherSpawnerManagerScript.parentObject = FollowersPrefab; //Setting this anchor to be the active parent
 
         TextMeshPro textComponent = ActiveText.GetComponent<TextMeshPro>();
         textComponent.text = "Active: True";

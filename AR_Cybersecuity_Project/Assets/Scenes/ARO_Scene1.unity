@@ -3519,6 +3519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Wifi_script: {fileID: 0}
   button_script: {fileID: 0}
+  otherSpawnerManager_script: {fileID: 0}
   database_script: {fileID: 0}
   CurrentAnchorParentObject: {fileID: 0}
   prefabToInstantiate: {fileID: 7780838719092460206, guid: e4f44e58f2f7822469fb72b008b1c341, type: 3}

@@ -8,6 +8,7 @@ public class Connection_Spawner : MonoBehaviour
 {
     public Checking_Internet Wifi_script; //Drag script internetchecking into here to acess strings
     public Button_Manager button_script; // Values for overwrite mode and demo mode
+    public Other_Spawner_Manager otherSpawnerManager_script; //For setting the parent object
 
     public DataBase_Manager database_script; //For database manager
     public GameObject CurrentAnchorParentObject; //Where the WifiScans will be placed
@@ -170,6 +171,8 @@ public class Connection_Spawner : MonoBehaviour
             else
             {
                 CurrentAnchorParentObject = database_script.cloneParentObjects[0]; //Origin Anchor Is first Anchor
+                otherSpawnerManager_script.parentObject = database_script.cloneParentObjects[0]; //Spawn Anchor  
+
                 TextMeshPro textComponent = OriginAnchorText.GetComponent<TextMeshPro>();
                 textComponent.text = "Active: True";
             }
