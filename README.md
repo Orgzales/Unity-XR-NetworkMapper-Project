@@ -364,18 +364,19 @@ int scanResultsCount = scanResults.Call<int>("size");
 	
 
 # APK Versions
-	- APK 1: Testing Mixed Reality 
-	- APK 2: Getting SSID
-	- APK 3: Getting SSID + BSSID
-	- APK 4: Getting SSID + BSSID + RSSI/Signal
-	- APK 5: Takes all 3 and makes prefabs base on location
-	- APK 6: Added Auth/Secuirty Detection
-	- APK 7: debugging Auth/Secuirty Detection
-	- APK 8: New Prefabs/screen + Quality of Life
-	- APK 9: Sudo DataBase + Access Points + Data Rates + New Prefabs 
-	- APK 10: Shadow IT Scan function 
-	- APK 11: BackDrop Build Demo 
-	- APK 12: Anchor Points 
+	- APK 0.0.1: Testing Mixed Reality 
+	- APK 0.0.2: Getting SSID
+	- APK 0.0.3: Getting SSID + BSSID
+	- APK 0.0.4: Getting SSID + BSSID + RSSI/Signal
+	- APK 0.0.5: Takes all 3 and makes prefabs base on location
+	- APK 0.0.6: Added Auth/Secuirty Detection
+	- APK 0.0.7: debugging Auth/Secuirty Detection
+	- APK 0.0.8: New Prefabs/screen + Quality of Life
+	- APK 0.0.9: Sudo DataBase + Access Points + Data Rates + New Prefabs 
+	- APK 0.1.0: Shadow IT Scan function 
+	- APK 0.1.1: BackDrop Build Demo 
+	- APK 0.1.2: Anchor Points 
+	- APK 0.1.3: Offical Release V1 
 	
 ### Future Cybersecuirty Ideas
 	- Packet Sniffing 
