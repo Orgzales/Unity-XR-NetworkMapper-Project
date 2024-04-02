@@ -58,6 +58,8 @@ public class HiddenSSID_Scan : MonoBehaviour
         stopScanning();
         NoActiveScanning = false; //SCanning begins
         allSSIDs.Clear(); //for rescans
+        WhiteSSIDs.Clear(); //Added clear commands so that the mapping doesn't save old ssid from another location
+        BlackSSIDs.Clear();
         WhiteListText.text = "Scanning...";
         BlackListText.text = "Scanning...";
 
@@ -71,6 +73,8 @@ public class HiddenSSID_Scan : MonoBehaviour
         stopScanning();
         NoActiveScanning = false; //SCanning begins
         allSSIDs.Clear(); //for rescans
+        WhiteSSIDs.Clear(); //Added clear commands so that the mapping doesn't save old ssid from another location
+        BlackSSIDs.Clear();
         WhiteListText.text = "Scanning...";
         BlackListText.text = "Scanning...";
 
