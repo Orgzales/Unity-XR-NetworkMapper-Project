@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class Activate_Anchor_Button : MonoBehaviour
+{
+
+
+
+    public GameObject ActiveText;
+    public GameObject FollowersPrefab;
+
+    private Connection_Spawner ConnectionSpawnerScript;
+    private Other_Spawner_Manager otherSpawnerManagerScript;
+
+    private void Start()
+    {
+        GameObject mainCamera = Camera.main.gameObject;
+        ConnectionSpawnerScript = mainCamera.GetComponent<Connection_Spawner>();
+        otherSpawnerManagerScript = mainCamera.GetComponent<Other_Spawner_Manager>();
+
+    }
+
+    public void ActivateAnchor()
+    {
+        otherSpawnerManagerScript.SetAllAnchorsTextFalse(); //setting any other anchor text that are active to false 
+        ConnectionSpawnerScript.CurrentAnchorParentObject = FollowersPrefab; //Setting this anchor to be the active parent
+
+        TextMeshPro textComponent = ActiveText.GetComponent<TextMeshPro>();
+        textComponent.text = "Active: True";
+
+    }
+
+
+}

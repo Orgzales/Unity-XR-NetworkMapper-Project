@@ -1,8 +1,8 @@
-# OX-r TRAIL(AUGMENTED REALITY WIRELESS NETWORK SECURITY MAPPER)
+# OX-r TRAIL (AUGMENTED REALITY WIRELESS NETWORK SECURITY MAPPER)
 An AR/VR/XR application made within a Unity Engine that will Map out wireless network connections to visualize signal strengths, access points, vulnerabilities, and more coming soon. Development was on the Meta Quest/ Meta Quest 2, however, applications with Android-supported AR/VR headsets should be supported. Some Code is supported with Windows Machines such as Apple Vision Pro but not fully tested.
 (My Stetson University Senior Research Project for the year 2023 Fall- Spring 2024)
 
-![OX_Trail_Logo](Documented/OxLogoWhite.png)
+![OX_Trail_Logo](Documented/OxLogoLong.png)
 
  
  Some Commands:
@@ -299,8 +299,8 @@ int scanResultsCount = scanResults.Call<int>("size");
 ```
 
 ## Step 10 plans
-	- Create an Anchor point that the prefabs spawn locations are based
-		- 🗸 LOOK INTO ARCORE XR Plugin: https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
+	- 🗸 Create an Anchor point that the prefabs spawn locations are based
+		- 🗸 Install ARCORE XR Plugin
 		- 🗸 Create Anchor Prefab
 			- 🗸 Each Anchor should have different name
 			- 🗸 Anchor should have ability to be deleted with each isntance within 
@@ -308,28 +308,29 @@ int scanResultsCount = scanResults.Call<int>("size");
 		- 🗸 Have a button to drop an anchor 
 		- 🗸 Allow the user to grab ancor and adjust it 
 			- 🗸 This is incase the VR adjusts or resets user's position. 
-		-  Have these anchors be storeable
+		- 🗸 Have these anchors be storeable
 			- 🗸 Have the Wifi Scans, Bssid Scans, or Shadow Scans within hierarchy 
 			- 🗸 When a new Anchor is set, it should automatically become the new Origin for scans
-			-  Anchors should not switch between networks
-				-  Example: User places anchor in roomA with WifiA
-				-  User scans with Wifi A, then switches network to WifiB
-				-  The anchor would continue to store wifi maps on both networks 
-				-  When the user shrinks the anchor to see full map, switching networks would adjust to same size aswell.
-	-  Add the following functions to Anchor
+			- 🗸 Anchors should not switch between networks
+				- 🗸 Example: User places anchor in roomA with WifiA
+				- 🗸 User scans with Wifi A, then switches network to WifiB
+				- 🗸 The anchor would continue to store wifi maps on both networks 
+				- 🗸 When the user shrinks the anchor to see full map, switching networks would adjust to same size aswell.
+	- 🗸 Add the following functions to Anchor
 		- 🗸 Delete Anchor button to delete all prefabs
-		-  Activate button to change which Anchor you would use
-			- Text should change when Anchor is active or not
+		- 🗸 Activate button to change which Anchor you would use
+			- 🗸 Text should change when Anchor is active or not
+			- 🗸 Wifi Scans woul switch to the anchor that has been activated
 		- 🗸 Ability to move the anchor only on the X & Y axis
 			- 🗸 Make sure Rotation is locked to avoid slanted objects
 			- 🗸 Size of anchors can be modified. 
 	- 🗸 Can anchors be inside of anchors? 
 		- 🗸 Technically yes but for now gonna attempt to avoid that. 
-	-  Have the user be able to shrink and adjust of whole mapped out anchor
-		-  This could allow the impressive display within the AR enviroment
-		-  Easier to export photos and videos built into the VR functions
+	- 🗸 Have the user be able to shrink and adjust of whole mapped out anchor
+		- 🗸 This could allow the impressive display within the AR enviroment
+		- 🗸 Easier to export photos and videos built into the VR functions
 	- 🗸 Make Origin Anchor not able to be deleted
-		- If Current Active Anchor is Deleted, the program will default to the Origin Anchor.
+		- 🗸 If Current Active Anchor is Deleted, the program will default to the Origin Anchor.
 		
 ## Step 11 Plans
 	- 🗸 Clean Up Scene 1
@@ -340,7 +341,9 @@ int scanResultsCount = scanResults.Call<int>("size");
 	-  Double check bugs and clean unneeded code	
 	-  Make and Change splash screen 
 		- Have Logo in it
+	- 🗸 Add LOGO to Popup Screen 
 	- Make a new Tutorial/info Screen about OXr Trail
+	- Readjust all prefabs in opening scene
 	- Find out how to make popup logs in the quest 2 manager 
 	
 
@@ -384,9 +387,9 @@ int scanResultsCount = scanResults.Call<int>("size");
 		
 ### Some Sources
 
-	-https://math.stackexchange.com/questions/2833778/converting-between-different-scales
-	-https://www.crowdstrike.com/cybersecurity-101/cloud-security/shadow-it/
-    -https://cai.io/resources/thought-leadership/shadow-IT-meaning-risks
-	-https://skarredghost.com/2022/01/05/how-to-oculus-spatial-anchors-unity-2/ 
-
+	- https://math.stackexchange.com/questions/2833778/converting-between-different-scales
+	- https://www.crowdstrike.com/cybersecurity-101/cloud-security/shadow-it/
+    - https://cai.io/resources/thought-leadership/shadow-IT-meaning-risks
+	- https://skarredghost.com/2022/01/05/how-to-oculus-spatial-anchors-unity-2/ 
+	- https://docs.unity3d.com/Packages/com.unity.xr.arcore@4.1/manual/index.html
 	

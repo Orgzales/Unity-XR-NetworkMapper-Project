@@ -225,7 +225,7 @@ public class DataBase_Manager : MonoBehaviour
     {
 
         // list of prefabs of names I dont want to change
-        List<string> namesToKeep = new List<string> { "ShadowITPrefab", "ShadowITPrefabDemo", "OriginAnchor" };
+        List<string> namesToKeep = new List<string> { "ShadowITPrefab", "ShadowITPrefabDemo" };
         cloneParentObjects.RemoveAll(item => item == null); //incase the user deletes the anchor later on
 
         foreach (GameObject parentObject in cloneParentObjects)

@@ -64,11 +64,7 @@ public class Other_Spawner_Manager : MonoBehaviour
     public void SpawnAnchorPrefab()
     {
 
-        //Setting all other anchors text to false active to let user know which anchor is currently active
-        foreach (Transform child in AnchorParentObject.transform)
-        {
-            SetTextRecursively(child, "Active: False", "ActiveText");
-        }
+        SetAllAnchorsTextFalse();
 
         Vector3 cameraPosition = Camera.main.transform.position;
         Vector3 spawnPosition = new Vector3(cameraPosition.x, cameraPosition.y - 0.5f, cameraPosition.z);
@@ -83,6 +79,15 @@ public class Other_Spawner_Manager : MonoBehaviour
         Connection_SpawnerScript.CurrentAnchorParentObject = parentObject;
         SetTextRecursively(newObject.transform, "Anchor: #" + AnchorCount, "AnchorText");
 
+    }
+
+    public void SetAllAnchorsTextFalse()
+    {
+        //Setting all other anchors text to false active to let user know which anchor is currently active
+        foreach (Transform child in AnchorParentObject.transform)
+        {
+            SetTextRecursively(child, "Active: False", "ActiveText");
+        }
     }
 
     void SetTextRecursively(Transform parent, string text, string Parent_text)
