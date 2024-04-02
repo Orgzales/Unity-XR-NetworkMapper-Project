@@ -339,10 +339,11 @@ int scanResultsCount = scanResults.Call<int>("size");
 	- 🗸 FIX WHITE + BLACK LIST BUG. 
 	- 🗸 Make custom script to turn Diagnostics off
 	-  Double check bugs and clean unneeded code	
-	-  Make and Change splash screen 
-		- Have Logo in it
+	- 🗸 Make and Change splash screen 
 	- 🗸 Add LOGO to Popup Screen 
 	- Make a new Tutorial/info Screen about OXr Trail
+		- One Screen should display what the program does
+		- Second Screen should explain button controls
 	- Readjust all prefabs in opening scene
 	- Find out how to make popup logs in the quest 2 manager 
 	
