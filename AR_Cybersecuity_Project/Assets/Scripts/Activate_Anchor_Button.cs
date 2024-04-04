@@ -7,13 +7,14 @@ using TMPro;
 public class Activate_Anchor_Button : MonoBehaviour
 {
 
-
-
     public GameObject ActiveText;
     public GameObject FollowersPrefab;
+    public GameObject VisibleText;
 
     private Connection_Spawner ConnectionSpawnerScript;
     private Other_Spawner_Manager otherSpawnerManagerScript;
+
+    private bool isVisable = true;
 
     private void Start()
     {
@@ -31,6 +32,33 @@ public class Activate_Anchor_Button : MonoBehaviour
 
         TextMeshPro textComponent = ActiveText.GetComponent<TextMeshPro>();
         textComponent.text = "Active: True";
+
+    }
+
+    public void HideScan()
+    {
+
+        if (isVisable)
+        {
+            isVisable = false;
+            TextMeshPro textComponent = VisibleText.GetComponent<TextMeshPro>();
+            textComponent.text = "Visible: False";
+            foreach (Transform child in FollowersPrefab.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            isVisable = true;
+            TextMeshPro textComponent = VisibleText.GetComponent<TextMeshPro>();
+            textComponent.text = "Visible: True";
+            foreach (Transform child in FollowersPrefab.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+
 
     }
 

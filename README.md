@@ -341,6 +341,7 @@ int scanResultsCount = scanResults.Call<int>("size");
 	-  Double check bugs and clean unneeded code	
 	- 🗸 Make and Change splash screen 
 	- 🗸 Add LOGO to Popup Screen 
+	- 🗸 Add hidden button for anchors to make scans visible or not
 	- Make a new Tutorial/info Screen about OXr Trail
 		- One Screen should display what the program does
 		- Second Screen should explain button controls

@@ -97,6 +97,7 @@ public class HiddenSSID_Scan : MonoBehaviour
         int scanResultsCount = scanResults.Call<int>("size");
         int hiddenFound = 0;
 
+
         for (int i = 0; i < scanResultsCount; i++)
         {
             AndroidJavaObject scanResult = scanResults.Call<AndroidJavaObject>("get", i);
