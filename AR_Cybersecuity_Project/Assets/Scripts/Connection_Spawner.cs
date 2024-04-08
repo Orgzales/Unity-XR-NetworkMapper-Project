@@ -26,7 +26,7 @@ public class Connection_Spawner : MonoBehaviour
 
     // public string debugssid; //windows testing
     // public string debugbssid; //windows testing
-    private string previousNetworkName; //namint noconnection prefabs
+    public string previousNetworkName; //namint noconnection prefabs
 
     private string currentBSSID; //for bssid spawning
     private string previousBSSID;//for bssid spawning

@@ -46,6 +46,8 @@ public class Activate_Anchor_Button : MonoBehaviour
             foreach (Transform child in FollowersPrefab.transform)
             {
                 child.gameObject.SetActive(false);
+                child.name = "HiddenScan";
+
             }
         }
         else
@@ -56,6 +58,7 @@ public class Activate_Anchor_Button : MonoBehaviour
             foreach (Transform child in FollowersPrefab.transform)
             {
                 child.gameObject.SetActive(true);
+                child.name = ConnectionSpawnerScript.previousNetworkName;
             }
         }
 
